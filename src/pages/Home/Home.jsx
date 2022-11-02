@@ -8,10 +8,13 @@ import {
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 import { getCategoriesThunk } from 'redux/categories/thunkCategories';
-import { TransactionsForm } from 'components/TransactionsForm';
+// import { TransactionsForm } from 'components/TransactionsForm';
 import { getTransactionsThunk } from 'redux/transactions/thunksTransactions';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
-// import { showModal } from 'redux/modal/modalSlice';
+import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
+import { showModal } from 'redux/modal/modalSlice';
+
+import css from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,7 +25,7 @@ const Home = () => {
 
   const userTransactions = useSelector(selectTransactions);
 
-  console.log(userName);
+  // console.log(userName);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -30,10 +33,13 @@ const Home = () => {
     }
 
     dispatch(getCategoriesThunk());
-    // dispatch(showModal(true)); // Анатолій
 
     dispatch(getTransactionsThunk());
   }, [isLoggedIn, usertoken, dispatch]);
+
+  const handleOpenModal = () => {
+    dispatch(showModal(true));
+  };
 
   return (
     <div className="flex gap-6">
@@ -55,8 +61,12 @@ const Home = () => {
             </p>
           </div>
         )}
-
-        <TransactionsForm />
+        <button
+          type="button"
+          onClick={handleOpenModal}
+          className={css.openModalBtn}
+        ></button>
+        <AddTransactionModal />
       </div>
     </div>
   );
