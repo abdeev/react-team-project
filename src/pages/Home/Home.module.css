@@ -8,7 +8,12 @@
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   border-radius: 50%;
 
-  background-image: url(../../../assets/+.png);
+  background-image: url(../../../assets/+.svg);
   background-repeat: no-repeat;
   background-position: center;
+  transition: 250ms;
+}
+
+.openModalBtn:hover {
+  background-color: #20ba98;
 }

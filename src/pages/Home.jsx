@@ -8,14 +8,10 @@ import {
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 import { getCategoriesThunk } from 'redux/categories/thunkCategories';
-// import { TransactionsForm } from 'components/TransactionsForm';
+import { TransactionsForm } from 'components/TransactionsForm';
 import { getTransactionsThunk } from 'redux/transactions/thunksTransactions';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
-import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
-import { showModal } from 'redux/modal/modalSlice';
-
-import css from './Home.module.css';
-import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+// import { showModal } from 'redux/modal/modalSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,7 +22,7 @@ const Home = () => {
 
   const userTransactions = useSelector(selectTransactions);
 
-  // console.log(userName);
+  console.log(userName);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -34,24 +30,13 @@ const Home = () => {
     }
 
     dispatch(getCategoriesThunk());
+    // dispatch(showModal(true)); // Анатолій
 
     dispatch(getTransactionsThunk());
   }, [isLoggedIn, usertoken, dispatch]);
 
-  const handleOpenModal = () => {
-    dispatch(showModal(true));
-  };
-
-  const handleEscapeKey = e => {
-    if (e.key === 'Escape') {
-      dispatch(showModal(false));
-      //???????????????????????? stops listen only if click on some elements, maybe needs to fix!!!!!!!!!!!!!!!!!
-    }
-  };
-
   return (
     <div className="flex gap-6">
-      <RegisterForm />
       <div className="">
         <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
 
@@ -70,13 +55,8 @@ const Home = () => {
             </p>
           </div>
         )}
-        <button
-          type="button"
-          onClick={handleOpenModal}
-          onKeyDown={handleEscapeKey}
-          className={css.openModalBtn}
-        ></button>
-        <AddTransactionModal />
+
+        <TransactionsForm />
       </div>
     </div>
   );

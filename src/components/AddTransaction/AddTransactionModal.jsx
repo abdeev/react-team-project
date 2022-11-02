@@ -12,12 +12,26 @@ import { showModal } from 'redux/modal/modalSlice';
 
 const AddTransactionModal = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [isSubscribed, setIsSubscribed] = useState(true);
+
   const isModalOpen = useSelector(
     state => state.isModalAddTransactionOpen.isShowModal
   );
   const dispatch = useDispatch();
 
-  const handleModalClick = () => {
+  const handleModalCloseClick = () => {
+    dispatch(showModal(false));
+  };
+
+  const handleChange = () => {
+    setIsSubscribed(current => !current);
+  };
+
+  const handleBackdropClick = e => {
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
     dispatch(showModal(false));
   };
 
@@ -36,34 +50,44 @@ const AddTransactionModal = () => {
     { value: 'pharm7', label: 'Pharm' },
   ];
 
-  console.log(isModalOpen);
-
   return (
     <div>
       {isModalOpen && (
         <div>
-          <ModalBackdrop>
+          <ModalBackdrop onBackClick={handleBackdropClick}>
             <div className={css.modal}>
+              <button
+                type="button"
+                className={css.closingCross}
+                onClick={handleModalCloseClick}
+              ></button>
               <h1 className={css.title}>Add transaction</h1>
               <div className={css.toggle}>
-                <input type="checkbox" id="toggle" defaultChecked />
+                <input
+                  type="checkbox"
+                  id="toggle"
+                  defaultChecked
+                  onChange={handleChange}
+                />
                 <label htmlFor="toggle"></label>
                 <span className={css.incomeSpan}>Income</span>
                 <span className={css.expenseSpan}>Expense</span>
               </div>
               <form className={css.form}>
-                <Select
-                  options={options}
-                  placeholder="Select category"
-                  classNamePrefix="custom-select"
-                />
+                {isSubscribed && (
+                  <Select
+                    options={options}
+                    placeholder="Select category"
+                    classNamePrefix="custom-select"
+                  />
+                )}
 
                 <div className={css.inputsWrapper}>
                   <label>
                     <input
                       type="number"
                       placeholder="0.00"
-                      className={css.input}
+                      className={css.inputAmount}
                     />
                   </label>
 
@@ -92,7 +116,7 @@ const AddTransactionModal = () => {
               <button
                 type="button"
                 className={css.cancelBtn}
-                onClick={handleModalClick}
+                onClick={handleModalCloseClick}
               >
                 CANCEL
               </button>
