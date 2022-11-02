@@ -22,8 +22,9 @@ export const LoginForm = () => {
       dispatch(logInThunk({ email, password }));
     }
     if (isLoggedIn) {
-      navigate('/');
+      navigate('/home');
     }
+    // eslint-disable-next-line
   }, [email, password, dispatch, isLoggedIn]);
 
   const handleLogin = e => {

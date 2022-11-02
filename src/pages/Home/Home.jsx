@@ -15,7 +15,7 @@ import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 import { showModal } from 'redux/modal/modalSlice';
 
 import css from './Home.module.css';
-import Layout from 'components/Layout/Layout';
+// import Layout from 'components/Layout/Layout';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -51,12 +51,6 @@ const Home = () => {
 
   return (
     <div className="flex gap-6">
-<<<<<<< Updated upstream
-      <Layout />
-=======
-      {/* <RegisterForm /> */}
-
->>>>>>> Stashed changes
       <div className="">
         <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
 

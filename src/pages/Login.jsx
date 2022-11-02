@@ -1,8 +1,8 @@
 import { LoginForm } from 'components/LoginForm/LoginForm';
-import { useState } from 'react';
+// import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
-import { logInThunk } from 'redux/authorization/thunksAuth';
+// import { logInThunk } from 'redux/authorization/thunksAuth';
 
 const Login = () => {
   return (
@@ -16,46 +16,72 @@ const Login = () => {
   // const location = useNavigate();
 
   // const handleChange = ({ target: { name, value } }) => {
-  //     switch (name) {
-  //         case 'email': return setEmail(value);
-  //         case 'password': return setPassword(value);
-  //         default: return;
-  //     }
-  // }
+  //   switch (name) {
+  //     case 'email':
+  //       return setEmail(value);
+  //     case 'password':
+  //       return setPassword(value);
+  //     default:
+  //       return;
+  //   }
+  // };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(logInThunk({ email, password }));
-    setEmail('');
-    setPassword('');
-    event.target.reset();
-    location('/');
-  };
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   dispatch(logInThunk({ email, password }));
+  //   setEmail('');
+  //   setPassword('');
+  //   event.target.reset();
+  //   location('/');
+  // };
 
   // return (
-  //     <form className='mx-auto my-9 flex flex-col p-7 rounded-xl border border-solid border-black bg-green-300' onSubmit={handleSubmit}>
+  //   <form
+  //     className="mx-auto my-9 flex flex-col p-7 rounded-xl border border-solid border-black bg-green-300"
+  //     onSubmit={handleSubmit}
+  //   >
+  //     <label className="mb-2 text-2xl font-sm text-red-600" htmlFor="email">
+  //       E-mail address
+  //     </label>
+  //     <input
+  //       className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black"
+  //       id="email"
+  //       type="email"
+  //       name="email"
+  //       onChange={handleChange}
+  //       value={email}
+  //       title="E-mail address invalid"
+  //       placeholder="example@email.com"
+  //       required
+  //     />
 
-  //         <label className='mb-2 text-2xl font-sm text-red-600' htmlFor="email">E-mail address</label>
-  //         <input className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black" id="email" type="email" name="email" onChange={handleChange} value={email} title="E-mail address invalid" placeholder="example@email.com" required />
+  //     <label className="mb-2 text-2xl font-sm text-red-600" htmlFor="password">
+  //       Password
+  //     </label>
+  //     <input
+  //       className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black"
+  //       id="password"
+  //       type="password"
+  //       name="password"
+  //       onChange={handleChange}
+  //       value={password}
+  //       required
+  //     />
 
-  //         <label className='mb-2 text-2xl font-sm text-red-600' htmlFor="password">Password</label>
-  //         <input className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black" id="password" type="password" name="password" onChange={handleChange} value={password} required />
-
-  //   <label className="mb-2 text-2xl font-sm text-red-600" htmlFor="password">
-  //   Password
-  // </label>
-  // <input
-  //   className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black"
-  //   id="password"
-  //   type="password"
-  //   name="password"
-  //   onChange={handleChange}
-  //   value={password}
-  //   required
-  // />
-
-  //     </form>
-  // )
+  //     <label className="mb-2 text-2xl font-sm text-red-600" htmlFor="password">
+  //       Password
+  //     </label>
+  //     <input
+  //       className="mb-6 text-2xl font-sm py-1 px-5 rounded-xl border border-black"
+  //       id="password"
+  //       type="password"
+  //       name="password"
+  //       onChange={handleChange}
+  //       value={password}
+  //       required
+  //     />
+  //   </form>
+  // );
 };
 
 export default Login;
