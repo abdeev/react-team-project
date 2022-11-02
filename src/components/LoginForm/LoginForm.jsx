@@ -20,20 +20,20 @@ export const LoginForm = () => {
   useEffect(() => {
     if (email && password) {
       dispatch(logInThunk({ email, password }));
-    }
-    if (isLoggedIn) {
       navigate('/home');
     }
-    // eslint-disable-next-line
+    // if (isLoggedIn) {
+    //   navigate('/home');
+    // }
   }, [email, password, dispatch, isLoggedIn]);
 
   const handleLogin = e => {
+    // e.preventDefault();
     const { email, password } = e;
     setEmail(email);
     setPassword(password);
 
     if (!isLoggedIn) {
-      e.preventDefault();
       return;
     }
   };

@@ -36,7 +36,7 @@ export const RegisterForm = () => {
       .required('Password confirmation required!'),
     name: Yup.string()
       .min(1, 'First name must be at least 1 characters long')
-      .max(12, 'Firat name must be 12 characters maximum')
+      .max(12, 'First name must be 12 characters maximum')
       .required('Required field to fill!'),
   });
 

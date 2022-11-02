@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { selectUserName } from 'redux/authorization/selectorsAuth';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
@@ -27,6 +27,7 @@ const Layout = () => {
         <IconExit className={css.iconExit} />
         <p className={css.textExit}>Exit</p>
       </Link>
+      <Outlet />
     </div>
   );
 };
