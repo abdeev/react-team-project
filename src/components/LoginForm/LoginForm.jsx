@@ -20,12 +20,12 @@ export const LoginForm = () => {
   useEffect(() => {
     if (email && password) {
       dispatch(logInThunk({ email, password }));
-      navigate('/home');
+      navigate('/');
     }
     // if (isLoggedIn) {
     //   navigate('/home');
     // }
-  }, [email, password, dispatch, isLoggedIn]);
+  }, [email, password, dispatch, isLoggedIn, navigate]);
 
   const handleLogin = e => {
     // e.preventDefault();
