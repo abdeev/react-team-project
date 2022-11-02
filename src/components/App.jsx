@@ -39,16 +39,56 @@ export const App = () => {
               </p>
             }
           >
+            <Login />
+          </Suspense>
+        }
+      />
+      <Route
+        path="register"
+        element={
+          <Suspense
+            fallback={
+              <p className="text-2xl text-red-400 font-sm mb-4">
+                Loading data...
+              </p>
+            }
+          >
+            <Registration />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="home"
+        element={
+          <Suspense
+            fallback={
+              <p className="text-2xl text-red-400 font-sm mb-4">
+                Loading data...
+              </p>
+            }
+          >
             <AppBar />
           </Suspense>
         }
       >
         <Route index element={<Home />} />
         <Route path="contacts" element={<Contacts />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Registration />} />
-        <Route path="*" element={<PageNotFound />} />
       </Route>
+      <Route
+        path="*"
+        element={
+          <Suspense
+            fallback={
+              <p className="text-2xl text-red-400 font-sm mb-4">
+                Loading data...
+              </p>
+            }
+          >
+            <PageNotFound />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };

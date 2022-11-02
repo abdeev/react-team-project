@@ -1,0 +1,32 @@
+.layoutContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: aliceblue;
+  outline: dashed red;
+}
+.logoWallet {
+  width: 181px;
+  /* padding: 20px 16px; */
+}
+.welcomeName {
+  margin-right: 12px;
+  font-family: 'Circe';
+  color: #bdbdbd;
+  border-right: 1px #bdbdbd solid;
+}
+.linkExit {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  color: #bdbdbd;
+}
+.iconExit {
+  width: 18px;
+  height: 18px;
+}
+.textExit {
+  font-family: 'Circe';
+}

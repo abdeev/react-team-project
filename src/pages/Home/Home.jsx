@@ -8,14 +8,14 @@ import {
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 import { getCategoriesThunk } from 'redux/categories/thunkCategories';
-// import { TransactionsForm } from 'components/TransactionsForm';
+import { TransactionsForm } from 'components/TransactionsForm';
 import { getTransactionsThunk } from 'redux/transactions/thunksTransactions';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 import { showModal } from 'redux/modal/modalSlice';
 
 import css from './Home.module.css';
-import { RegisterForm } from 'components/RegisterForm/RegisterForm';
+import Layout from 'components/Layout/Layout';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const Home = () => {
 
   return (
     <div className="flex gap-6">
-      <RegisterForm />
+      <Layout />
       <div className="">
         <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
 
@@ -76,6 +76,7 @@ const Home = () => {
           onKeyDown={handleEscapeKey}
           className={css.openModalBtn}
         ></button>
+        <TransactionsForm />
         <AddTransactionModal />
       </div>
     </div>
