@@ -38,7 +38,9 @@ img {
 
 body {
   margin: 0;
-  background-color: yellow;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(25px);
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Circe',
     'Circe Bold', 'Poppins' sans-serif;
@@ -49,6 +51,115 @@ body {
   min-height: 100vh;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .active {
   color: yellow;
+}
+
+/* add Transaction */
+
+.custom-select__control {
+  width: 410px !important;
+  /* max-height: 32px !important; */
+  padding: 0px !important;
+
+  font-family: 'Circe', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+
+  color: #bdbdbd !important;
+
+  border: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  cursor: pointer !important ;
+}
+
+.custom-select__placeholder {
+  font-family: 'Circe', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+
+  color: #bdbdbd !important;
+  text-align: left !important;
+}
+
+.custom-select__indicator-separator {
+  display: none !important;
+}
+
+.custom-select__indicator:hover {
+  color: rgb(31, 31, 31);
+}
+
+.custom-select__menu {
+  margin-top: 3px !important ;
+  padding-top: 0 !important;
+  border: none !important;
+
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(25px) !important;
+
+  border-radius: 20px !important;
+
+  animation: scaleIn 0.25s ease-in-out;
+}
+
+.custom-select__single-value {
+  font-family: 'Circe', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+
+  color: #000 !important;
+  text-align: left !important;
+}
+
+.custom-select__option {
+  font-family: 'Circe', sans-serif !important;
+
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+  /* display: flex !important;
+  align-items: center !important; */
+
+  /* color: #ff6596; */
+
+  text-align: left;
+  /* transition: 250ms !important; */
+}
+
+.custom-select__option--is-focused {
+  cursor: pointer !important;
+  /* font-weight: 700 !important; */
+  background-color: #fff !important;
+  color: #ff6596 !important;
+}
+
+.custom-select__option--selected {
+  background-color: #ff6596 !important;
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
 }
