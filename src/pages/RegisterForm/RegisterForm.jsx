@@ -7,7 +7,7 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { registerThunk } from 'redux/authorization/thunksAuth';
 import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
-import { ReactComponent as Logo } from './logo.svg';
+import { ReactComponent as Logo } from 'icons/logo.svg';
 
 // import Logo from './logo.svg';
 import css from './RegisterForm.module.css';
@@ -58,7 +58,7 @@ export const RegisterForm = () => {
             <Form className={css.form}>
               <div className={css.logoWrapper}>
                 <Logo className={css.logo} />
-                <h1>Wallet</h1>
+                <h1 className={css.title}>Wallet</h1>
               </div>
               <div className={css.inputWrapper}>
                 {errors.email && (
@@ -82,7 +82,6 @@ export const RegisterForm = () => {
                 )}
                 <MdLock className={css.icon} />
                 <input
-                  // label={<MdLock width={16} height={21} />}
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -102,7 +101,6 @@ export const RegisterForm = () => {
                 )}
                 <MdLock className={css.icon} />
                 <input
-                  // label={<MdLock width={16} height={21} color={'#E0E0E0'} />}
                   type="password"
                   name="confirmPassword"
                   placeholder="Confirm password"
@@ -124,7 +122,6 @@ export const RegisterForm = () => {
                 )}
                 <MdAccountBox className={css.icon} />
                 <input
-                  // label={<MdAccountBox width={18} height={18} />}
                   type="text"
                   name="name"
                   placeholder="First name"
