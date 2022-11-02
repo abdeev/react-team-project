@@ -2,7 +2,7 @@ import React from 'react';
 import { statsArray } from '../json/mock';
 
 import s from '../StatisticsTable/StatisticsTable.module.css';
-
+console.log('test');
 export const StatisticsTable = ({ tableData }) => {
   return (
     <div>
