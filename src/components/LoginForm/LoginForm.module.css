@@ -1,0 +1,120 @@
+.form {
+  display: block;
+
+  width: 533px;
+  border-radius: 20px;
+  border: 1px solid black;
+  /* transform: translateY(50%); */
+  margin: 0;
+  padding: 40px 60px 66px 65px;
+}
+.title {
+  font-family: 'Poppins';
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+}
+.input {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline-style: none;
+  padding-left: 25px;
+  width: 409px;
+  height: 35px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  padding-left: 56px;
+  color: #484848;
+}
+.inputWrapper {
+  /* display: flex; */
+  position: relative;
+  margin-bottom: 40px;
+}
+.input[placeholder] {
+  color: #bdbdbd;
+  font-size: 18px;
+  font-family: 'circe';
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+}
+.icon {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 10000;
+  width: 20px;
+  height: 20px;
+  fill: #e0e0e0;
+}
+.wrapper {
+  position: absolute;
+  z-index: 1000;
+  width: 409px;
+  height: 4px;
+  background-color: #e0e0e0;
+  margin-top: 8px;
+}
+.confirmProgress {
+  width: 0;
+  height: 4px;
+  background-color: #24cca7;
+  /* margin-top: -32px; */
+  border-radius: 2px;
+  animation: load 2s normal forwards;
+}
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #24cca7;
+  border: 1px solid #24cca7;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.button[disabled] {
+  background-color: #e0e0e0;
+}
+.linkWrapper {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  color: #4a56e2;
+  border: 1px solid #4a56e2;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 13px;
+}
+/* .link {
+  display: flex;
+  justify-content: center;
+} */
