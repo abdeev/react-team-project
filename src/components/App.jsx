@@ -14,6 +14,7 @@ const Registration = lazy(() => import('../pages/Registration'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
 export const App = () => {
+
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const usertoken = useSelector(selectUserToken);
