@@ -51,7 +51,12 @@ const Home = () => {
 
   return (
     <div className="flex gap-6">
+<<<<<<< Updated upstream
       <Layout />
+=======
+      {/* <RegisterForm /> */}
+
+>>>>>>> Stashed changes
       <div className="">
         <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
 
