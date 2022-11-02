@@ -1,0 +1,4 @@
+.outlet {
+  display: flex;
+  flex-direction: column;
+}
