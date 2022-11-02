@@ -2,29 +2,52 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 
-import 'react-datepicker/dist/react-datepicker.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { showModal } from 'redux/modal/modalSlice';
+import { addTransactionThunk } from 'redux/transactions/thunksTransactions';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import css from './AddTransactionModal.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { showModal } from 'redux/modal/modalSlice';
 
 const AddTransactionModal = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [isSubscribed, setIsSubscribed] = useState(true);
+  const [formData, setFormData] = useState({
+    startDate: new Date(),
+    amount: 0,
+    comment: '',
+    selectData: null,
+    isExpenseChecked: true,
+  });
+  const dispatch = useDispatch();
 
   const isModalOpen = useSelector(
     state => state.isModalAddTransactionOpen.isShowModal
   );
-  const dispatch = useDispatch();
+  const categories = useSelector(state => state.categories.categories);
+
+  const options = categories.map(el => {
+    return { value: el.name, label: el.name, id: el.id, type: el.type };
+  });
+
+  const handleFormData = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSelectChange = x => {
+    setFormData(prev => {
+      return { ...prev, selectData: x };
+    });
+  };
 
   const handleModalCloseClick = () => {
     dispatch(showModal(false));
   };
 
   const handleChange = () => {
-    setIsSubscribed(current => !current);
+    setFormData(prev => {
+      return { ...prev, isExpenseChecked: !prev.isExpenseChecked };
+    });
   };
 
   const handleBackdropClick = e => {
@@ -35,20 +58,22 @@ const AddTransactionModal = () => {
     dispatch(showModal(false));
   };
 
-  const options = [
-    { value: 'food', label: 'Food' },
-    { value: 'movies', label: 'Movies' },
-    { value: 'pharm', label: 'Pharm' },
-    { value: 'food1', label: 'Food' },
-    { value: 'movies1', label: 'Movies' },
-    { value: 'pharm1', label: 'Pharm' },
-    { value: 'food2', label: 'Food' },
-    { value: 'movies3', label: 'Movies' },
-    { value: 'pharm4', label: 'Pharm' },
-    { value: 'food5', label: 'Food' },
-    { value: 'movies6', label: 'Movies' },
-    { value: 'pharm7', label: 'Pharm' },
-  ];
+  const handleModalSubmit = e => {
+    e.preventDefault();
+
+    dispatch(
+      addTransactionThunk({
+        categoryId: formData.selectData?.id,
+        transactionDate: formData.startDate?.toISOString(),
+        type: formData.selectData?.type,
+        comment: formData?.comment,
+        amount: -formData?.amount,
+      })
+    )
+      .unwrap()
+      .then(() => dispatch(showModal(false)))
+      .catch(() => alert('smth went wrong, try again'));
+  };
 
   return (
     <div>
@@ -73,10 +98,12 @@ const AddTransactionModal = () => {
                 <span className={css.incomeSpan}>Income</span>
                 <span className={css.expenseSpan}>Expense</span>
               </div>
-              <form className={css.form}>
-                {isSubscribed && (
+              <form className={css.form} onSubmit={handleModalSubmit}>
+                {formData.isExpenseChecked && (
                   <Select
                     options={options}
+                    value={formData.selectData}
+                    onChange={handleSelectChange}
                     placeholder="Select category"
                     classNamePrefix="custom-select"
                   />
@@ -85,16 +112,22 @@ const AddTransactionModal = () => {
                 <div className={css.inputsWrapper}>
                   <label>
                     <input
+                      name="amount"
                       type="number"
                       placeholder="0.00"
                       className={css.inputAmount}
+                      onChange={handleFormData}
                     />
                   </label>
 
                   <div className={css.datepickerWrapper}>
                     <DatePicker
-                      selected={startDate}
-                      onChange={date => setStartDate(date)}
+                      selected={formData.startDate}
+                      onChange={date =>
+                        setFormData(prev => {
+                          return { ...prev, startDate: date };
+                        })
+                      }
                       className={css.input}
                     />
                   </div>
@@ -102,9 +135,11 @@ const AddTransactionModal = () => {
 
                 <label>
                   <input
+                    name="comment"
                     type="text"
                     placeholder="Comment"
                     className={css.comment}
+                    onChange={handleFormData}
                   />
                 </label>
 
