@@ -15,6 +15,7 @@ import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 import { showModal } from 'redux/modal/modalSlice';
 
 import css from './Home.module.css';
+import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const Home = () => {
 
   return (
     <div className="flex gap-6">
+      <RegisterForm />
       <div className="">
         <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
 
