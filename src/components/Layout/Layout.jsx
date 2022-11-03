@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { selectUserName } from 'redux/authorization/selectorsAuth';
+import {
+  selectUserBalance,
+  selectUserName,
+} from 'redux/authorization/selectorsAuth';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
@@ -12,6 +15,7 @@ const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
+  const userCurrentBalance = useSelector(selectUserBalance);
 
   const handleLogout = () => {
     dispatch(logOutThunk());
@@ -21,7 +25,7 @@ const Layout = () => {
   return (
     <div className={css.layoutContainer}>
       <div className={css.layoutHeader}>
-        <Link to="/" end className={css.wallet}>
+        <Link to="/home" end="true" className={css.wallet}>
           <LogoWallet className={css.logoWallet} />
         </Link>
 
@@ -41,7 +45,8 @@ const Layout = () => {
           </NavLink>
 
           <div className={css.balance}>
-            Your balance <span className={css.balanceAmount}>$24 000.00</span>
+            Your balance{' '}
+            <span className={css.balanceAmount}>${userCurrentBalance}</span>
           </div>
 
           <Currency />

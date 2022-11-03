@@ -11,6 +11,7 @@ import PrivateRoute from 'routes/PrivateRoute';
 
 import Layout from './Layout/Layout';
 import { StatisticsPage } from 'pages/StatisticsPage';
+import PublicRoute from 'routes/PublicRoute';
 // import { StatisticsPage } from 'pages/StatisticsPage';
 
 const Home = lazy(() => import('../pages/Home/Home'));
@@ -32,8 +33,11 @@ export const App = () => {
   return (
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="/" element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+        </Route>
+
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
