@@ -1,5 +1,4 @@
 import { Formik, Form } from 'formik';
-
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -9,7 +8,6 @@ import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 
 import { ReactComponent as Logo } from 'icons/logo.svg';
 
-// import Logo from './logo.svg';
 import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -41,7 +39,7 @@ export const RegisterForm = () => {
   });
 
   return (
-    <div>
+    <div className={css.formWrapper}>
       <Formik
         initialValues={{
           email: '',
@@ -62,7 +60,7 @@ export const RegisterForm = () => {
               </div>
               <div className={css.inputWrapper}>
                 {errors.email && (
-                  <div className={css.errorMessage}>{errors.email}</div>
+                  <div className={css.errorMessage}>*{errors.email}</div>
                 )}
                 <MdEmail className={css.icon} />
                 <input
@@ -78,7 +76,7 @@ export const RegisterForm = () => {
 
               <div className={css.inputWrapper}>
                 {errors.password && (
-                  <div className={css.errorMessage}>{errors.password}</div>
+                  <div className={css.errorMessage}>*{errors.password}</div>
                 )}
                 <MdLock className={css.icon} />
                 <input
@@ -96,7 +94,7 @@ export const RegisterForm = () => {
               <div className={css.inputWrapper}>
                 {errors.confirmPassword && (
                   <div className={css.errorMessage}>
-                    {errors.confirmPassword}
+                    *{errors.confirmPassword}
                   </div>
                 )}
                 <MdLock className={css.icon} />
@@ -118,7 +116,7 @@ export const RegisterForm = () => {
 
               <div className={css.inputWrapper}>
                 {errors.name && (
-                  <div className={css.errorMessage}>{errors.name}</div>
+                  <div className={css.errorMessage}>*{errors.name}</div>
                 )}
                 <MdAccountBox className={css.icon} />
                 <input

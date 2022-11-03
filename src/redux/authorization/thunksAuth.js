@@ -33,6 +33,7 @@ export const registerThunk = createAsyncThunk(
       setToken.add(data.token);
       return data;
     } catch (error) {
+      Notify.failure(`User with this email is already registered`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

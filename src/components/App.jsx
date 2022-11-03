@@ -13,8 +13,8 @@ import Layout from './Layout/Layout';
 // import { StatisticsPage } from 'pages/StatisticsPage';
 
 const Home = lazy(() => import('../pages/Home/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Registration = lazy(() => import('../pages/Registration'));
+const Login = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
 export const App = () => {
@@ -32,7 +32,7 @@ export const App = () => {
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
