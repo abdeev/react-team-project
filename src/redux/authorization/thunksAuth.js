@@ -13,7 +13,6 @@ export const getCurrentUserInfoThunk = createAsyncThunk(
       }
       setToken.add(userToken);
       const { data } = await request('/api/users/current');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -29,7 +28,6 @@ export const registerThunk = createAsyncThunk(
         '/api/auth/sign-up',
         registerUserInfo
       );
-      console.log(data);
       setToken.add(data.token);
       return data;
     } catch (error) {
@@ -59,7 +57,6 @@ export const logOutThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await request.delete('/api/auth/sign-out');
-      console.log(data);
       setToken.remove();
       return data;
     } catch (error) {

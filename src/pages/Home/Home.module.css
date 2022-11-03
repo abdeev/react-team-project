@@ -11,6 +11,8 @@
   border: none;
   border-radius: 50%;
 
+  z-index: 40;
+
   background-image: url(../../../assets/+.svg);
   background-repeat: no-repeat;
   background-position: center;
