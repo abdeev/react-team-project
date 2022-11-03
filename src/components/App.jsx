@@ -15,8 +15,8 @@ import PublicRoute from 'routes/PublicRoute';
 // import { StatisticsPage } from 'pages/StatisticsPage';
 
 const Home = lazy(() => import('../pages/Home/Home'));
-const Login = lazy(() => import('../pages/Login'));
-const Registration = lazy(() => import('../pages/Registration'));
+const Login = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
 export const App = () => {
@@ -35,7 +35,7 @@ export const App = () => {
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Route>
 
         <Route path="/" element={<PrivateRoute />}>

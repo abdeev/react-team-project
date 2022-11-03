@@ -28,7 +28,6 @@ export const LoginForm = () => {
   }, [email, password, dispatch, isLoggedIn, navigate]);
 
   const handleLogin = e => {
-    // e.preventDefault();
     const { email, password } = e;
     setEmail(email);
     setPassword(password);
@@ -45,7 +44,7 @@ export const LoginForm = () => {
     password: Yup.string().required('Required field to fill!'),
   });
   return (
-    <div>
+    <div className={css.formWrapper}>
       <Formik
         initialValues={{
           email: '',
@@ -64,7 +63,7 @@ export const LoginForm = () => {
               </div>
               <div className={css.inputWrapper}>
                 {errors.email && (
-                  <div className={css.errorMessage}>{errors.email}</div>
+                  <div className={css.errorMessage}>*{errors.email}</div>
                 )}
                 <MdEmail className={css.icon} />
                 <input
@@ -80,7 +79,7 @@ export const LoginForm = () => {
 
               <div className={css.inputWrapper}>
                 {errors.password && (
-                  <div className={css.errorMessage}>{errors.password}</div>
+                  <div className={css.errorMessage}>*{errors.password}</div>
                 )}
                 <MdLock className={css.icon} />
                 <input
