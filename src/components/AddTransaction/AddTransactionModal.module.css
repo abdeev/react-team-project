@@ -21,6 +21,8 @@
   top: 20px;
   width: 17px;
   height: 17px;
+  border: none;
+  background-color: transparent;
 
   background-image: url(../../../assets/modal-cross.svg);
   background-repeat: no-repeat;
