@@ -10,6 +10,7 @@ import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import css from './AddTransactionModal.module.css';
+import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
 
 const AddTransactionModal = () => {
   const initialState = {
@@ -27,10 +28,11 @@ const AddTransactionModal = () => {
     state => state.isModalAddTransactionOpen.isShowModal
   );
   const categories = useSelector(state => state.categories.categories);
+  const isLoading = useSelector(selectTransactionsIsLoading);
 
-  const options = categories.map(el => {
-    return { value: el.name, label: el.name, id: el.id, type: el.type };
-  });
+  const options = categories
+    .filter(el => el.type !== 'INCOME')
+    .map(el => ({ value: el.name, label: el.name, id: el.id, type: el.type }));
 
   const handleFormDataChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,12 +71,12 @@ const AddTransactionModal = () => {
 
   const handleModalSubmit = e => {
     e.preventDefault();
-    if (formData.isExpenseChecked) {
+
+    if (formData.isExpenseChecked && formData.selectData?.id) {
       dispatch(
         addTransactionThunk({
           categoryId: formData.selectData?.id,
           transactionDate: formData.startDate?.toISOString(),
-
           type: 'EXPENSE',
           comment: formData?.comment,
           amount: -formData?.amount,
@@ -89,12 +91,13 @@ const AddTransactionModal = () => {
           alert('smth went wrong, try again');
           setFormData(initialState);
         });
-    } else {
+    }
+
+    if (!formData.isExpenseChecked) {
       dispatch(
         addTransactionThunk({
           categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
           transactionDate: formData.startDate?.toISOString(),
-          // type: formData.selectData?.type,
           type: 'INCOME',
           comment: formData?.comment,
           amount: formData?.amount,
@@ -112,6 +115,8 @@ const AddTransactionModal = () => {
     }
   };
 
+  console.log(isLoading);
+
   return (
     <div>
       {isModalOpen && (
@@ -124,18 +129,20 @@ const AddTransactionModal = () => {
                 onClick={handleModalCloseClick}
               ></button>
 
-              <h1 className={css.title}>Add transaction</h1>
+              <div>
+                <h1 className={css.title}>Add transaction</h1>
 
-              <div className={css.toggle}>
-                <input
-                  type="checkbox"
-                  id="toggle"
-                  defaultChecked
-                  onChange={handleChange}
-                />
-                <label htmlFor="toggle"></label>
-                <span className={css.incomeSpan}>Income</span>
-                <span className={css.expenseSpan}>Expense</span>
+                <div className={css.toggle}>
+                  <input
+                    type="checkbox"
+                    id="toggle"
+                    defaultChecked
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="toggle"></label>
+                  <span className={css.incomeSpan}>Income</span>
+                  <span className={css.expenseSpan}>Expense</span>
+                </div>
               </div>
 
               <form className={css.form} onSubmit={handleModalSubmit}>
@@ -186,7 +193,7 @@ const AddTransactionModal = () => {
                 </label>
 
                 <button type="submit" className={css.submitBtn}>
-                  ADD
+                  {isLoading ? ' ADDING ...' : 'ADD'}
                 </button>
               </form>
 
