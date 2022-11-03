@@ -4,17 +4,18 @@ import { selectUserName } from 'redux/authorization/selectorsAuth';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
+
 import css from './Layout.module.css';
 
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
+  const currentUserName = useSelector(selectUserName);
 
   const handleLogout = () => {
     dispatch(logOutThunk());
     location('/');
   };
-  const currentUserName = useSelector(selectUserName);
 
   return (
     <div className={css.layoutContainer}>
@@ -27,6 +28,7 @@ const Layout = () => {
         <IconExit className={css.iconExit} />
         <p className={css.textExit}>Exit</p>
       </Link>
+
       <Outlet />
     </div>
   );

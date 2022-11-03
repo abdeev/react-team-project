@@ -10,7 +10,9 @@ import { getTransactionsThunk } from 'redux/transactions/thunksTransactions';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 // import { StatisticsTable } from 'components/Statistics/StatisticsTable/StatisticsTable';
 
-// import css from './Home.module.css';
+import { showModal } from 'redux/modal/modalSlice';
+
+import css from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,17 @@ const Home = () => {
     dispatch(getCategoriesThunk());
     dispatch(getTransactionsThunk());
   }, [isLoggedIn, usertoken, dispatch]);
+
+  const handleOpenModal = () => {
+    dispatch(showModal(true));
+  };
+
+  const handleEscapeKey = e => {
+    if (e.key === 'Escape') {
+      dispatch(showModal(false));
+      //???????????????????????? stops listen only if click on some elements, maybe needs to fix!!!!!!!!!!!!!!!!!
+    }
+  };
 
   return (
     <div className="flex gap-6">
@@ -47,15 +60,19 @@ const Home = () => {
             </p>
           </div>
         )}
+   
+    
+        {/* <TransactionsForm /> */}
+
+        {/* <StatisticsTable/> */}
+
         <button
           type="button"
           onClick={handleOpenModal}
           onKeyDown={handleEscapeKey}
           className={css.openModalBtn}
-        ></button> */}
-        {/* <TransactionsForm /> */}
+        ></button>
 
-        {/* <StatisticsTable/> */}
         <AddTransactionModal />
       </div>
     </div>
