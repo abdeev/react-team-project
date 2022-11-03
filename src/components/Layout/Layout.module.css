@@ -58,7 +58,6 @@
   flex-direction: row;
   justify-content: space-between;
 
-  /* background-color: rgba(255, 255, 255, 0.4); */
   background-color: rgba(230, 230, 230, 0.4);
   backdrop-filter: blur(25px);
 }
@@ -112,4 +111,8 @@
   font-weight: 900;
   font-size: 30px;
   line-height: 45px;
+}
+
+.outlets {
+  padding: 46px 16px 30px 70px;
 }
