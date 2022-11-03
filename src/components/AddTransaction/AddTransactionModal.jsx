@@ -12,13 +12,15 @@ import 'react-datepicker/dist/react-datepicker.css';
 import css from './AddTransactionModal.module.css';
 
 const AddTransactionModal = () => {
-  const [formData, setFormData] = useState({
+  const initialState = {
     startDate: new Date(),
-    amount: 0,
+    amount: '',
     comment: '',
     selectData: null,
     isExpenseChecked: true,
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
 
   const isModalOpen = useSelector(
@@ -30,8 +32,15 @@ const AddTransactionModal = () => {
     return { value: el.name, label: el.name, id: el.id, type: el.type };
   });
 
-  const handleFormData = e => {
+  const handleFormDataChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleAmountInputChange = evt => {
+    if (evt.target.value.match(/^\d+$/) === null && evt.target.value !== '') {
+      return;
+    }
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
   const handleSelectChange = x => {
@@ -60,19 +69,47 @@ const AddTransactionModal = () => {
 
   const handleModalSubmit = e => {
     e.preventDefault();
+    if (formData.isExpenseChecked) {
+      dispatch(
+        addTransactionThunk({
+          categoryId: formData.selectData?.id,
+          transactionDate: formData.startDate?.toISOString(),
 
-    dispatch(
-      addTransactionThunk({
-        categoryId: formData.selectData?.id,
-        transactionDate: formData.startDate?.toISOString(),
-        type: formData.selectData?.type,
-        comment: formData?.comment,
-        amount: -formData?.amount,
-      })
-    )
-      .unwrap()
-      .then(() => dispatch(showModal(false)))
-      .catch(() => alert('smth went wrong, try again'));
+          type: 'EXPENSE',
+          comment: formData?.comment,
+          amount: -formData?.amount,
+        })
+      )
+        .unwrap()
+        .then(() => {
+          setFormData(initialState);
+          dispatch(showModal(false));
+        })
+        .catch(() => {
+          alert('smth went wrong, try again');
+          setFormData(initialState);
+        });
+    } else {
+      dispatch(
+        addTransactionThunk({
+          categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+          transactionDate: formData.startDate?.toISOString(),
+          // type: formData.selectData?.type,
+          type: 'INCOME',
+          comment: formData?.comment,
+          amount: formData?.amount,
+        })
+      )
+        .unwrap()
+        .then(() => {
+          setFormData(initialState);
+          dispatch(showModal(false));
+        })
+        .catch(() => {
+          setFormData(initialState);
+          alert('smth went wrong, try again');
+        });
+    }
   };
 
   return (
@@ -86,7 +123,9 @@ const AddTransactionModal = () => {
                 className={css.closingCross}
                 onClick={handleModalCloseClick}
               ></button>
+
               <h1 className={css.title}>Add transaction</h1>
+
               <div className={css.toggle}>
                 <input
                   type="checkbox"
@@ -98,6 +137,7 @@ const AddTransactionModal = () => {
                 <span className={css.incomeSpan}>Income</span>
                 <span className={css.expenseSpan}>Expense</span>
               </div>
+
               <form className={css.form} onSubmit={handleModalSubmit}>
                 {formData.isExpenseChecked && (
                   <Select
@@ -113,10 +153,11 @@ const AddTransactionModal = () => {
                   <label>
                     <input
                       name="amount"
-                      type="number"
+                      type="text"
+                      value={formData.amount}
                       placeholder="0.00"
                       className={css.inputAmount}
-                      onChange={handleFormData}
+                      onChange={handleAmountInputChange}
                     />
                   </label>
 
@@ -137,9 +178,10 @@ const AddTransactionModal = () => {
                   <input
                     name="comment"
                     type="text"
+                    value={formData.comment}
                     placeholder="Comment"
                     className={css.comment}
-                    onChange={handleFormData}
+                    onChange={handleFormDataChange}
                   />
                 </label>
 
