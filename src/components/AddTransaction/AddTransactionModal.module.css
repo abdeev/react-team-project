@@ -2,17 +2,22 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
+  transform: translate(-50%, -60%);
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
 
   width: 540px;
+  height: 650px;
   padding: 40px 70px;
 
   background-color: #fff;
   border-radius: 20px;
+  transition: 400ms;
+  scale: 0.8;
 }
 
 .closingCross {
@@ -109,6 +114,12 @@
 .incomeSpan {
   order: -1;
   color: #24cca7;
+
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
   transition: 300ms;
 }
 .toggle input:checked ~ .incomeSpan {
@@ -116,6 +127,11 @@
 }
 
 .expenseSpan {
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
   color: #e0e0e0;
   transition: 300ms;
 }
@@ -203,6 +219,14 @@
   width: 300px;
   height: 50px;
 
+  font-family: 'Circe';
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+
   color: #fff;
   background: #24cca7;
   border: none;
@@ -217,6 +241,14 @@
 .cancelBtn {
   width: 300px;
   height: 50px;
+
+  font-family: 'Circe';
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
 
   color: #4a56e2;
   background: #ffffff;

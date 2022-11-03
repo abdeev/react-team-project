@@ -7,11 +7,15 @@
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
+
+  background-image: url(../../../assets/bg-desktop.svg);
+  background-repeat: no-repeat;
 }
 
 .layoutHeader {
-  /* position: fixed; */
+  position: fixed;
   z-index: 10;
+  height: 80px;
   padding: 20px 16px;
   width: 100%;
   display: flex;
@@ -54,6 +58,7 @@
 }
 
 .innerWrapper {
+  padding-top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -65,12 +70,11 @@
 .navMenuWrapper {
   padding: 40px 16px;
   width: 480px;
-  height: 100vh;
+  height: 92vh;
 
   display: flex;
   flex-direction: column;
 
-  /* border-right: 1px solid gray; */
   border-right: 1px solid #e7e5f2;
   box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
     1px 0px 0px rgba(255, 255, 255, 0.6);
@@ -116,3 +120,29 @@
 .outlets {
   padding: 46px 16px 30px 70px;
 }
+
+/* ==== open modal button styles ==== */
+
+.openModalBtn {
+  width: 44px;
+  height: 44px;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background-color: #24cca7;
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  border: none;
+  border-radius: 50%;
+
+  z-index: 10;
+
+  background-image: url(../../../assets/+.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 250ms;
+}
+
+.openModalBtn:hover {
+  background-color: #20ba98;
+}
+/*  ====== // open modal button styles ===== */

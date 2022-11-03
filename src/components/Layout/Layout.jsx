@@ -10,6 +10,8 @@ import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
 
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
+import { showModal } from 'redux/modal/modalSlice';
+import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,16 @@ const Layout = () => {
   const handleLogout = () => {
     dispatch(logOutThunk());
     location('/');
+  };
+
+  const handleOpenModal = () => {
+    dispatch(showModal(true));
+  };
+
+  const handleEscapeKey = e => {
+    if (e.key === 'Escape') {
+      dispatch(showModal(false));
+    }
   };
 
   return (
@@ -46,7 +58,9 @@ const Layout = () => {
 
           <div className={css.balance}>
             Your balance{' '}
-            <span className={css.balanceAmount}>${userCurrentBalance}</span>
+            <span className={css.balanceAmount}>
+              ${userCurrentBalance?.toLocaleString()}
+            </span>
           </div>
 
           <Currency />
@@ -56,6 +70,19 @@ const Layout = () => {
           <Outlet />
         </div>
       </div>
+
+      {window.location.pathname === '/react-team-project/home' && (
+        <>
+          <AddTransactionModal />
+
+          <button
+            type="button"
+            onClick={handleOpenModal}
+            onKeyDown={handleEscapeKey}
+            className={css.openModalBtn}
+          ></button>
+        </>
+      )}
     </div>
   );
 };
