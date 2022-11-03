@@ -47,12 +47,7 @@ const Home = () => {
             </p>
           </div>
         )}
-        <button
-          type="button"
-          onClick={handleOpenModal}
-          onKeyDown={handleEscapeKey}
-          className={css.openModalBtn}
-        ></button> */}
+    
         {/* <TransactionsForm /> */}
 
         {/* <StatisticsTable/> */}

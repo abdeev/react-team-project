@@ -4,17 +4,31 @@ import { selectUserName } from 'redux/authorization/selectorsAuth';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
+
+import { showModal } from 'redux/modal/modalSlice';
+
 import css from './Layout.module.css';
 
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
+  const currentUserName = useSelector(selectUserName);
 
   const handleLogout = () => {
     dispatch(logOutThunk());
     location('/');
   };
-  const currentUserName = useSelector(selectUserName);
+
+  const handleOpenModal = () => {
+    dispatch(showModal(true));
+  };
+
+  const handleEscapeKey = e => {
+    if (e.key === 'Escape') {
+      dispatch(showModal(false));
+      //???????????????????????? stops listen only if click on some elements, maybe needs to fix!!!!!!!!!!!!!!!!!
+    }
+  };
 
   return (
     <div className={css.layoutContainer}>
@@ -27,6 +41,14 @@ const Layout = () => {
         <IconExit className={css.iconExit} />
         <p className={css.textExit}>Exit</p>
       </Link>
+
+      <button
+        type="button"
+        onClick={handleOpenModal}
+        onKeyDown={handleEscapeKey}
+        className={css.openModalBtn}
+      ></button>
+
       <Outlet />
     </div>
   );
