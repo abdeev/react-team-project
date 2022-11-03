@@ -14,7 +14,7 @@ import css from './AddTransactionModal.module.css';
 const AddTransactionModal = () => {
   const initialState = {
     startDate: new Date(),
-    amount: 0,
+    amount: '',
     comment: '',
     selectData: null,
     isExpenseChecked: true,
@@ -32,8 +32,15 @@ const AddTransactionModal = () => {
     return { value: el.name, label: el.name, id: el.id, type: el.type };
   });
 
-  const handleFormData = e => {
+  const handleFormDataChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleAmountInputChange = evt => {
+    if (evt.target.value.match(/^\d+$/) === null && evt.target.value !== '') {
+      return;
+    }
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
   const handleSelectChange = x => {
@@ -146,11 +153,11 @@ const AddTransactionModal = () => {
                   <label>
                     <input
                       name="amount"
-                      type="number"
+                      type="text"
                       value={formData.amount}
-                      // placeholder="0.00"
+                      placeholder="0.00"
                       className={css.inputAmount}
-                      onChange={handleFormData}
+                      onChange={handleAmountInputChange}
                     />
                   </label>
 
@@ -174,7 +181,7 @@ const AddTransactionModal = () => {
                     value={formData.comment}
                     placeholder="Comment"
                     className={css.comment}
-                    onChange={handleFormData}
+                    onChange={handleFormDataChange}
                   />
                 </label>
 
