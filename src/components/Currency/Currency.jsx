@@ -1,89 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@material-ui/core';
+import { useState, useEffect, useCallback } from "react";
 
-function Currency() {
-    const isDesktopOrTablet = useMediaQuery({ minWidth: 1280 });
-    const [currency, setCurrency] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-  
-    const fetch = async () => {
+
+import useLocalStorage from "../../utils/useLocalStorage";
+import fetchExchangeRate from  '../../utils/CurrencyApi';
+
+import Loader from "../Loader/Loader";
+
+import Vector from '../../icons/vector.svg';
+import styles from './Currency.module.css';
+
+const Currency = () => {
+  const [requestData, setRequestData] = useLocalStorage("request", {
+    currency: [],
+    time: 0,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const prepareData = (data) => {
+    const filteredData = data.filter(
+      (el) => el.ccy !== "RUR");
+    return filteredData.map((el) => ({
+      ...el,
+      buy: Number(el.buy).toFixed(2),
+      sale: Number(el.sale).toFixed(2),
+    }));
+  };
+
+  const countPastTime = useCallback(() => {
+    const pastTime = new Date(Date.now() - requestData.time);
+    return pastTime / (1000 * 60);
+  }, [requestData.time]);
+
+  useEffect(() => {
+    (async () => {
       try {
-        const data = await fetchInfo();
-        const sliced = data.slice(0, -1);
-        setCurrency([...sliced]);
-        setIsLoading(true);
+        if (countPastTime() < 60) {
+          return;
+        }
+        setLoading(true);
+        setError("");
+        const data = await fetchExchangeRate();
+        const normalizedData = prepareData(data);
+        setRequestData({ currency: normalizedData, time: Date.now() });
+        setLoading(false);
       } catch (error) {
-        console.log(error);
+        setError("Sorry, exchange rate is not available now.");
+        setLoading(false);
       }
-    };
-  
-    useEffect(() => {
-      fetch();
-    }, []);
-  
-    return (
-      <>
-        <div>
-          <TableContainer>
-            {!isLoading ? (
-              <Skeleton
-                style={{
-                  background:
-                    'linear-gradient(to right,  rgba(49, 45, 45, 0.8), rgba(49, 45, 45, 0.2), rgba(49, 45, 45, 0.8))',
-                }}
-                duration={3}
-                width={isDesktopOrTablet ? 357 : 280}
-                height={174}
-              />
-            ) : (
-              <Table size="small" aria-label="a dense table">
-                <TableHead >
-                  <TableRow>
-                    <TableCell color="secondary" >
-                      Currency
-                    </TableCell>
-                    <TableCell align="center" >
-                      Buy
-                    </TableCell>
-                    <TableCell align="center" >
-                      Sale
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-  
-                <TableBody>
-                  {currency?.map(el => (
-                    <TableRow key={el.ccy}>
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        align="left"
-                      >
-                        {el.ccy}
-                      </TableCell>
-                      <TableCell align="center">
-                        {Math.floor(el.buy * 100) / 100}
-                      </TableCell>
-                      <TableCell align="center">
-                        {Math.floor(el.sale * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            )}
-          </TableContainer>
+    })();
+  }, [countPastTime, requestData, setRequestData]);
+//поставити клас хідден на діаграму!
+  return (
+    <div className={styles.currencyRatesBox}>
+      {loading ? (
+        <div className={styles.loader}>
+          <Loader />
         </div>
-      </>
-    );
-  }
-  
-  export default Currency;
+      ) : null}
+      {!error && !loading ? (
+        <>
+          <div className={styles.currencyRatesHead}>
+            <p >Currency</p>
+            <p >Buy</p>
+            <p >Sell</p>
+          </div>
+          <div className={styles.conteinerdata}>
+            <ul className={styles.currencyRatesList}>
+            {requestData.currency?.map(({ buy, sale, ccy }) => (
+              <li className={styles.currencyRatesListItem} key={ccy} >
+                <span >{ccy}</span>
+                <span >{buy}</span>
+                <span >{sale}</span>
+              </li>
+            ))}
+          </ul>
+          <img src={Vector} alt="vector" className={styles.vector} />
+          </div>
+          
+        </>
+      ) : (
+        <div >
+          <p>{error}</p>
+        </div>
+      )}
+       
+    </div>
+  );
+};
+export default Currency;
+
