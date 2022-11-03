@@ -1,100 +1,100 @@
 .currencyRatesBox {
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Circe', sans-serif;
-    font-style: normal;
-    border-radius: 30px;
-    background: #4a56e2;
-    color: #ffffff;
-    padding-bottom: 22px;
-    width: 280px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  font-family: 'Circe', sans-serif;
+  font-style: normal;
+  border-radius: 30px;
+  background: #4a56e2;
+  color: #ffffff;
+  /* padding-bottom: 22px; */
+  width: 393px;
 }
 
 .conteinerdata {
-    height: 124px;
-    position: relative;
+  height: 124px;
+  position: relative;
 }
 
 .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .currencyRatesHead {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 11px;
-    padding-bottom: 12px;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 1.5;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 30px 30px 0% 0%;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 11px;
+  padding-bottom: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 30px 30px 0% 0%;
 }
 
 .currencyRatesList {
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: normal;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .currencyRatesListItem {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .currencyRatesListItem:not(:last-child) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .vector {
-    position: absolute;
-    bottom: 0;
-    left: 2px;
-    width: 280px;
-    height: 93px;
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  width: 280px;
+  height: 93px;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-    .currencyRatesPanel {
-        width: 335px;
-        height: 174px;
-    }
-    .vector {
-        width: 335px;
-        height: 111px;
-    }
+  .currencyRatesPanel {
+    width: 335px;
+    height: 174px;
+  }
+  .vector {
+    width: 335px;
+    height: 111px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .currencyRatesPanel {
-        width: 350px;
-        padding-bottom: 0;
-        margin-left: 85px;
-    }
-    .conteinerdata {
-        height: 287px;
-    }
-    .currencyRatesList {
-        z-index: 1;
-        padding-bottom: 15px;
-    }
-    .vector {
-        position: absolute;
-        bottom: 0;
-        width: 350px;
-        height: 134px;
-    }
+  .currencyRatesPanel {
+    width: 350px;
+    padding-bottom: 0;
+    margin-left: 85px;
+  }
+  .conteinerdata {
+    height: 287px;
+  }
+  .currencyRatesList {
+    z-index: 1;
+    padding-bottom: 15px;
+  }
+  .vector {
+    position: absolute;
+    bottom: 0;
+    width: 350px;
+    height: 134px;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .hidden {
-        display: none;
-    }
+  .hidden {
+    display: none;
+  }
 }

@@ -20,18 +20,37 @@ const Layout = () => {
 
   return (
     <div className={css.layoutContainer}>
-      <NavLink to="/" end>
-        <LogoWallet className={css.logoWallet} />
-      </NavLink>
+      <div className={css.layoutHeader}>
+        <Link to="/" end className={css.wallet}>
+          <LogoWallet className={css.logoWallet} />
+        </Link>
 
-      <Link className={css.linkExit} onClick={handleLogout}>
-        <p className={css.welcomeName}>{currentUserName}</p>
-        <IconExit className={css.iconExit} />
-        <p className={css.textExit}>Exit</p>
-      </Link>
-      <Currency />
+        <Link className={css.linkExit} onClick={handleLogout}>
+          <p className={css.welcomeName}>{currentUserName}</p>
+          <IconExit className={css.iconExit} />
+          <p className={css.textExit}>Exit</p>
+        </Link>
+      </div>
+      <div className={css.innerWrapper}>
+        <div className={css.navMenuWrapper}>
+          <NavLink to="/home" className={css.navItem}>
+            Home
+          </NavLink>
+          <NavLink to="/statistics" className={css.navItem}>
+            Statistics
+          </NavLink>
 
-      <Outlet />
+          <div className={css.balance}>
+            Your balance <span className={css.balanceAmount}>$24 000.00</span>
+          </div>
+
+          <Currency />
+        </div>
+
+        <div className={css.outlets}>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 };

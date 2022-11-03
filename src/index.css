@@ -34,9 +34,6 @@ img {
 
 body {
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(25px);
-
   font-family: 'Circe', 'Circe Bold', 'Poppins' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -51,7 +48,11 @@ code {
 }
 
 .active {
-  color: yellow;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
 }
 
 /* add Transaction */
