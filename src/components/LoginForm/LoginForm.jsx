@@ -20,7 +20,7 @@ export const LoginForm = () => {
   useEffect(() => {
     if (email && password) {
       dispatch(logInThunk({ email, password }));
-      navigate('/');
+      navigate('/home');
     }
     if (isLoggedIn) {
       navigate('/home');

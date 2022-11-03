@@ -2,20 +2,28 @@
   margin: 0 auto;
   padding: 0 16px;
 }
+
 .layoutContainer {
-  position: fixed;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.layoutHeader {
+  /* position: fixed; */
+  z-index: 10;
+  padding: 20px 16px;
   width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   background-color: #ffffff;
 }
+
 .logoWallet {
+  display: inline-block;
   width: 181px;
-  margin-left: 12px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
+
 .welcomeName {
   padding-right: 12px;
   font-family: 'Circe';
@@ -25,6 +33,7 @@
   color: #bdbdbd;
   border-right: 1px #bdbdbd solid;
 }
+
 .linkExit {
   display: flex;
   flex-direction: row;
@@ -32,6 +41,7 @@
   gap: 8px;
   color: #bdbdbd;
 }
+
 .iconExit {
   width: 18px;
   height: 18px;
@@ -41,4 +51,65 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  /* background-color: rgba(255, 255, 255, 0.4); */
+  background-color: rgba(230, 230, 230, 0.4);
+  backdrop-filter: blur(25px);
+}
+
+.navMenuWrapper {
+  padding: 40px 16px;
+  width: 480px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  /* border-right: 1px solid gray; */
+  border-right: 1px solid #e7e5f2;
+  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+    1px 0px 0px rgba(255, 255, 255, 0.6);
+}
+
+.navItem {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+
+  margin-bottom: 12px;
+}
+
+.balance {
+  margin-top: 16px;
+  margin-bottom: 30px;
+  padding: 8px 40px;
+
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+
+  width: 395px;
+  height: 80px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.balanceAmount {
+  display: block;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 45px;
 }

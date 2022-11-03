@@ -41,40 +41,51 @@ const Home = () => {
   };
 
   return (
-    <div className="flex gap-6">
-      <div className="">
-        {/* <p className="text-3xl font-bold underline text-center m-5">Welcome</p>
-
-        {isLoggedIn && (
-          <div className="rounded-xl border-2 border-solid border-black p-4 bg-green-300">
-            <p className="py-1 font-sm font-normal text-2xl">
-              Welcome <span className="font-bold">{userName}</span>
-            </p>
-            <p className="py-1 font-sm font-normal text-2xl">
-              Your's E-mail address:{' '}
-              <span className="font-bold">{userEmail}</span>
-            </p>
-            <p className="py-1 font-sm font-normal text-2xl">
-              Your's transactions in database:{' '}
-              <span className="font-bold">{userTransactions.length}</span>
-            </p>
-          </div>
-        )}
-   
-    
-        {/* <TransactionsForm /> */}
-
-        {/* <StatisticsTable/> */}
-
-        <button
-          type="button"
-          onClick={handleOpenModal}
-          onKeyDown={handleEscapeKey}
-          className={css.openModalBtn}
-        ></button>
-
-        <AddTransactionModal />
+    <div>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
+        perferendis impedit sit harum voluptas in voluptatum similique ratione
+        amet reiciendis adipisci assumenda non obcaecati natus autem iusto
+        veritatis aperiam, fugit dolore vel omnis. Deserunt voluptatibus
+        assumenda, dolor sint incidunt facere perspiciatis fugiat consequuntur
+        et, ex facilis. Incidunt, inventore voluptate. Unde error autem
+        reprehenderit cupiditate aliquam nemo porro ipsam praesentium eius.
+        Nostrum blanditiis dolor soluta incidunt ducimus repudiandae, esse ipsa
+        laudantium ipsam non eaque laboriosam repellat dicta eum aliquam eius,
+        veniam provident, facilis nam? Ratione unde amet expedita. Perspiciatis
+        rerum quos laborum in repellat architecto consectetur inventore
+        explicabo sed cupiditate, aspernatur quia, vel, nulla amet at fuga?
+        Eaque tempore molestiae dicta quas quam sequi ratione non culpa magnam
+        alias sunt veritatis, qui saepe mollitia odit cum recusandae, illo natus
+        sit? Repudiandae natus odio est neque perferendis nam delectus iure
+        quisquam possimus sint ipsa, repellat, dolores doloribus nulla corrupti
+        eos? Doloribus minus soluta numquam beatae dolor. Expedita dolore
+        doloribus dignissimos recusandae animi eos eligendi quas nesciunt earum,
+        vitae ad sint et, quibusdam impedit totam voluptate consequuntur
+        reiciendis! In dicta reprehenderit doloribus laudantium nulla unde,
+        inventore quia. Voluptas corrupti dolor aut earum nesciunt nisi, odit
+        iure natus aspernatur numquam vel vero eligendi doloribus voluptatibus
+        suscipit alias? Aut, odio? Expedita in et voluptatem nihil tempora?
+        Officia labore quas minima necessitatibus quibusdam distinctio sit vero!
+        Porro soluta quo ipsa. Fuga deserunt deleniti ullam sapiente sint
+        dolores minima, consectetur nobis vitae, quas magnam possimus quibusdam
+        id quasi cumque repellat similique suscipit unde dicta, laborum totam
+        praesentium. Facere rerum totam culpa, at quaerat sunt ducimus optio
+        quisquam quam vero, placeat exercitationem laboriosam hic qui sit
+        reiciendis quae. Consectetur blanditiis commodi minus corporis pariatur
+        dolorum adipisci facilis similique voluptates vitae mollitia totam
+        quaerat doloremque hic magni perferendis distinctio, id assumenda ut sed
+        quae maiores? Id perferendis eius at.
       </div>
+
+      <button
+        type="button"
+        onClick={handleOpenModal}
+        onKeyDown={handleEscapeKey}
+        className={css.openModalBtn}
+      ></button>
+
+      <AddTransactionModal />
     </div>
   );
 };
