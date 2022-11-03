@@ -33,7 +33,7 @@ export const App = () => {
   return (
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
-        <Route path="/" element={<PublicRoute />}>
+        <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
         </Route>
