@@ -22,9 +22,9 @@ export const LoginForm = () => {
       dispatch(logInThunk({ email, password }));
       navigate('/');
     }
-    // if (isLoggedIn) {
-    //   navigate('/home');
-    // }
+    if (isLoggedIn) {
+      navigate('/home');
+    }
   }, [email, password, dispatch, isLoggedIn, navigate]);
 
   const handleLogin = e => {

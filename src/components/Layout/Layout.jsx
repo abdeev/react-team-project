@@ -6,6 +6,7 @@ import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
 
 import css from './Layout.module.css';
+import Currency from 'components/Currency/Currency';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Layout = () => {
         <IconExit className={css.iconExit} />
         <p className={css.textExit}>Exit</p>
       </Link>
+      <Currency />
 
       <Outlet />
     </div>
