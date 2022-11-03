@@ -17,7 +17,59 @@
   background-color: #fff;
   border-radius: 20px;
   transition: 400ms;
-  scale: 0.8;
+  animation-name: fade-oin;
+  animation-duration: 0.3s;
+}
+.selectWrapper {
+  animation: ease-in-out both;
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+}
+.selectWrapperOut {
+  pointer-events: none;
+  animation: ease-in-out both;
+  animation-name: fade-out;
+  animation-duration: 0.3s;
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+    scale: 0.98;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    scale: 0.98;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.98;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.98;
+  }
 }
 
 .closingCross {
@@ -174,6 +226,9 @@
   color: #bdbdbd;
 }
 
+.react-select__menu {
+  background-color: #24cca7;
+}
 .inputAmount {
   width: 185px;
   padding: 8px;

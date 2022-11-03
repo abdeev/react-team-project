@@ -56,7 +56,9 @@ code {
 }
 
 /* add Transaction */
-
+.custom-select {
+  background-color: rgb(65, 123, 137);
+}
 .custom-select__control {
   width: 410px !important;
   /* max-height: 32px !important; */

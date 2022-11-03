@@ -11,6 +11,7 @@ import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 import 'react-datepicker/dist/react-datepicker.css';
 import css from './AddTransactionModal.module.css';
 import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
+import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 
 const AddTransactionModal = () => {
   const initialState = {
@@ -82,10 +83,10 @@ const AddTransactionModal = () => {
           amount: -formData?.amount,
         })
       )
-        .unwrap()
         .then(() => {
           setFormData(initialState);
           dispatch(showModal(false));
+          dispatch(getCurrentUserInfoThunk());
         })
         .catch(() => {
           alert('smth went wrong, try again');
@@ -103,110 +104,112 @@ const AddTransactionModal = () => {
           amount: formData?.amount,
         })
       )
-        .unwrap()
         .then(() => {
           setFormData(initialState);
           dispatch(showModal(false));
+          dispatch(getCurrentUserInfoThunk());
         })
         .catch(() => {
           setFormData(initialState);
-          alert('smth went wrong, try again');
+          alert('Oops! Smth went wrong, try again');
         });
     }
   };
 
-  console.log(isLoading);
-
   return (
     <div>
       {isModalOpen && (
-        <div>
-          <ModalBackdrop onBackClick={handleBackdropClick}>
-            <div className={css.modal}>
-              <button
-                type="button"
-                className={css.closingCross}
-                onClick={handleModalCloseClick}
-              ></button>
+        <ModalBackdrop onBackClick={handleBackdropClick}>
+          <div className={css.modal}>
+            <button
+              type="button"
+              className={css.closingCross}
+              onClick={handleModalCloseClick}
+            ></button>
 
-              <div>
-                <h1 className={css.title}>Add transaction</h1>
+            <div>
+              <h1 className={css.title}>Add transaction</h1>
 
-                <div className={css.toggle}>
-                  <input
-                    type="checkbox"
-                    id="toggle"
-                    defaultChecked
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="toggle"></label>
-                  <span className={css.incomeSpan}>Income</span>
-                  <span className={css.expenseSpan}>Expense</span>
-                </div>
+              <div className={css.toggle}>
+                <input
+                  type="checkbox"
+                  id="toggle"
+                  defaultChecked
+                  onChange={handleChange}
+                />
+                <label htmlFor="toggle"></label>
+                <span className={css.incomeSpan}>Income</span>
+                <span className={css.expenseSpan}>Expense</span>
+              </div>
+            </div>
+
+            <form className={css.form} onSubmit={handleModalSubmit}>
+              <div
+                className={
+                  formData.isExpenseChecked
+                    ? css.selectWrapper
+                    : css.selectWrapperOut
+                }
+              >
+                <Select
+                  options={options}
+                  value={formData.selectData}
+                  onChange={handleSelectChange}
+                  placeholder="Select category"
+                  classNamePrefix="custom-select"
+                />
               </div>
 
-              <form className={css.form} onSubmit={handleModalSubmit}>
-                {formData.isExpenseChecked && (
-                  <Select
-                    options={options}
-                    value={formData.selectData}
-                    onChange={handleSelectChange}
-                    placeholder="Select category"
-                    classNamePrefix="custom-select"
-                  />
-                )}
-
-                <div className={css.inputsWrapper}>
-                  <label>
-                    <input
-                      name="amount"
-                      type="text"
-                      value={formData.amount}
-                      placeholder="0.00"
-                      className={css.inputAmount}
-                      onChange={handleAmountInputChange}
-                    />
-                  </label>
-
-                  <div className={css.datepickerWrapper}>
-                    <DatePicker
-                      selected={formData.startDate}
-                      onChange={date =>
-                        setFormData(prev => {
-                          return { ...prev, startDate: date };
-                        })
-                      }
-                      className={css.input}
-                    />
-                  </div>
-                </div>
-
+              <div className={css.inputsWrapper}>
                 <label>
                   <input
-                    name="comment"
+                    name="amount"
                     type="text"
-                    value={formData.comment}
-                    placeholder="Comment"
-                    className={css.comment}
-                    onChange={handleFormDataChange}
+                    value={formData.amount}
+                    placeholder="0.00"
+                    className={css.inputAmount}
+                    onChange={handleAmountInputChange}
                   />
                 </label>
 
-                <button type="submit" className={css.submitBtn}>
-                  {isLoading ? ' ADDING ...' : 'ADD'}
-                </button>
-              </form>
+                <div className={css.datepickerWrapper}>
+                  <DatePicker
+                    selected={formData.startDate}
+                    onChange={date =>
+                      setFormData(prev => {
+                        return { ...prev, startDate: date };
+                      })
+                    }
+                    className={css.input}
+                  />
+                </div>
+              </div>
 
-              <button
-                type="button"
-                className={css.cancelBtn}
-                onClick={handleModalCloseClick}
-              >
-                CANCEL
+              <label>
+                <input
+                  name="comment"
+                  type="text"
+                  value={formData.comment}
+                  placeholder="Comment"
+                  className={css.comment}
+                  onChange={handleFormDataChange}
+                />
+              </label>
+
+              <button type="submit" className={css.submitBtn}>
+                {isLoading ? ' ADDING ...' : 'ADD'}
               </button>
-            </div>
-          </ModalBackdrop>
-        </div>
+            </form>
+
+            <button
+              type="button"
+              className={css.cancelBtn}
+              onClick={handleModalCloseClick}
+            >
+              CANCEL
+            </button>
+          </div>
+        </ModalBackdrop>
       )}
     </div>
   );
