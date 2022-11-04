@@ -1,0 +1,17 @@
+.select__block {
+  width: 50%;
+}
+
+.stats_form {
+  width: 395px;
+  /* margin: auto; */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.select-container {
+  outline: none;
+  width: 182px !important;
+  border: 1px solid #000000;
+  border-radius: 30px;
+}

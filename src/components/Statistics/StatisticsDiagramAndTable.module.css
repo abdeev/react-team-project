@@ -1,0 +1,13 @@
+.statistics__block__form {
+  width: 395px;
+  height: 606px;
+
+  /* background-color: beige; */
+}
+
+.statistics__block {
+  display: flex;
+  /* background-color: aqua; */
+  width: 715px;
+  height: 676px;
+}

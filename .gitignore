@@ -65,6 +65,13 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Yarn Integrity file
 .yarn-integrity
 

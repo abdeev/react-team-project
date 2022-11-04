@@ -4,11 +4,14 @@
 }
 
 .layoutContainer {
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  margin: 0 auto;
 
-  background-image: url(../../../assets/bg-desktop.svg);
+  background-image: url(../../static/images/Ellipse\ 1.svg),
+    url(../../static/images/Ellipse\ 2.svg);
+  background-position: bottom left, top right;
   background-repeat: no-repeat;
 }
 
@@ -61,7 +64,7 @@
   padding-top: 80px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 
   background-color: rgba(230, 230, 230, 0.4);
   backdrop-filter: blur(25px);
@@ -76,7 +79,7 @@
   flex-direction: column;
 
   border-right: 1px solid #e7e5f2;
-  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+  box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05),
     1px 0px 0px rgba(255, 255, 255, 0.6);
 }
 
@@ -118,7 +121,7 @@
 }
 
 .outlets {
-  padding: 46px 16px 30px 70px;
+  padding: 0 16px 0 69px;
 }
 
 /* ==== open modal button styles ==== */
