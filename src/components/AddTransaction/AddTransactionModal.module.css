@@ -206,13 +206,14 @@
 
 .input {
   width: 185px;
-  padding: 8px;
+  padding: 8px 20px;
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  text-align: center;
+  /* text-align: center; */
+  cursor: pointer;
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -225,10 +226,6 @@
 .react-select__menu {
   background-color: #24cca7;
 }
-
-/* .amountWrapper {
-  border: 1px solid red;
-} */
 
 .inputAmount {
   width: 185px;
@@ -251,10 +248,24 @@
 }
 
 .datepickerWrapper {
+  position: relative;
   max-width: 195px;
   color: rgb(15, 15, 15);
 }
 
+.datepickerIcon {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+
+  width: 24px;
+  height: 24px;
+
+  fill: #4a56e2;
+
+  pointer-events: none;
+  cursor: pointer;
+}
 .comment {
   display: block;
   width: 394px;
