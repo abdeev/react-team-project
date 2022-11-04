@@ -13,14 +13,14 @@ export const StatisticsForm = () => {
   const dispach = useDispatch();
 
   useEffect(() => {
-    if (!electYear.length) return;
-    else {
-      dispach(getStatisticsUserThunk({ electMonth, electYear }));
-    }
+    // if (!electYear.length) return;
+    // else {
+    dispach(getStatisticsUserThunk({ electMonth, electYear }));
+    // }
   }, [electMonth, electYear, dispach]);
 
   return (
-    <form action="submit">
+    <form className={s.stats_form} action="submit">
       <div classmonth={s.select__block}>
         <CreatableSelect
           classNamePrefix="statistics-select"
