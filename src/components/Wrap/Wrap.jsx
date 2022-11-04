@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import Currency from '../Currency/Currency';
 import Styles from './Wrap.module.css';
 import Navigation from '../Navigation/Navigation';
@@ -18,3 +18,4 @@ const Wrap = ({ children }) => {
 };
 
 export default Wrap;
+ */

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn } from '../../redux/authorization/selectorsAuth';
@@ -65,3 +65,4 @@ export default function Navigation() {
     </nav>
   );
 }
+ */
