@@ -47,27 +47,31 @@ const Layout = () => {
           <p className={css.textExit}>Exit</p>
         </Link>
       </div>
-      <div className={css.innerWrapper}>
-        <div className={css.navMenuWrapper}>
-          <NavLink to="/home" className={css.navItem}>
-            Home
-          </NavLink>
-          <NavLink to="/statistics" className={css.navItem}>
-            Statistics
-          </NavLink>
+      <div className={css.backdropFilter}>
+        <div className={css.container}>
+          <div className={css.innerWrapper}>
+            <div className={css.navMenuWrapper}>
+              <NavLink to="/home" className={css.navItem}>
+                Home
+              </NavLink>
+              <NavLink to="/statistics" className={css.navItem}>
+                Statistics
+              </NavLink>
 
-          <div className={css.balance}>
-            Your balance{' '}
-            <span className={css.balanceAmount}>
-              ${userCurrentBalance?.toLocaleString()}
-            </span>
+              <div className={css.balance}>
+                Your balance{' '}
+                <span className={css.balanceAmount}>
+                  ${userCurrentBalance?.toLocaleString()}
+                </span>
+              </div>
+
+              <Currency />
+            </div>
+
+            <div className={css.outlets}>
+              <Outlet />
+            </div>
           </div>
-
-          <Currency />
-        </div>
-
-        <div className={css.outlets}>
-          <Outlet />
         </div>
       </div>
 

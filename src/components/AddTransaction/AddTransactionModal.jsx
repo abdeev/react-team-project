@@ -10,15 +10,20 @@ import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
 
 import { Form, Formik } from 'formik';
+
 import CustomCommentInput from './FormikCustoms/CustomCommentInput';
 import CustomAmountInput from './FormikCustoms/CustomAmountInput';
 import { DatePickerField } from './FormikCustoms/CustomDatePicker';
 import CustomSelect from './FormikCustoms/CustomSelect';
+
 import { addTransactionSchema } from 'validation/addTransactionSchema';
 
 import { selectIsModalOpen } from 'redux/modal/selectorsModal';
 
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import css from './AddTransactionModal.module.css';
+import { Notify } from 'notiflix';
 
 const AddTransactionModal = () => {
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
@@ -48,14 +53,15 @@ const AddTransactionModal = () => {
           amount: -values?.amount,
         })
       )
+        .unwrap()
         .then(() => {
           dispatch(showModal(false));
+          setIsExpenseChecked(true);
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
         })
         .catch(() => {
-          alert('smth went wrong, try again');
-          actions.resetForm();
+          Notify.failure('Oops! Smth went wrong, try again');
         }).finally(dispatch(getTransactionsThunk()));
     }
 
@@ -69,14 +75,15 @@ const AddTransactionModal = () => {
           amount: values?.amount,
         })
       )
+        .unwrap()
         .then(() => {
           dispatch(showModal(false));
+          setIsExpenseChecked(true);
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
         })
         .catch(() => {
-          alert('Oops! Smth went wrong, try again');
-          actions.resetForm();
+          Notify.failure('Oops! Smth went wrong, try again');
         }).finally(dispatch(getTransactionsThunk()));
     }
   };
@@ -154,7 +161,11 @@ const AddTransactionModal = () => {
                     placeholder="Comment"
                   />
 
-                  <button type="submit" className={css.submitBtn}>
+                  <button
+                    type="submit"
+                    className={css.submitBtn}
+                    // disabled={props.isSubmitting}
+                  >
                     {isLoading ? ' ADDING ...' : 'ADD'}
                   </button>
                 </Form>
