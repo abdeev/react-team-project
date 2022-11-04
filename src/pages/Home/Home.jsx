@@ -48,8 +48,8 @@ const Home = () => {
   return (
     <div className={css.tableWrapper}>
       <table className={css.transactionsTable}>
-        <thead className={css.transactionsTable_head}>
-          <tr>
+        <thead>
+          <tr className={css.transactionsTable_head}>
             <th
               className={css.table_head__alStart}
               onClick={() =>
