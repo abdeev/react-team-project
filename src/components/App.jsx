@@ -14,8 +14,8 @@ import Layout from './Layout/Layout';
 import { StatisticsPage } from 'pages/StatisticsPage';
 
 const Home = lazy(() => import('../pages/Home/Home'));
-const Login = lazy(() => import('../pages/LoginPage'));
-const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
 export const App = () => {
@@ -34,7 +34,7 @@ export const App = () => {
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
         <Route element={<PublicRoute />}>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Route>
 
