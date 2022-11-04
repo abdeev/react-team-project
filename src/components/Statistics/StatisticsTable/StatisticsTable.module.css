@@ -1,7 +1,7 @@
 .table {
+  margin: auto;
   width: 395px;
   border: hidden;
-  margin: 10px auto;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -40,24 +40,21 @@ tr {
   border: 1px solid #dcdcdf;
 }
 
-.table__box__clr {
-  display: block;
-  width: 25px;
-  height: 25px;
-  background: red;
-}
-
 .table__td__right {
-  width: 50%;
+  /* width: 30%; */
   text-align: right;
   padding: 14px 29px;
 }
 .table__container {
-  padding-left: 28px;
   display: flex;
+  /* width: 70%; */
+  padding: 16px 0 16px 28px;
+  margin: 0;
 }
 
 .table__chategory {
+  margin: 0;
+  width: 100%;
   margin-left: 16px;
 }
 
