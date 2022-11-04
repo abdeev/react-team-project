@@ -31,11 +31,16 @@ const Home = () => {
 
   return (
     <div>
-      <ul style={{ display: 'flex', gap: '20px', flexDirection: 'column' }}>
-        <li>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum,
-          adipisci!
-        </li>
+      <ul
+        style={{
+          display: 'flex',
+          gap: '20px',
+          flexDirection: 'column',
+          border: '1px solid red',
+          width: '715px',
+        }}
+      >
+        <li>STATISTICS TABLE!</li>
         <li>
           Nisi quasi soluta laudantium quas obcaecati quis doloremque. Modi,
           suscipit.
@@ -107,83 +112,6 @@ const Home = () => {
         <li>
           Repudiandae fuga odio mollitia totam pariatur illo aspernatur suscipit
           libero.
-        </li>
-        <li>
-          Dolore, quae obcaecati optio pariatur reprehenderit magnam placeat!
-          Pariatur, blanditiis?
-        </li>
-        <li>
-          Beatae, cupiditate? Ratione id, explicabo officia numquam tenetur
-          culpa illum?
-        </li>
-        <li>
-          Quibusdam nemo aspernatur at temporibus fugiat beatae consequatur quae
-          architecto!
-        </li>
-        <li>
-          Modi facilis numquam doloremque inventore optio, labore voluptate
-          neque magni!
-        </li>
-        <li>
-          Quis debitis vitae qui minus repellendus provident perferendis ipsum
-          quae?
-        </li>
-        <li>
-          Asperiores et eligendi adipisci possimus eaque similique! Est, velit
-          perspiciatis.
-        </li>
-        <li>
-          Qui, culpa! Ducimus officia alias maxime nisi quidem consequatur
-          reiciendis!
-        </li>
-        <li>
-          Nobis voluptate sint explicabo quia praesentium, iste suscipit
-          architecto repellat?
-        </li>
-        <li>
-          Dolorem, ut modi. Mollitia eius eveniet commodi quaerat repellat!
-          Commodi?
-        </li>
-        <li>
-          Tempora rerum accusamus omnis quidem dolorem quia ab dolores vel.
-        </li>
-        <li>
-          Ratione repellendus animi blanditiis unde ipsa accusamus quod tenetur
-          nihil.
-        </li>
-        <li>
-          Vero nobis temporibus numquam! Inventore optio magnam maxime. Dolorem,
-          quasi!
-        </li>
-        <li>
-          Suscipit veritatis eaque ad neque repellat delectus nobis minus quae.
-        </li>
-        <li>
-          Accusamus dolorem et vitae! Iste reprehenderit corrupti deserunt
-          pariatur tempore.
-        </li>
-        <li>
-          Architecto corporis minus adipisci delectus velit iure labore vel!
-          Eaque!
-        </li>
-        <li>
-          Quam officiis quidem doloribus voluptatem explicabo provident commodi
-          possimus cumque?
-        </li>
-        <li>
-          Ipsam magni officiis ratione laborum necessitatibus vitae nesciunt sed
-          eaque?
-        </li>
-        <li>
-          Tempore laudantium harum placeat qui ullam laborum officiis quod
-          accusamus!
-        </li>
-        <li>
-          Quas suscipit beatae sequi sed harum, natus distinctio quae molestiae?
-        </li>
-        <li>
-          Incidunt maiores, perferendis inventore sit dolore tempora ut
-          deserunt? Corporis?
         </li>
       </ul>
     </div>

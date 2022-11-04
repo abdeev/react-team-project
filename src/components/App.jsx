@@ -1,18 +1,17 @@
 import { lazy, Suspense } from 'react';
 import { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectIsLoggedIn,
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
+import PublicRoute from 'routes/PublicRoute';
 import PrivateRoute from 'routes/PrivateRoute';
 
 import Layout from './Layout/Layout';
 import { StatisticsPage } from 'pages/StatisticsPage';
-import PublicRoute from 'routes/PublicRoute';
-// import { StatisticsPage } from 'pages/StatisticsPage';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Login = lazy(() => import('../pages/LoginPage'));
@@ -29,6 +28,7 @@ export const App = () => {
       dispatch(getCurrentUserInfoThunk());
     }
   }, [isLoggedIn, usertoken, dispatch]);
+  const Navigate = useNavigate();
 
   return (
     <Suspense fallback={<p>Loading data...</p>}>
@@ -40,7 +40,7 @@ export const App = () => {
 
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Layout />}>
-            <Route path="home" element={<Home />} />
+            <Route index element={<Navigate to="/" />} />
             <Route path="statistics" element={<StatisticsPage />} />
           </Route>
         </Route>
