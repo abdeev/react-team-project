@@ -16,6 +16,10 @@ export const StatisticsDiagramAndTable = () => {
   const categoriesSummary = useSelector(selectCategoriesSummary);
 
   useEffect(() => {
+    if (!categoriesSummary.length) {
+      setDiagramData(null);
+      setTableData([]);
+    }
     if (categoriesSummary.length) {
       const data = convertDataForChart(categoriesSummary);
       setDiagramData(data.diagram);
@@ -25,7 +29,13 @@ export const StatisticsDiagramAndTable = () => {
 
   return (
     <div className={s.statistics__block}>
-      {diagramData && <StatisticsDiagram diagram={diagramData} />}
+      {diagramData ? (
+        <StatisticsDiagram diagram={diagramData} />
+      ) : (
+        <h2 className={s.statistics_warning_text}>
+          There is no information for this term !
+        </h2>
+      )}
       <div className={s.statistics__block__form}>
         <StatisticsForm />
         {tableData && <StatisticsTable tableData={tableData} />}

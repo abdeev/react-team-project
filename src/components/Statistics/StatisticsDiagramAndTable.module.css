@@ -1,13 +1,16 @@
 .statistics__block__form {
   width: 395px;
   height: 606px;
-
-  /* background-color: beige; */
 }
 
 .statistics__block {
+  margin-top: 21px;
   display: flex;
-  /* background-color: aqua; */
+  justify-content: space-between;
   width: 715px;
   height: 676px;
+}
+
+.statistics_warning_text {
+  color: #4956e2;
 }
