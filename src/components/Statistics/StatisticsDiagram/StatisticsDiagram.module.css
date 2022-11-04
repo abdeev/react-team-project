@@ -1,5 +1,5 @@
-.diagram_box {
-  margin: 20px auto;
+.diagram_container {
+  /* margin: 20px auto; */
   width: 288px;
   height: 288px;
 }

@@ -21,6 +21,11 @@ export const getStatisticsUserThunk = createAsyncThunk(
         if (termin.electYear && termin.electMonth) {
           params.month = termin.electMonth;
         }
+        if (!termin.electYear && termin.electMonth) {
+          params.month = termin.electMonth;
+          console.log();
+          params.year = 2022;
+        }
       }
 
       const { data } = await request.get('/api/transactions-summary', {

@@ -2,9 +2,9 @@
   width: 50%;
 }
 
-form {
+.stats_form {
   width: 395px;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
   justify-content: space-around;
   flex-direction: row;
