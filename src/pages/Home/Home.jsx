@@ -40,8 +40,7 @@ const Home = () => {
 
   return (
     <div className={css.tableWrapper}>
-      <table border="1">
-        <caption>Transactions table</caption>
+      <table className={css.transactionsTable}>
         <thead>
           <tr>
             <th className={css.thl} onClick={() => setSortTransactions(SortByDate(userTransactions, sortByDate, setSortByDate))}>Date</th>

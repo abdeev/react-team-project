@@ -1,9 +1,10 @@
 @media (min-width: 768px) {
   .pageWrapper {
-    background-image: url('./img/ellipse-bottom-desktop.png'),
-      url('./img/frame-tablet.png'), url('./img/ellipse-up-desktop.png');
+    background-image: url('./img/frame-tablet.png'),
+      url('./img/ellipse-bottom-desktop.png'),
+      url('./img/ellipse-up-desktop.png');
     background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 60px left 114px, top 0 right 0;
+    background-position: top 60px left 114px, bottom 0 left 0, top 0 right 0;
   }
   .pageText {
     top: 160px;
