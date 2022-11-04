@@ -15,6 +15,10 @@ export const getTransactionsThunk = createAsyncThunk("contacts/get", async (_, t
 export const addTransactionThunk = createAsyncThunk("contacts/add", async (transaction, thunkAPI) => {
     try {
         const { data } = await request.post('/api/transactions', transaction);
+        console.log(data.balanceAfter);
+        console.log(thunkAPI.getState().authorization.userInfo.balance);
+        // thunkAPI.getState().authorization.userInfo.balance = data.balanceAfter;
+        // console.log(thunkAPI.getState().authorization.userInfo.balance);
         console.log(data);
         return data;
     }
@@ -23,9 +27,16 @@ export const addTransactionThunk = createAsyncThunk("contacts/add", async (trans
     }
 });
 
-export const editTransactionThunk = createAsyncThunk("contacts/update", async (transaction, thunkAPI) => {    
+export const editTransactionThunk = createAsyncThunk("contacts/update", async (transaction, thunkAPI) => {   
+
     try {
-        const { data } = await request.patch(`/api/transactions/${transaction.id}`, { name: transaction.name, number: transaction.number });
+        const { data } = await request.patch(`/api/transactions/${transaction.id}`, {
+            amount: transaction.amount,
+            categoryId: transaction.categoryId,
+            transactionDate: transaction.transactionDate,
+            type: transaction.type,
+            comment: transaction.comment,
+        });
         console.log(data);
         return data;
     }

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectIsLoggedIn,
@@ -33,13 +33,14 @@ export const App = () => {
   return (
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
-        <Route path="/" element={<PublicRoute />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
+        <Route element={<PublicRoute />}>
+          <Route index path="login" element={<Login />} />
+          <Route path="register" element={<Registration />} />
         </Route>
 
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Layout />}>
+            <Route index element={<Navigate to="/home" />} />
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
           </Route>

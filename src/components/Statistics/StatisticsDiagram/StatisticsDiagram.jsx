@@ -16,7 +16,32 @@ const donutOptions = {
   },
 };
 
-export const StatisticsDiagram = ({ diagram }) => {
+export const StatisticsDiagram = ({ diagram, transactionsCategories, userTransactions }) => {
+
+  // console.log(diagram);
+
+  // const getColor = () => {
+  //   const backgroundColorItem = ('#' + Math.floor(Math.random() * 16777215).toString(16));
+  //   return backgroundColorItem;
+  // }
+
+  // const handleCategoryCount = (id) => {
+  //   return userTransactions.filter(transaction => transaction.categoryId === id)
+  //     .map(transaction => transaction.amount)
+  //     .reduce((prevAmountOfCategory, amountOfCategory) => prevAmountOfCategory + amountOfCategory, 0);
+  // }
+
+  // const diagramData = {
+  //   ...diagram,
+  //   datasets: [diagram.datasets[0] = {
+  //     ...diagram.datasets[0],
+  //     [diagram.datasets[0].data]: transactionsCategories.map(category => handleCategoryCount(category.id)),
+  //   }],
+  //   labels: transactionsCategories.map(category => category.name),
+  // };
+
+  // console.log(diagramData);
+
   return (
     <div className={s.diagram_container}>
       <div className={s.diagram_box}>

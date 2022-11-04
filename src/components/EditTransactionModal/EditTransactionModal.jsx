@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import ReactDOM from 'react-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { showModal } from 'redux/modal/modalSlice';
-import { getTransactionsThunk, addTransactionThunk } from 'redux/transactions/thunksTransactions';
+import { getTransactionsThunk, editTransactionThunk, deleteTransactionsThunk } from 'redux/transactions/thunksTransactions';
+import { selectCategories } from 'redux/categories/selectCategories';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import css from './AddTransactionModal.module.css';
+import css from './EditTransactionModal.module.css';
 
-const AddTransactionModal = () => {
+const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: { id, transactionDate, type, categoryId, comment, amount } }) => {
+  // console.log(id, transactionDate, type, categoryId, comment, amount);
+
   const initialState = {
     startDate: new Date(),
-    amount: '',
-    comment: '',
+    amount: Math.abs(amount),
+    comment: comment,
     selectData: null,
-    isExpenseChecked: true,
+    isExpenseChecked: type === 'INCOME' ? false : true,
   };
 
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
 
-  const isModalOpen = useSelector(
-    state => state.isModalAddTransactionOpen.isShowModal
-  );
+  useEffect(() => {
+    window.addEventListener('keydown', closeModalOnKey);
+
+    return () => { window.removeEventListener('keydown', closeModalOnKey); }
+  }, [closeModalOnKey]);
+  
   const categories = useSelector(state => state.categories.categories);
 
   const options = categories.map(el => {
@@ -51,7 +56,7 @@ const AddTransactionModal = () => {
   };
 
   const handleModalCloseClick = () => {
-    dispatch(showModal(false));
+    setShowEditModal(false)
   };
 
   const handleChange = () => {
@@ -64,19 +69,18 @@ const AddTransactionModal = () => {
     if (e.target !== e.currentTarget) {
       return;
     }
-
-    dispatch(showModal(false));
+    setShowEditModal(false)
   };
 
   const handleModalSubmit = e => {
     e.preventDefault();
     if (formData.isExpenseChecked) {
       dispatch(
-        addTransactionThunk({
-          categoryId: formData.selectData?.id,
+        editTransactionThunk({
+          id,
           transactionDate: formData.startDate?.toISOString(),
-
           type: 'EXPENSE',
+          categoryId: formData.selectData?.id,
           comment: formData?.comment,
           amount: -formData?.amount,
         })
@@ -84,7 +88,7 @@ const AddTransactionModal = () => {
         // .unwrap()
         .then(() => {
           setFormData(initialState);
-          dispatch(showModal(false));
+          setShowEditModal(false);
         })
         .catch(() => {
           alert('smth went wrong, try again');
@@ -92,19 +96,19 @@ const AddTransactionModal = () => {
         }).finally(dispatch(getTransactionsThunk()));
     } else {
       dispatch(
-        addTransactionThunk({
+        editTransactionThunk({
+          id,
           categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
           transactionDate: formData.startDate?.toISOString(),
-          // type: formData.selectData?.type,
           type: 'INCOME',
           comment: formData?.comment,
-          amount: formData?.amount,
+          amount: Math.abs(formData?.amount),
         })
       )
         // .unwrap()
         .then(() => {
           setFormData(initialState);
-          dispatch(showModal(false));
+          setShowEditModal(false);
         })
         .catch(() => {
           setFormData(initialState);
@@ -113,10 +117,17 @@ const AddTransactionModal = () => {
     }
   };
 
+  const handleDelateTransaction = (event) => {
+    console.log(event.target);
+    dispatch(deleteTransactionsThunk(id));
+    dispatch(getTransactionsThunk());
+    setShowEditModal(false);
+  }
+
   return ReactDOM.createPortal(
     <>
-      {isModalOpen && (
-          <ModalBackdrop onBackClick={handleBackdropClick}>
+      {/* {isModalOpen && (  */}
+        <ModalBackdrop onBackClick={handleBackdropClick} closeModalOnKey={closeModalOnKey}>
             <div className={css.modal}>
               <button
                 type="button"
@@ -130,7 +141,7 @@ const AddTransactionModal = () => {
                 <input
                   type="checkbox"
                   id="toggle"
-                  defaultChecked
+                  defaultChecked={type === 'INCOME' ? false : true}
                   onChange={handleChange}
                 />
                 <label htmlFor="toggle"></label>
@@ -143,6 +154,7 @@ const AddTransactionModal = () => {
                   <Select
                     options={options}
                     value={formData.selectData}
+                    // defaultValue={paramsCategories.filter(category => category.id === categoryId)[0].name}
                     onChange={handleSelectChange}
                     placeholder="Select category"
                     classNamePrefix="custom-select"
@@ -154,7 +166,7 @@ const AddTransactionModal = () => {
                     <input
                       name="amount"
                       type="text"
-                      value={formData.amount}
+                      defaultValue={formData.amount}
                       placeholder="0.00"
                       className={css.inputAmount}
                       onChange={handleAmountInputChange}
@@ -178,16 +190,20 @@ const AddTransactionModal = () => {
                   <input
                     name="comment"
                     type="text"
-                    value={formData.comment}
+                    defaultValue={formData.comment}
                     placeholder="Comment"
                     className={css.comment}
                     onChange={handleFormDataChange}
                   />
                 </label>
 
-                <button type="submit" className={css.submitBtn}>
-                  ADD
+                <button type="submit" className={css.editBtn}>
+                  EDIT
                 </button>
+                <button type="button" className={css.deleteBtn} onClick={handleDelateTransaction}>
+                  DELETE
+                </button>
+            
               </form>
 
               <button
@@ -199,9 +215,9 @@ const AddTransactionModal = () => {
               </button>
             </div>
           </ModalBackdrop>
-      )}
+
     </>, document.body
   )
 };
 
-export default AddTransactionModal;
+export default EditTransactionModal;

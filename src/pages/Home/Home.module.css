@@ -1,4 +1,7 @@
 /* ==== open modal button styles ==== */
+.wrraper {
+  position: relative;
+}
 
 .openModalBtn {
   width: 44px;
@@ -22,4 +25,19 @@
 .openModalBtn:hover {
   background-color: #20ba98;
 }
-/*  ====== // open modal button styles ===== */
+
+/*  ====== // table styles ===== */
+.thl {
+  padding: 10px 0;
+  text-align: start;
+}
+
+.thc {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.thr {
+  padding: 10px 0;
+  text-align: end;
+}

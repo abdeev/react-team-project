@@ -10,12 +10,21 @@ import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
 
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
+// import { useEffect } from 'react';
+// import { useState } from 'react';
 
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
+
+  // const [balance, setBalance] = useState(0);
+
+  // useEffect(() => {
+  //   setBalance(userCurrentBalance);
+
+  // }, [userCurrentBalance]);
 
   const handleLogout = () => {
     dispatch(logOutThunk());
