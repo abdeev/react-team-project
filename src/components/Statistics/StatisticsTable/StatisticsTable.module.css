@@ -1,16 +1,16 @@
 .table {
-  /* margin: auto; */
+  border-collapse: collapse;
+  margin-top: 21px;
   width: 395px;
-  border: hidden;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
+
 th {
   padding: 15px 28px;
-  width: 50%;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
@@ -24,6 +24,7 @@ th:last-child {
 }
 
 .table__head {
+  box-shadow: none;
   border: hidden;
   background: white;
 }
@@ -37,28 +38,26 @@ th:last-child {
 }
 
 tr {
-  border: 1px solid #dcdcdf;
+  border-top: 1px solid #dcdcdf;
 }
 
 .table__td__right {
-  /* width: 30%; */
   text-align: right;
   padding: 14px 29px;
 }
 .table__container {
   display: flex;
-  /* width: 70%; */
   padding: 16px 0 16px 28px;
   margin: 0;
 }
 
 .table__chategory {
   margin: 0;
-  width: 100%;
   margin-left: 16px;
 }
 
 .table__tr__summary {
+  border: none;
   box-shadow: none;
   font-weight: 700;
   width: 50%;

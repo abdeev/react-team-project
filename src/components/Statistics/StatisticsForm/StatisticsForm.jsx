@@ -13,10 +13,8 @@ export const StatisticsForm = () => {
   const dispach = useDispatch();
 
   useEffect(() => {
-    // if (!electYear.length) return;
-    // else {
+    if (!electMonth.length && !electYear.length) return;
     dispach(getStatisticsUserThunk({ electMonth, electYear }));
-    // }
   }, [electMonth, electYear, dispach]);
 
   return (
