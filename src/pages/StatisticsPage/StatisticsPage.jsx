@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getStatisticsUserThunk } from 'redux/statistics/thunkStatictics';
 
 import s from '../StatisticsPage/StatisticsPage.module.css';
-export const StatisticsPage = () => {
+const StatisticsPage = () => {
   const dispach = useDispatch();
   // const categoriesSummary = useSelector(selectCategoriesSummary);
 
@@ -20,3 +20,5 @@ export const StatisticsPage = () => {
     </div>
   );
 };
+
+export default StatisticsPage;

@@ -11,10 +11,14 @@ import PublicRoute from 'routes/PublicRoute';
 import PrivateRoute from 'routes/PrivateRoute';
 
 import Layout from './Layout/Layout';
-import { StatisticsPage } from 'pages/StatisticsPage';
+import Home from 'pages/Home/Home';
 
-const Home = lazy(() => import('../pages/Home/Home'));
+// const Home = lazy(() => import('../pages/Home/Home'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+
+const StatisticsPage = lazy(() =>
+  import('../pages/StatisticsPage/StatisticsPage')
+);
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
@@ -34,13 +38,13 @@ export const App = () => {
     <Suspense fallback={<p>Loading data...</p>}>
       <Routes>
         <Route element={<PublicRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
         </Route>
 
-        <Route path="/" element={<PrivateRoute />}>
+        <Route element={<PrivateRoute />}>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="/" />} />
+            <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
           </Route>
         </Route>
