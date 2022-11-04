@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 import Vector from '../../icons/vector.svg';
 import styles from './Currency.module.css';
 
-const Currency = () => {
+const Currency2 = () => {
   const [requestData, setRequestData] = useLocalStorage("request", {
     currency: [],
     time: 0,
@@ -52,41 +52,41 @@ const Currency = () => {
   }, [countPastTime, requestData, setRequestData]);
 //поставити клас хідден на діаграму!
   return (
-    <div className={styles.currencyRatesBox}>
+  <div className={styles.currencyRatesPanel}>
+    <div className={styles.currencyHead} >      
+    <ul className={styles.currencyRatesHead} >
+            <li>Currency</li>
+            <li>Purchase</li>
+            <li>Sale</li>
+          </ul>
+    </div>
+          <div className={styles.conteinerdata}>
       {loading ? (
         <div className={styles.loader}>
           <Loader />
         </div>
       ) : null}
       {!error && !loading ? (
-        <>
-          <div className={styles.currencyRatesHead}>
-            <p >Currency</p>
-            <p >Buy</p>
-            <p >Sell</p>
-          </div>
-          <div className={styles.conteinerdata}>
             <ul className={styles.currencyRatesList}>
             {requestData.currency?.map(({ buy, sale, ccy }) => (
               <li className={styles.currencyRatesListItem} key={ccy} >
-                <span >{ccy}</span>
-                <span >{buy}</span>
-                <span >{sale}</span>
+                <span className={styles.currencyData}>{ccy}</span>
+                <span className={styles.currencyData}>{buy}</span>
+                <span className={styles.currencyData}>{sale}</span>
               </li>
             ))}
+
           </ul>
-          <img src={Vector} alt="vector" className={styles.vector} />
-          </div>
-          
-        </>
       ) : (
         <div >
           <p>{error}</p>
         </div>
       )}
-       
+<img src={Vector} alt="vector" className={styles.vector} />
+      </div>
+              
     </div>
   );
 };
-export default Currency;
+export default Currency2;
 
