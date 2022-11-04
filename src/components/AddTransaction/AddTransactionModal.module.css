@@ -3,11 +3,11 @@
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -50%);
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
 
   width: 540px;
@@ -17,7 +17,7 @@
   background-color: #fff;
   border-radius: 20px;
   transition: 400ms;
-  animation-name: fade-oin;
+  animation-name: fade-in;
   animation-duration: 0.3s;
 }
 .selectWrapper {
@@ -54,21 +54,17 @@
 @-webkit-keyframes fade-out {
   0% {
     opacity: 1;
-    scale: 1;
   }
   100% {
     opacity: 0;
-    scale: 0.98;
   }
 }
 @keyframes fade-out {
   0% {
     opacity: 1;
-    scale: 1;
   }
   100% {
     opacity: 0;
-    scale: 0.98;
   }
 }
 
@@ -229,6 +225,11 @@
 .react-select__menu {
   background-color: #24cca7;
 }
+
+/* .amountWrapper {
+  border: 1px solid red;
+} */
+
 .inputAmount {
   width: 185px;
   padding: 8px;
@@ -241,6 +242,12 @@
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.inputError {
+  composes: inputAmount;
+  color: #ff6596;
+  border-bottom: 1px solid #ff6596;
 }
 
 .datepickerWrapper {
@@ -265,6 +272,12 @@
 
 .comment::placeholder {
   color: #bdbdbd;
+}
+
+.commentError {
+  composes: comment;
+  color: #ff6596;
+  border-bottom: 1px solid #ff6596;
 }
 
 .submitBtn {
@@ -317,3 +330,27 @@
   color: #3b45ae;
   border: 1px solid #3b45ae;
 }
+
+/* ========= formik ========== */
+
+.errorMessage {
+  position: absolute;
+  color: #ff6596;
+
+  font-family: 'Circe', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.amountErrorMesage {
+  position: absolute;
+  z-index: -1;
+  color: #ff6596;
+
+  font-family: 'Circe', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  /* left: 3px;
+  bottom: -20px; */
+}
+/* ========= //formik ========== */
