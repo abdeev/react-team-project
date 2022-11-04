@@ -166,3 +166,15 @@ code {
 .react-datepicker__input-container {
   position: unset;
 }
+
+@media screen and (max-width: 425px) {
+  .custom-select__control {
+    margin: 0 auto !important;
+    width: 280px !important;
+  }
+
+  .custom-select__control--error {
+    margin: 0 auto !important;
+    width: 280px !important;
+  }
+}

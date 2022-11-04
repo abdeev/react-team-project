@@ -1,12 +1,30 @@
-.thl {
-  padding: 10px 0;
+.transactionsTable {
+  width: 100%;
+  padding-top: 46px;
+  border: none;
+  border-collapse: collapse;
+}
+.transactionsTable_head {
+  background-color: #fff;
+  cursor: pointer;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+.table_head__alStart {
+  padding: 15px 20px;
   text-align: start;
 }
-.thc {
-  padding: 10px 0;
+.table_head__alCenter {
+  padding: 15px 45px;
   text-align: center;
 }
-.thr {
-  padding: 10px 0;
+.table_head__alEnd {
+  padding: 15px 20px;
   text-align: end;
+}
+
+tr:not(:last-child) {
+  padding: 1em;
+  border-bottom: 2px solid white;
 }
