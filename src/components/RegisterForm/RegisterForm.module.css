@@ -24,10 +24,10 @@
     bottom: 50px;
     right: 50%;
     transform: translate(50%);
-    /* text-align: center; */
     width: 533px;
     height: fit-content;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
   }
   .input {
     width: 409px;
@@ -45,10 +45,12 @@
 
 @media screen and (min-width: 1280px) {
   .formWrapper {
-    bottom: 50%;
-    right: 90px;
-    transform: translateY(50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
+    border-radius: 20px;
   }
 }
 
@@ -76,8 +78,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
   padding: 40px 60px 66px 65px;
+  background-color: #fff;
 }
 
 .form {

@@ -1,0 +1,52 @@
+@media (min-width: 768px) {
+  .pageWrapper {
+    background-image: url('./img/ellipse-bottom-desktop.png'),
+      url('./img/frame-tablet.png'), url('./img/ellipse-up-desktop.png');
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 60px left 114px, top 0 right 0;
+  }
+  .pageText {
+    top: 160px;
+    right: 160px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pageWrapper {
+    background-image: url('./img/frame-desktop.png'),
+      url('./img/ellipse-bottom-desktop.png'),
+      url('./img/ellipse-up-desktop.png');
+    background-repeat: no-repeat;
+
+    background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
+  }
+  .formWrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+  }
+  .pageText {
+    top: 85%;
+    left: 200px;
+    transform: translateY(-50%);
+  }
+}
+
+.pageWrapper {
+  position: relative;
+  background-color: #e5e5e5;
+  width: 100vw;
+  height: 100vh;
+}
+.pageText {
+  position: absolute;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+}
