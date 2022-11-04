@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { showModal } from 'redux/modal/modalSlice';
-import { addTransactionThunk } from 'redux/transactions/thunksTransactions';
+import { getTransactionsThunk, addTransactionThunk } from 'redux/transactions/thunksTransactions';
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
@@ -62,7 +62,7 @@ const AddTransactionModal = () => {
         })
         .catch(() => {
           Notify.failure('Oops! Smth went wrong, try again');
-        });
+        }).finally(dispatch(getTransactionsThunk()));
     }
 
     if (!values.isExpenseChecked) {
@@ -84,7 +84,7 @@ const AddTransactionModal = () => {
         })
         .catch(() => {
           Notify.failure('Oops! Smth went wrong, try again');
-        });
+        }).finally(dispatch(getTransactionsThunk()));
     }
   };
 
