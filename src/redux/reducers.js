@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { persistReducer,} from "redux-persist";
+import { persistReducer } from 'redux-persist';
 
 import authorizationReducer from './authorization/sliceAuth';
 import reducerCategories from './categories/sliceCategories';
@@ -8,22 +8,25 @@ import { reducerTransactions } from './transactions/sliceTransactions';
 import { reducerFilter } from './contacts/sliceFilter';
 import { reducerContacts } from './contacts/sliceContacts';
 
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { reducerStatistics } from './statistics/sliceStatistics';
 
 const authorizationPersistConfig = {
-    key: 'wallet',
-    storage,
-    whitelist: ['userToken'],
-}
+  key: 'wallet',
+  storage,
+  whitelist: ['userToken'],
+};
 
 export const rootReducer = combineReducers({
-    authorization: persistReducer(authorizationPersistConfig, authorizationReducer),
-    categories: reducerCategories,
-    isModalAddTransactionOpen: reducerShowModal,
-    transactions: reducerTransactions,
+  authorization: persistReducer(
+    authorizationPersistConfig,
+    authorizationReducer
+  ),
+  categories: reducerCategories,
+  isModalAddTransactionOpen: reducerShowModal,
+  transactions: reducerTransactions,
+  statistics: reducerStatistics,
 
-
-
-    filter: reducerFilter,
-    contacts: reducerContacts,
+  filter: reducerFilter,
+  contacts: reducerContacts,
 });

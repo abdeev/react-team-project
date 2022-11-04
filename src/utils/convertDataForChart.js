@@ -11,14 +11,16 @@ export const convertDataForChart = rawData => {
   const labels = [];
   const data = [];
   const backgroundColor = [];
-  const newRawData = rawData.filter(el => el.type !== 'INCOME');
+  const table = [];
+  // const newRawData = rawData.filter(el => el.name !== 'Income');
+
   // eslint-disable-next-line
-  newRawData.map(el => {
+  rawData.map(el => {
     labels.push(el.name);
     data.push(el.total);
     const color = getRandomColor();
     backgroundColor.push(color);
-    el.backgroundColor = color;
+    table.push({ ...el, backgroundColor: color });
   });
   return {
     diagram: {
@@ -33,6 +35,6 @@ export const convertDataForChart = rawData => {
         },
       ],
     },
-    table: newRawData,
+    table,
   };
 };

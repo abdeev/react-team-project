@@ -1,10 +1,10 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { statsArray } from '../json/mock';
 import s from '../StatisticsDiagram/StatisticsDiagram.module.css';
+import { useSelector } from 'react-redux';
+import { selectPeriodTotal } from 'redux/statistics/selectorsStatistics';
 
-// import { convertDataForChart } from 'utils/convertDataForChart';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const donutOptions = {
@@ -17,6 +17,8 @@ const donutOptions = {
 };
 
 export const StatisticsDiagram = ({ diagram }) => {
+  const periodTotal = useSelector(selectPeriodTotal);
+
   return (
     <div className={s.diagram_container}>
       <div className={s.diagram_box}>
@@ -33,7 +35,7 @@ export const StatisticsDiagram = ({ diagram }) => {
                 const fontSize = (height / 200).toFixed(2);
                 ctx.font = ` ${fontSize}em circle`;
                 ctx.textBaseline = 'top';
-                const text = `₴ ${statsArray.periodTotal}`;
+                const text = `₴ ${periodTotal}`;
                 const textX = Math.round(
                   (width - ctx.measureText(text).width) / 2
                 );
