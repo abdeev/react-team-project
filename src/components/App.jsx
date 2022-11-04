@@ -32,7 +32,6 @@ export const App = () => {
       dispatch(getCurrentUserInfoThunk());
     }
   }, [isLoggedIn, usertoken, dispatch]);
-  const Navigate = useNavigate();
 
   return (
     <Suspense fallback={<p>Loading data...</p>}>
