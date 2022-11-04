@@ -19,11 +19,6 @@ export const addTransactionThunk = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { data } = await request.post('/api/transactions', transaction);
-      console.log(data.balanceAfter);
-      console.log(thunkAPI.getState().authorization.userInfo.balance);
-      thunkAPI.getState().authorization.userInfo.balance = data.balanceAfter;
-      console.log('after API', data);
-      console.log(thunkAPI.getState().authorization.userInfo.balance);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
