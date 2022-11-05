@@ -9,9 +9,7 @@ import { ReactComponent as Homesvg } from '../../icons/home.svg';
 import { ReactComponent as Statissvg } from '../../icons/statis.svg';
 import { ReactComponent as Dollarsvg } from '../../icons/dollar-icon.svg';
 
-
 import style from '../Navigation/Navigation.module.css';
-
 
 export default function Navigation() {
   const isLogin = useSelector(selectIsLoggedIn);
@@ -38,7 +36,7 @@ export default function Navigation() {
               </span>
             </NavLink>
 
-            <NavLink NavLink to="/statistics" className={style.statis}>
+            <NavLink to="/statistics" className={style.statis}>
               <Statissvg
                 className={`${style.statis__svg} ${
                   pathname === '/statistics' ? style.activ : ''
