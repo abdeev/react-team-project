@@ -37,3 +37,11 @@ export const convertDataForChart = rawData => {
     table,
   };
 };
+export const formatDate = inputedDate => {
+  const datePart = inputedDate.match(/\d+/g),
+    year = datePart[0].substring(2), // get only two digits
+    month = datePart[1],
+    day = datePart[2];
+
+  return day + '.' + month + '.' + year;
+};

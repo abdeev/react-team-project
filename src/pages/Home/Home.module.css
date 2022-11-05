@@ -37,14 +37,14 @@
 }
 .transactionsTableRow_header {
   background-color: #fff;
-  cursor: pointer;
+  border-radius: 30px;
   border: hidden;
-  border-radius: 50%;
   overflow: hidden;
   font-family: 'Circe';
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  cursor: pointer;
 }
 
 .table_head__alStart {
