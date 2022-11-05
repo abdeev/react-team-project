@@ -330,6 +330,7 @@
 
 .cancelBtn {
   width: 300px;
+  padding: 13px;
   height: 50px;
 
   font-family: 'Circe';
@@ -377,7 +378,7 @@
 }
 /* ========= //formik ========== */
 
-@media screen and (max-width: 425px) {
+@media screen and (max-height: 660px), screen and (max-width: 767px) {
   .modal {
     top: 0;
     bottom: 0;
@@ -388,10 +389,43 @@
     width: auto;
     height: auto;
 
+    overflow: auto;
     padding: 20px;
     border-radius: 0;
+  }
 
-    /* background-color: rgb(242, 202, 202); */
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .form {
+    overflow-y: scroll;
+    /* background-color: #20b797; */
+  }
+
+  .toggle {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+
+    width: auto;
+    height: auto;
+
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .closingCross {
+    display: none;
   }
 
   .title {
