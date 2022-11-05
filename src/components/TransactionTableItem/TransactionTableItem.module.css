@@ -1,5 +1,33 @@
-.tableItem {
-  width: 100%;
+@media screen and (max-width: 767px) {
+  tbody tr th {
+    display: none;
+  }
+
+  td,
+  th {
+    display: flex;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    width: 300px;
+  }
+
+  td[data-th]:before {
+    content: attr(data-th);
+    margin-right: auto;
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: start;
+  }
+}
+.transactionsTableRow_data {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 .tdl {
   text-align: start;

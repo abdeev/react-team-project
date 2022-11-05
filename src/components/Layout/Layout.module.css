@@ -89,6 +89,11 @@
     1px 0px 0px rgba(255, 255, 255, 0.6);
 }
 
+.navMenuInnerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .navItem {
   font-family: 'Poppins';
   font-style: normal;
@@ -142,6 +147,7 @@
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 
   z-index: 10;
 
@@ -155,3 +161,55 @@
   background-color: #20ba98;
 }
 /*  ====== // open modal button styles ===== */
+
+/* ======= TABLET STYLES ======= */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .innerWrapper {
+    flex-direction: column;
+  }
+
+  .navMenuWrapper {
+    height: auto;
+    border-right: none;
+    box-shadow: none;
+
+    flex-direction: row;
+    justify-content: space-between;
+    width: 704px;
+    align-items: flex-end;
+
+    padding: 32px 0 20px;
+  }
+
+  .balance {
+    width: 336px;
+    margin: 0;
+  }
+
+  .navItem:last-child {
+    margin-bottom: 28px;
+  }
+
+  .outlets {
+    padding: 0 0 40px;
+  }
+}
+/* ====== // TABLET STYLES ====== */
+
+/* ======= MOBILE STYLES ======= */
+@media screen and (max-width: 767px) {
+  .container {
+    width: 320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: rgb(237, 240, 172);
+  }
+}
+
+/* ====== // MOBILE STYLES ====== */

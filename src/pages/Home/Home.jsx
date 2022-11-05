@@ -48,8 +48,8 @@ const Home = () => {
   return (
     <div className={css.tableWrapper}>
       <table className={css.transactionsTable}>
-        <thead>
-          <tr className={css.transactionsTable_head}>
+        <tbody>
+          <tr className={css.transactionsTableRow_header}>
             <th
               className={css.table_head__alStart}
               onClick={() =>
@@ -124,8 +124,6 @@ const Home = () => {
               Balance
             </th>
           </tr>
-        </thead>
-        <tbody>
           {!!userTransactions.length &&
             sortTransactions.map(transaction => (
               <TransactionTableItem
