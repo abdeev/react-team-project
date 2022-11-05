@@ -5,8 +5,6 @@ import authorizationReducer from './authorization/sliceAuth';
 import reducerCategories from './categories/sliceCategories';
 import { reducerShowModal } from './modal/modalSlice';
 import { reducerTransactions } from './transactions/sliceTransactions';
-import { reducerFilter } from './contacts/sliceFilter';
-import { reducerContacts } from './contacts/sliceContacts';
 
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import { reducerStatistics } from './statistics/sliceStatistics';
@@ -26,7 +24,4 @@ export const rootReducer = combineReducers({
   isModalAddTransactionOpen: reducerShowModal,
   transactions: reducerTransactions,
   statistics: reducerStatistics,
-
-  filter: reducerFilter,
-  contacts: reducerContacts,
 });

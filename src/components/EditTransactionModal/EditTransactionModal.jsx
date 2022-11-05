@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import Select from 'react-select';
 import ReactDOM from 'react-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsThunk, editTransactionThunk, deleteTransactionsThunk } from 'redux/transactions/thunksTransactions';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
@@ -16,68 +16,37 @@ import { DatePickerField } from './FormikCustoms/CustomDatePicker';
 import CustomSelect from './FormikCustoms/CustomSelect';
 import { addTransactionSchema } from 'validation/addTransactionSchema';
 
-// import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
+import { selectTransactionsIsEditing, selectTransactionsIsDeleting } from 'redux/transactions/selectorsTransactions';
 
-// import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
+import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 
-
-
+import { selectCategories } from 'redux/categories/selectCategories';
 
 import css from './EditTransactionModal.module.css';
 
 const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: { id, transactionDate, type, categoryId, comment, amount } }) => {
-  // console.log(id, transactionDate, type, categoryId, comment, amount);
 
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector(selectTransactionsIsLoading);
 
-  const initialState = {
-    startDate: new Date(),
-    amount: Math.abs(amount),
-    comment: comment,
-    selectData: null,
-    isExpenseChecked: type === 'INCOME' ? false : true,
+  const dispatch = useDispatch();
+  const isEditing = useSelector(selectTransactionsIsEditing);
+  const isDeleting = useSelector(selectTransactionsIsDeleting);
+  const categories = useSelector(selectCategories);
+  
+  const getNameByCategoryId = id => {
+    if (id === '063f1132-ba5d-42b4-951d-44011ca46262') {
+      return null;
+    }
+    return categories.filter(category => category.id === id)[0]?.name;
   };
 
-  const [formData, setFormData] = useState(initialState);
-  const dispatch = useDispatch();
-
   useEffect(() => {
+    setIsExpenseChecked(type === 'INCOME' ? false : true);
     window.addEventListener('keydown', closeModalOnKey);
 
     return () => { window.removeEventListener('keydown', closeModalOnKey); }
-  }, [closeModalOnKey]);
+  }, [closeModalOnKey, type]);
   
-  // const categories = useSelector(state => state.categories.categories);
-
-  // const options = categories.map(el => {
-  //   return { value: el.name, label: el.name, id: el.id, type: el.type };
-  // });
-
-  // const handleFormDataChange = e => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-
-  // const handleAmountInputChange = evt => {
-  //   if (evt.target.value.match(/^\d+$/) === null && evt.target.value !== '') {
-  //     return;
-  //   }
-  //   setFormData({ ...formData, [evt.target.name]: evt.target.value });
-  // };
-
-  // const handleSelectChange = x => {
-  //   setFormData(prev => {
-  //     return { ...prev, selectData: x };
-  //   });
-  // };
-
-  // const handleChange = () => {
-  //   setFormData(prev => {
-  //     return { ...prev, isExpenseChecked: !prev.isExpenseChecked };
-  //   });
-  // };
-
   const handleModalCloseClick = () => {
     setShowEditModal(false)
   };
@@ -89,31 +58,26 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
     setShowEditModal(false)
   };
 
-  // const handleModalSubmit = e => {
-  //   e.preventDefault();
-  // if (formData.isExpenseChecked) {
   const handleModalSubmit = (values, actions) => {
     if (values.isExpenseChecked) {
       dispatch(
         editTransactionThunk({
           id,
-          transactionDate: formData.startDate?.toISOString(),
+          categoryId: values.selectData?.id,
+          transactionDate: values.startDate?.toISOString(),
           type: 'EXPENSE',
-          categoryId: formData.selectData?.id,
-          comment: formData?.comment,
-          amount: -formData?.amount,
+          comment: values?.comment,
+          amount: -values?.amount,
         })
       )
         .then(() => {
-          // setFormData(initialState);
           actions.resetForm();
-          // dispatch(getCurrentUserInfoThunk());
+          dispatch(getCurrentUserInfoThunk());
 
           setShowEditModal(false);
         })
         .catch(() => {
           alert('smth went wrong, try again');
-          setFormData(initialState);
         }).finally(dispatch(getTransactionsThunk()));
     }
     // else {
@@ -122,36 +86,35 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
         editTransactionThunk({
           id,
           categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
-          transactionDate: formData.startDate?.toISOString(),
+          transactionDate: values.startDate?.toISOString(),
           type: 'INCOME',
-          comment: formData?.comment,
-          amount: Math.abs(formData?.amount),
+          comment: values?.comment,
+          amount: Math.abs(values?.amount),
         })
       )
         .then(() => {
-          // setFormData(initialState);
-
           actions.resetForm();
-          // dispatch(getCurrentUserInfoThunk());
+          dispatch(getCurrentUserInfoThunk());
           setShowEditModal(false);
         })
         .catch(() => {
-          // setFormData(initialState);
           alert('smth went wrong, try again');
           actions.resetForm();
         }).finally(dispatch(getTransactionsThunk()));
     }
   };
 
-  const handleDeleteTransaction = (event) => {
-    dispatch(deleteTransactionsThunk(id));
-    dispatch(getTransactionsThunk());
-    setShowEditModal(false);
+  const handleDeleteTransaction = () => {
+    dispatch(deleteTransactionsThunk(id))
+      .then(dispatch(getTransactionsThunk()))
+      .catch(() => {
+        alert('smth went wrong, try again');
+      })
+      .finally(setShowEditModal(false));    
   }
 
   return ReactDOM.createPortal(
     <>
-      {/* {isModalOpen && (  */}
         <ModalBackdrop onBackClick={handleBackdropClick} closeModalOnKey={closeModalOnKey}>
             <div className={css.modal}>
               <button
@@ -166,7 +129,7 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
                 initialValues={{
                   comment: comment,
                   amount: Math.abs(amount),
-                  startDate: new Date(),
+                  startDate: new Date(transactionDate),
                   selectData: null,
                   isExpenseChecked: type === 'INCOME' ? false : true,
                 }}
@@ -180,10 +143,9 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
                     <input
                       type="checkbox"
                       id="toggle"
-                      defaultChecked
-                      onChange={() => {
-                        props.values.isExpenseChecked =
-                          !props.values.isExpenseChecked;
+                      defaultChecked={type === 'INCOME' ? false : true}
+                      onChange={() => {                    
+                        props.values.isExpenseChecked = !props.values.isExpenseChecked;
                         setIsExpenseChecked(props.values.isExpenseChecked);
                       }}
                     />
@@ -199,7 +161,7 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
                         : css.selectWrapperOut
                     }
                   >
-                    <CustomSelect name="selectData" />
+                  <CustomSelect name="selectData" categoryName={getNameByCategoryId(categoryId)} />
                   </div>
 
                   <div className={css.inputsWrapper}>
@@ -211,7 +173,7 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
                       />
                     </div>
                     <div className={css.datepickerWrapper}>
-                      <DatePickerField name="startDate" />
+                    <DatePickerField name="startDate" />
                     </div>
                   </div>
 
@@ -221,104 +183,17 @@ const EditTransactionModal = ({ closeModalOnKey, setShowEditModal, transaction: 
                     placeholder="Comment"
                   />
 
-                  {/* <button type="submit" className={css.submitBtn}>
-                    {isLoading ? ' ADDING ...' : 'ADD'}
-                  </button> */}
-                
                   <button type="submit" className={css.submitBtn}>
-                    EDIT
+                    {isEditing ? ' EDITING ...' : 'EDIT'}
                   </button>
+                
                   <button type="button" className={css.deleteBtn} onClick={handleDeleteTransaction}>
-                    DELETE
+                    {isDeleting ? ' DELETING ...' : 'DELETE'}
                   </button>
                   
                 </Form>
               )}
             </Formik>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              {/* <div className={css.toggle}>
-                <input
-                  type="checkbox"
-                  id="toggle"
-                  defaultChecked={type === 'INCOME' ? false : true}
-                  onChange={handleChange}
-                />
-                <label htmlFor="toggle"></label>
-                <span className={css.incomeSpan}>Income</span>
-                <span className={css.expenseSpan}>Expense</span>
-              </div> */}
-
-              {/* <form className={css.form} onSubmit={handleModalSubmit}>
-                {formData.isExpenseChecked && (
-                  <Select
-                    options={options}
-                    value={formData.selectData}
-                    onChange={handleSelectChange}
-                    placeholder="Select category"
-                    classNamePrefix="custom-select"
-                  />
-                )}
-
-                <div className={css.inputsWrapper}>
-                  <label>
-                    <input
-                      name="amount"
-                      type="text"
-                      defaultValue={formData.amount}
-                      placeholder="0.00"
-                      className={css.inputAmount}
-                      onChange={handleAmountInputChange}
-                    />
-                  </label>
-
-                  <div className={css.datepickerWrapper}>
-                    <DatePicker
-                      selected={formData.startDate}
-                      onChange={date =>
-                        setFormData(prev => {
-                          return { ...prev, startDate: date };
-                        })
-                      }
-                      className={css.input}
-                    />
-                  </div>
-                </div>
-
-                <label>
-                  <input
-                    name="comment"
-                    type="text"
-                    defaultValue={formData.comment}
-                    placeholder="Comment"
-                    className={css.comment}
-                    onChange={handleFormDataChange}
-                  />
-                </label>
-
-                <button type="submit" className={css.editBtn}>
-                  EDIT
-                </button>
-                <button type="button" className={css.deleteBtn} onClick={handleDeleteTransaction}>
-                  DELETE
-                </button>
-            
-              </form> */}
 
               <button
                 type="button"

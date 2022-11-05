@@ -8,6 +8,8 @@ const transactionsSlice = createSlice({
         transactions: {
             items: [],
             isLoading: false,
+            isEditing: false,
+            isDeleting: false,
         },
     },
 
@@ -36,25 +38,25 @@ const transactionsSlice = createSlice({
         },
 
         [editTransactionThunk.pending](state) {
-            state.transactions.isLoading = true;
+            state.transactions.isEditing = true;
         },
         [editTransactionThunk.fulfilled](state, action) {
             state.transactions.items = [...state.transactions.items.filter(transaction => transaction.id !== action.payload.id), action.payload]
-            state.transactions.isLoading = false;
+            state.transactions.isEditing = false;
         },
         [editTransactionThunk.rejected](state, action) {
-            state.transactions.isLoading = false;
+            state.transactions.isEditing = false;
         },
         
         [deleteTransactionsThunk.pending](state) {
-            state.transactions.isLoading = true;
+            state.transactions.isDeleting = true;
         },
         [deleteTransactionsThunk.fulfilled](state, action) {
-            state.transactions.isLoading = false;
+            state.transactions.isDeleting = false;
             state.transactions.items = state.transactions.items.filter(transaction => transaction.id !== action.payload.id);
         },
         [deleteTransactionsThunk.rejected](state, action) {
-            state.transactions.isLoading = false;
+            state.transactions.isDeleting = false;
         },
 
     }

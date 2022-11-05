@@ -38,7 +38,7 @@ export default function Navigation() {
               </span>
             </NavLink>
 
-            <NavLink NavLink to="/statistics" className={style.statis}>
+            <NavLink to="/statistics" className={style.statis}>
               <Statissvg
                 className={`${style.statis__svg} ${
                   pathname === '/statistics' ? style.activ : ''

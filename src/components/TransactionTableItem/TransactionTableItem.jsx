@@ -20,6 +20,12 @@ export const TransactionTableItem = ({
 }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const categories = useSelector(selectCategories);
+  
+  const date = new Date(transactionDate);
+  const day = String(date.getDate()).padStart(2, 0);
+  const month = String(date.getMonth() + 1).padStart(2, 0);
+  const year = date.getFullYear();
+  const formatDate = `${day}.${month}.${year}`;
 
   const getNameByCategoryId = id => {
     return categories.filter(category => category.id === id)[0]?.name;
@@ -43,7 +49,7 @@ export const TransactionTableItem = ({
         onClick={handleOpenEditModal}
       >
         <td data-th="Date" className={css.tableData_alStart}>
-          {transactionDate}
+          {formatDate}
         </td>
         <td data-th="Type" className={css.tableData_alCenter}>
           {type === 'EXPENSE' ? '-' : '+'}

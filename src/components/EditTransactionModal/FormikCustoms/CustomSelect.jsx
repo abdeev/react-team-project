@@ -13,7 +13,7 @@ const CustomSelect = ({ ...props }) => {
   const options = categories
     .filter(el => el.type !== 'INCOME')
     .map(el => ({ value: el.name, label: el.name, id: el.id, type: el.type }));
-
+ 
   return (
     <>
       <Select
