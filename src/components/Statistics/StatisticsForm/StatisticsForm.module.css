@@ -1,17 +1,29 @@
-.select__block {
-  width: 50%;
-}
-
 .stats_form {
-  width: 395px;
-  /* margin: auto; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
 }
 .select-container {
   outline: none;
-  width: 182px !important;
   border: 1px solid #000000;
   border-radius: 30px;
+}
+
+@media screen and(min-width: 768px) and(max-width: 1279px) {
+  .stats_form {
+    max-width: 336px;
+  }
+
+  .select-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .stats_form {
+    margin-top: 32px;
+    width: 280px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 }

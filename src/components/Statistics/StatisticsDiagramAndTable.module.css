@@ -4,7 +4,7 @@
 }
 
 .statistics__block {
-  margin-top: 21px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   width: 715px;
@@ -13,4 +13,26 @@
 
 .statistics_warning_text {
   color: #4956e2;
+}
+
+@media screen and (min-width: 768px) and(max-width: 1280px) {
+  .statistics__block {
+    max-width: 704px;
+  }
+
+  .statistics__block__form {
+    width: 336px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .statistics__block {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+  }
+  .statistics__block__form {
+    width: 280px;
+  }
 }

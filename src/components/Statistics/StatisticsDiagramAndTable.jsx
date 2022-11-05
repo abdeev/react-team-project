@@ -36,7 +36,6 @@ export const StatisticsDiagramAndTable = () => {
   return (
     <div className={s.statistics__block}>
       <div>
-        <h1 className={s.statistics__title}>Statistics</h1>
         {isLoading ? (
           <Puff
             type="Puff"
