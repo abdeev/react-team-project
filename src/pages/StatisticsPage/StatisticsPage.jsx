@@ -14,7 +14,6 @@ const StatisticsPage = () => {
 
   return (
     <div className={s.statistics__container}>
-      <h1 className={s.statistics__title}>Statistics</h1>
       <StatisticsDiagramAndTable />
     </div>
   );

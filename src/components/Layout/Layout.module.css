@@ -129,6 +129,11 @@
 .outlets {
   padding: 0 16px 0 69px;
 }
+@media (min-width: 768px) {
+  .outlets {
+    padding: 0 32px;
+  }
+}
 
 /* ==== open modal button styles ==== */
 

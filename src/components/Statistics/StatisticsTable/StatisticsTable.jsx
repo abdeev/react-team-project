@@ -3,14 +3,17 @@ import { useSelector } from 'react-redux';
 import {
   selectExpenseSummary,
   selectIncomeSummary,
+  selectIsLoading,
 } from 'redux/statistics/selectorsStatistics';
 import { nanoid } from 'nanoid';
 
 import s from '../StatisticsTable/StatisticsTable.module.css';
+import { Puff } from 'react-loader-spinner';
 
 export const StatisticsTable = ({ tableData }) => {
   const expenseSummary = useSelector(selectExpenseSummary);
   const incomeSummary = useSelector(selectIncomeSummary);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <div>
@@ -24,13 +27,24 @@ export const StatisticsTable = ({ tableData }) => {
             return (
               <tr key={nanoid()}>
                 <td width="250px" className={s.table__container}>
-                  <div
-                    style={{
-                      backgroundColor: el.backgroundColor,
-                      width: 25,
-                      height: 25,
-                    }}
-                  ></div>
+                  {isLoading ? (
+                    <Puff
+                      type="Puff"
+                      color={el.backgroundColor}
+                      height={25}
+                      width={25}
+                      timeout={3000}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        backgroundColor: el.backgroundColor,
+                        width: 25,
+                        height: 25,
+                      }}
+                    />
+                  )}
+
                   <div className={s.table__chategory}>{el.name}</div>
                 </td>
                 <td width="36px" className={s.table__td__right}>
