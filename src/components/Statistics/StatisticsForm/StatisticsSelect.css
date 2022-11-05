@@ -8,6 +8,19 @@
   cursor: pointer !important;
 }
 
+@media screen and(min-width: 768px) and(max-width: 1279px) {
+  .statistics-select__control {
+    width: 160px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .statistics-select__control {
+    width: 280px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
 .statistics-select__indicator-separator {
   display: none;
 }

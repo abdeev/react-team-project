@@ -31,7 +31,6 @@ export const convertDataForChart = rawData => {
           data: data,
           backgroundColor: backgroundColor,
           borderWidth: 0,
-          radius: 144,
         },
       ],
     },
