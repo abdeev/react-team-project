@@ -8,6 +8,7 @@
 .nav__link {
     display: flex;
     justify-content: space-between;
+
 }
 
 .home__svg,
@@ -76,8 +77,11 @@
 
 @media screen and (min-width: 1280px) {
     .container {
-        display: inline-flex;
+      
         padding-top: 45px;
         padding-left: 88px;
+       
+        display: block;
+        
     }
 }

@@ -13,6 +13,8 @@ import Currency from 'components/Currency/Currency';
 import { showModal } from 'redux/modal/modalSlice';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 
+import Navigation from 'components/Navigation/Navigation';
+
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
@@ -49,12 +51,13 @@ const Layout = () => {
       </div>
       <div className={css.innerWrapper}>
         <div className={css.navMenuWrapper}>
-          <NavLink to="/home" className={css.navItem}>
+{/*           <NavLink to="/home" className={css.navItem}>
             Home
           </NavLink>
           <NavLink to="/statistics" className={css.navItem}>
             Statistics
-          </NavLink>
+          </NavLink> */}
+          <Navigation/>
 
           <div className={css.balance}>
             Your balance{' '}
@@ -62,10 +65,8 @@ const Layout = () => {
               ${userCurrentBalance?.toLocaleString()}
             </span>
           </div>
-
           <Currency />
         </div>
-
         <div className={css.outlets}>
           <Outlet />
         </div>

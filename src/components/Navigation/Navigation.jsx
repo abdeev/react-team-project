@@ -1,9 +1,10 @@
-/* import React from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import { selectIsLoggedIn } from '../../redux/authorization/selectorsAuth';
 
-import { useLocation } from 'react-router-dom';
 import { ReactComponent as Homesvg } from '../../icons/home.svg';
 import { ReactComponent as Statissvg } from '../../icons/statis.svg';
 import { ReactComponent as Dollarsvg } from '../../icons/dollar-icon.svg';
@@ -33,22 +34,22 @@ export default function Navigation() {
                   pathname === '/home' ? style.activ : ''
                 }`}
               >
-                Man page
+                Home
               </span>
             </NavLink>
 
-            <NavLink to="/statistic" className={style.statis}>
+            <NavLink NavLink to="/statistics" className={style.statis}>
               <Statissvg
                 className={`${style.statis__svg} ${
-                  pathname === '/statistic' ? style.activ : ''
+                  pathname === '/statistics' ? style.activ : ''
                 }`}
               />
               <span
                 className={`${style.statis__word} ${
-                  pathname === '/statistic' ? style.activ : ''
+                  pathname === '/statistics' ? style.activ : ''
                 }`}
               >
-                Статистика
+                Statistics
               </span>
             </NavLink>
 
@@ -65,4 +66,3 @@ export default function Navigation() {
     </nav>
   );
 }
- */
