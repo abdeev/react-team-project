@@ -47,7 +47,7 @@
     line-height: 27px;
     cursor: pointer;
   }
-
+  
   .table_head__alStart {
     text-align: start;
   }
@@ -72,4 +72,5 @@
     border-bottom-left-radius: 30px;
     padding-left: 20px;
   }
+
 }

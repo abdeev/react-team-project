@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { request } from 'redux/services/axiosConfig';
 
 export const getTransactionsThunk = createAsyncThunk(
-  'contacts/get',
+  'transactions/get',
   async (_, thunkAPI) => {
     try {
       const { data } = await request('/api/transactions');
@@ -15,7 +15,7 @@ export const getTransactionsThunk = createAsyncThunk(
 );
 
 export const addTransactionThunk = createAsyncThunk(
-  'contacts/add',
+  'transaction/add',
   async (transaction, thunkAPI) => {
     try {
       const { data } = await request.post('/api/transactions', transaction);
@@ -26,7 +26,7 @@ export const addTransactionThunk = createAsyncThunk(
   }
 );
 
-export const editTransactionThunk = createAsyncThunk("contacts/update", async (transaction, thunkAPI) => {   
+export const editTransactionThunk = createAsyncThunk("transaction/update", async (transaction, thunkAPI) => {   
 
   try {
         const { data } = await request.patch(`/api/transactions/${transaction.id}`, {
@@ -45,7 +45,7 @@ export const editTransactionThunk = createAsyncThunk("contacts/update", async (t
 });
 
 export const deleteTransactionsThunk = createAsyncThunk(
-  'contacts/delete',
+  'transaction/delete',
   async (id, thunkAPI) => {
     try {
       const { data } = await request.delete(`/api/transactions/${id}`);

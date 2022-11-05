@@ -20,7 +20,7 @@ const StatisticsPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
+// const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();

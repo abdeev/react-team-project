@@ -1,11 +1,11 @@
-// public String getOurDate() {
-// DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+// export const getOurDate = (data) => {
+// const format = new SimpleDateFormat(data); // data = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 // try {
-//     Date unformatedDate = format.parse(date);
-//     String formatedDate = new SimpleDateFormat("HH:mm dd.MM.yyyy").format(unformatedDate);
+//     const unformatedDate = format.parse(date);
+//     const formatedDate = new SimpleDateFormat("dd.MM.yyyy").format(unformatedDate);
 //     return formatedDate;
-//     }   catch (ParseException e){
-//             System.out.println("Error")
+//     } catch (error){
+//         console.log(error);
 //     }
 //     return date;
 // }
