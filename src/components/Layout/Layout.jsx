@@ -30,18 +30,13 @@ const Layout = () => {
   const userCurrentBalance = useSelector(selectUserBalance);
   const isToken = useSelector(selectUserToken);
 
-  console.log(isToken);
-
   useEffect(() => {
     if (!isToken) {
       redirect('/login');
     }
 
     if (isToken) {
-      console.log('in home redirect');
       location('/home');
-      // <Navigate to="/home" />;
-      console.log('in home redirect');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
