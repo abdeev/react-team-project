@@ -42,22 +42,22 @@ export const TransactionTableItem = ({
         className={css.transactionsTableRow_data}
         onClick={handleOpenEditModal}
       >
-        <td data-th="Date" className={css.tdl}>
+        <td data-th="Date" className={css.tableData_alStart}>
           {transactionDate}
         </td>
-        <td data-th="Type" className={css.tdc}>
+        <td data-th="Type" className={css.tableData_alCenter}>
           {type === 'EXPENSE' ? '-' : '+'}
         </td>
-        <td data-th="Category" className={css.tdl}>
+        <td data-th="Category" className={css.tableData_alStart}>
           {getNameByCategoryId(categoryId)}
         </td>
-        <td data-th="Comment" className={css.tdl}>
+        <td data-th="Comment" className={css.tableData_alStart}>
           {comment}
         </td>
-        <td data-th="Sum" className={css.tdr}>
+        <td data-th="Sum" className={css.tableData_alEnd}>
           {amount}
         </td>
-        <td data-th="Balance" className={css.tdr}>
+        <td data-th="Balance" className={css.tableData_alEnd}>
           {balanceAfter}
         </td>
       </tr>

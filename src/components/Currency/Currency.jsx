@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-
+import { useLocation } from 'react-router-dom';
 
 import useLocalStorage from "../../utils/useLocalStorage";
 import fetchExchangeRate from  '../../utils/CurrencyApi';
@@ -9,13 +9,16 @@ import Loader from "../Loader/Loader";
 import Vector from '../../icons/vector.svg';
 import styles from './Currency.module.css';
 
-const Currency2 = () => {
+const Currency = () => {
   const [requestData, setRequestData] = useLocalStorage("request", {
     currency: [],
     time: 0,
   });
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const location = useLocation();
+  const isDiagram = location.pathname === '/diagram';
 
   const prepareData = (data) => {
     const filteredData = data.filter(
@@ -50,16 +53,15 @@ const Currency2 = () => {
       }
     })();
   }, [countPastTime, requestData, setRequestData]);
-//поставити клас хідден на діаграму!
+
+
   return (
-  <div className={styles.currencyRatesPanel}>
-    <div className={styles.currencyHead} >      
+    <div className={`${styles.currencyRatesPanel} ${isDiagram ? '' : styles.hidden}`}>  
     <ul className={styles.currencyRatesHead} >
             <li>Currency</li>
             <li>Purchase</li>
             <li>Sale</li>
           </ul>
-    </div>
           <div className={styles.conteinerdata}>
       {loading ? (
         <div className={styles.loader}>
@@ -88,5 +90,5 @@ const Currency2 = () => {
     </div>
   );
 };
-export default Currency2;
+export default Currency;
 

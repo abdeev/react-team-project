@@ -9,18 +9,18 @@ import {
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 import PublicRoute from 'routes/PublicRoute';
 import PrivateRoute from 'routes/PrivateRoute';
-
+import Currency from './Currency/Currency';
 import Layout from './Layout/Layout';
 import Home from 'pages/Home/Home';
+import Loader from './Loader';
 
 // const Home = lazy(() => import('../pages/Home/Home'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-
 const StatisticsPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const PageNotFound = lazy(() => import('../pages/PageNotFound'));
+const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const App = () => {
   }, [isLoggedIn, usertoken, dispatch]);
 
   return (
-    <Suspense fallback={<p>Loading data...</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="login" element={<LoginPage />} />
@@ -45,6 +45,7 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
+            <Route path="diagram" element={<Currency />} />
           </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />

@@ -1,3 +1,34 @@
+@media screen and (max-width: 767px) {
+  .tableBody .transactionsTableRow_header .table_head__alStart,
+  .table_head__alCenter,
+  .table_head__alEnd {
+    display: none;
+  }
+
+  .table_head_alStart,
+  .table_head_alCenter,
+  .table_head_alEnd {
+    display: flex;
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    width: 300px;
+  }
+
+  .table_head_alStart[data-th]:before,
+  .table_head_alCenter[data-th]:before,
+  .table_head_alEnd[data-th]:before {
+    content: attr(data-th);
+    margin-right: auto;
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: start;
+  }
+}
+
 .transactionsTable {
   width: 100%;
   padding-top: 46px;
@@ -27,9 +58,4 @@
 .table_head__alEnd {
   padding: 15px 20px;
   text-align: end;
-}
-
-tr:not(:last-child):not(:first-child) {
-  border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }

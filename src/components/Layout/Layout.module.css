@@ -5,7 +5,6 @@
 }
 
 .layoutContainer {
-  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -62,6 +61,7 @@
 }
 
 .backdropFilter {
+  min-height: 100vh;
   background-color: rgba(230, 230, 230, 0.4);
   backdrop-filter: blur(25px);
 }
@@ -71,9 +71,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  /* background-color: rgba(230, 230, 230, 0.4);
-  backdrop-filter: blur(25px); */
 }
 
 .navMenuWrapper {
@@ -87,6 +84,11 @@
   border-right: 1px solid #e7e5f2;
   box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.05),
     1px 0px 0px rgba(255, 255, 255, 0.6);
+}
+
+.navMenuInnerWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .navItem {
@@ -166,3 +168,86 @@
   background-color: #20ba98;
 }
 /*  ====== // open modal button styles ===== */
+
+/* ======= TABLET STYLES ======= */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    width: 768px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .innerWrapper {
+    flex-direction: column;
+  }
+
+  .navMenuWrapper {
+    height: auto;
+    border-right: none;
+    box-shadow: none;
+
+    flex-direction: row;
+    justify-content: space-between;
+    width: 704px;
+    align-items: flex-end;
+
+    padding: 32px 0 20px;
+  }
+
+  .balance {
+    width: 336px;
+    margin: 0;
+  }
+
+  .navItem:last-child {
+    margin-bottom: 28px;
+  }
+
+  .outlets {
+    padding: 0 0 40px;
+  }
+}
+/* ====== // TABLET STYLES ====== */
+
+/* ======= MOBILE STYLES ======= */
+@media screen and (max-width: 767px) {
+  .container {
+    width: 320px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .innerWrapper {
+    flex-direction: column;
+  }
+
+  .layoutContainer {
+    background-image: none;
+  }
+
+  .navMenuWrapper {
+    height: auto;
+    width: 280px;
+    padding: 0;
+
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .navMenuInnerWrapper {
+    width: 280px;
+  }
+
+  .balance {
+    width: 280px;
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  .outlets {
+    width: 280px;
+    padding: 0;
+  }
+}
+
+/* ====== // MOBILE STYLES ====== */

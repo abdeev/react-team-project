@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div className={css.tableWrapper}>
       <table className={css.transactionsTable}>
-        <tbody>
+        <tbody className={css.tableBody}>
           <tr className={css.transactionsTableRow_header}>
             <th
               className={css.table_head__alStart}
