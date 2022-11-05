@@ -205,6 +205,9 @@
 }
 
 .input {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+
   width: 185px;
   padding: 8px 20px;
 
@@ -217,10 +220,6 @@
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
-}
-
-.input::placeholder {
-  color: #bdbdbd;
 }
 
 .react-select__menu {
@@ -239,6 +238,10 @@
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.inputAmount::placeholder {
+  color: #bdbdbd;
 }
 
 .inputError {
@@ -355,7 +358,6 @@
 
 .amountErrorMesage {
   position: absolute;
-  z-index: -1;
   color: #ff6596;
 
   font-family: 'Circe', sans-serif;

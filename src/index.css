@@ -55,11 +55,10 @@ code {
   line-height: 27px;
 }
 
-/* add Transaction */
+/* ============== add Transaction modal styles ================ 58 - 183 lines ==== */
 
 .custom-select__control {
   width: 410px !important;
-  /* max-height: 32px !important; */
   padding: 0px !important;
 
   font-family: 'Circe', sans-serif !important;
@@ -133,6 +132,9 @@ code {
 }
 
 .custom-select__option {
+  position: relative !important;
+  z-index: 1000 !important;
+
   font-family: 'Circe', sans-serif !important;
 
   font-weight: 400 !important;
@@ -144,7 +146,6 @@ code {
 
 .custom-select__option--is-selected {
   cursor: pointer !important;
-  /* font-weight: 700 !important; */
   background-color: rgba(255, 255, 255, 0.906) !important;
   color: #ff6596 !important;
 }
@@ -178,3 +179,5 @@ code {
     width: 280px !important;
   }
 }
+
+/* ============== // add Transaction modal styles ================ 58 - 183 lines ==== */
