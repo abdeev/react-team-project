@@ -35,11 +35,13 @@ export const TransactionTableItem = ({
       setShowEditModal(false);
     }
   };
+  const rowBorderColor =
+    type === 'EXPENSE' ? ` ${css.redBorder}` : ` ${css.greenBorder}`;
 
   return (
     <>
       <tr
-        className={css.transactionsTableRow_data}
+        className={`${css.transactionsTableRow_data} ${rowBorderColor}`}
         onClick={handleOpenEditModal}
       >
         <td data-th="Date" className={css.tableData_alStart}>

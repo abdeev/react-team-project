@@ -1,6 +1,15 @@
 @media screen and (max-width: 767px) {
-  .transactionsTableRow_data:last-child {
-    margin-bottom: 30px;
+  .transactionsTableRow_data {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: context-menu;
+  }
+  .transactionsTableRow_data:hover,
+  .transactionsTableRow_data:focus {
+    background-color: rgb(222, 222, 222);
   }
   .tableData_alStart,
   .tableData_alCenter,
@@ -12,7 +21,7 @@
     font-family: 'Circe';
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 27px;
     width: 280px;
   }
   .tableData_alStart:not(:last-child),
@@ -26,14 +35,16 @@
   .tableData_alEnd[data-th]:before {
     content: attr(data-th);
     margin-right: auto;
-
-    /* padding-top: 12px;
-    padding-left: 20px;
-    padding-bottom: 8px; */
     font-family: 'Circe';
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;
+  }
+  .redBorder {
+    border-left: 5px solid #ff6596;
+  }
+  .greenBorder {
+    border-left: 5px solid #24cca7;
   }
 }
 .transactionsTableRow_data {

@@ -5,11 +5,6 @@
   .table_head__alEnd {
     display: none;
   }
-  .transactionsTableRow_data {
-    background-color: #fff;
-    margin-bottom: 10px;
-  }
-
   .table_head_alStart,
   .table_head_alCenter,
   .table_head_alEnd {
