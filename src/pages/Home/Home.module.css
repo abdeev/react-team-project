@@ -4,13 +4,18 @@
   border: none;
   border-collapse: collapse;
 }
-.transactionsTable_head {
+.transactionsTableRow_header {
   background-color: #fff;
   cursor: pointer;
   border: hidden;
   border-radius: 50%;
   overflow: hidden;
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
 }
+
 .table_head__alStart {
   padding: 15px 20px;
   text-align: start;
