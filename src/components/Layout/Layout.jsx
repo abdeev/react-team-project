@@ -51,13 +51,12 @@ const Layout = () => {
       </div>
       <div className={css.innerWrapper}>
         <div className={css.navMenuWrapper}>
-{/*           <NavLink to="/home" className={css.navItem}>
+          <NavLink to="/home" className={css.navItem}>
             Home
           </NavLink>
           <NavLink to="/statistics" className={css.navItem}>
             Statistics
-          </NavLink> */}
-          <Navigation/>
+          </NavLink>
 
           <div className={css.balance}>
             Your balance{' '}
@@ -65,8 +64,10 @@ const Layout = () => {
               ${userCurrentBalance?.toLocaleString()}
             </span>
           </div>
+
           <Currency />
         </div>
+
         <div className={css.outlets}>
           <Outlet />
         </div>

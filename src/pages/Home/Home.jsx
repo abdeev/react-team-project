@@ -1,53 +1,135 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  selectIsLoggedIn,
-  selectUserToken,
-} from 'redux/authorization/selectorsAuth';
+import { selectUserToken } from 'redux/authorization/selectorsAuth';
 import { getCategoriesThunk } from 'redux/categories/thunkCategories';
+import { selectCategories } from 'redux/categories/selectCategories';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
 import { getTransactionsThunk } from 'redux/transactions/thunksTransactions';
-// import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
-// import { StatisticsTable } from 'components/Statistics/StatisticsTable/StatisticsTable';
+
 import { TransactionTableItem } from 'components/TransactionTableItem/TransactionTableItem';
-// import { showModal } from 'redux/modal/modalSlice';
+
+import {
+  SortDefault,
+  SortByDate,
+  SortByType,
+  SortByCategory,
+  SortByComment,
+  SortBySum,
+  SortByBalance,
+} from './sortTransactions';
 
 import css from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const usertoken = useSelector(selectUserToken);
-
   const userTransactions = useSelector(selectTransactions);
+  const transactionsCategories = useSelector(selectCategories);
+
+  const [sortByDate, setSortByDate] = useState(true);
+  const [sortByType, setSortByType] = useState(true);
+  const [sortByCategory, setSortByCategory] = useState(true);
+  const [sortByComment, setSortByComment] = useState(true);
+  const [sortBySum, setSortBySum] = useState(true);
+  const [sortByBalance, setSortByBalance] = useState(true);
+
+  const [sortTransactions, setSortTransactions] = useState([]);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      return;
-    }
+    setSortTransactions(SortDefault(userTransactions));
+  }, [userTransactions]);
+
+  useEffect(() => {
     dispatch(getCategoriesThunk());
     dispatch(getTransactionsThunk());
-  }, [isLoggedIn, usertoken, dispatch]);
+  }, [usertoken, dispatch]);
 
   return (
     <div className={css.tableWrapper}>
-      <table border="1">
-        <caption>Transactions table</caption>
+      <table className={css.transactionsTable}>
         <thead>
-          <tr>
-            <th className={css.thl}>Date</th>
-            <th className={css.thc}>Type</th>
-            <th className={css.thl}>Category</th>
-            <th className={css.thl}>Comment</th>
-            <th className={css.thr}>Sum</th>
-            <th className={css.thr}>Balance</th>
+          <tr className={css.transactionsTable_head}>
+            <th
+              className={css.table_head__alStart}
+              onClick={() =>
+                setSortTransactions(
+                  SortByDate(userTransactions, sortByDate, setSortByDate)
+                )
+              }
+            >
+              Date
+            </th>
+            <th
+              className={css.table_head__alCenter}
+              onClick={() =>
+                setSortTransactions(
+                  SortByType(userTransactions, sortByType, setSortByType)
+                )
+              }
+            >
+              Type
+            </th>
+            <th
+              className={css.table_head__alStart}
+              onClick={() =>
+                setSortTransactions(
+                  SortByCategory(
+                    userTransactions,
+                    transactionsCategories,
+                    sortByCategory,
+                    setSortByCategory
+                  )
+                )
+              }
+            >
+              Category
+            </th>
+            <th
+              className={css.table_head__alStart}
+              onClick={() =>
+                setSortTransactions(
+                  SortByComment(
+                    userTransactions,
+                    sortByComment,
+                    setSortByComment
+                  )
+                )
+              }
+            >
+              Comment
+            </th>
+            <th
+              className={css.table_head__alEnd}
+              onClick={() =>
+                setSortTransactions(
+                  SortBySum(userTransactions, sortBySum, setSortBySum)
+                )
+              }
+            >
+              Sum
+            </th>
+            <th
+              className={css.table_head__alEnd}
+              onClick={() =>
+                setSortTransactions(
+                  SortByBalance(
+                    userTransactions,
+                    sortByBalance,
+                    setSortByBalance
+                  )
+                )
+              }
+            >
+              Balance
+            </th>
           </tr>
         </thead>
         <tbody>
           {!!userTransactions.length &&
-            userTransactions.map(transaction => (
+            sortTransactions.map(transaction => (
               <TransactionTableItem
+                className={css.transactionTableRow}
                 key={transaction.id}
                 transaction={transaction}
               />

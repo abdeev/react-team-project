@@ -21,30 +21,31 @@ export const StatisticsDiagram = ({ diagram }) => {
 
   return (
     <div className={s.diagram_container}>
+      <p className={s.diagram_text}> ₴ {periodTotal}</p>
       <div className={s.diagram_box}>
         <Doughnut
           options={donutOptions}
           data={diagram}
-          plugins={[
-            {
-              beforeDraw(chart) {
-                const { width } = chart;
-                const { height } = chart;
-                const { ctx } = chart;
-                ctx.restore();
-                const fontSize = (height / 200).toFixed(2);
-                ctx.font = ` ${fontSize}em circle`;
-                ctx.textBaseline = 'top';
-                const text = `₴ ${periodTotal}`;
-                const textX = Math.round(
-                  (width - ctx.measureText(text).width) / 2
-                );
-                const textY = height / 2.1;
-                ctx.fillText(text, textX, textY);
-                ctx.save();
-              },
-            },
-          ]}
+          // plugins={[
+          //   {
+          //     beforeDraw(chart) {
+          //       const { width } = chart;
+          //       const { height } = chart;
+          //       const { ctx } = chart;
+          //       ctx.restore();
+          //       const fontSize = (height / 200).toFixed(2);
+          //       ctx.font = ` ${fontSize}em circle`;
+          //       ctx.textBaseline = 'top';
+          //       const text = `₴ ${periodTotal}`;
+          //       const textX = Math.round(
+          //         (width - ctx.measureText(text).width) / 2
+          //       );
+          //       const textY = height / 2.1;
+          //       ctx.fillText(text, textX, textY);
+          //       ctx.save();
+          //     },
+          //   },
+          // ]}
         />
       </div>
     </div>

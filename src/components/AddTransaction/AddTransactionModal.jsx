@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { showModal } from 'redux/modal/modalSlice';
-import { addTransactionThunk } from 'redux/transactions/thunksTransactions';
+import {
+  getTransactionsThunk,
+  addTransactionThunk,
+} from 'redux/transactions/thunksTransactions';
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
@@ -20,10 +23,9 @@ import { addTransactionSchema } from 'validation/addTransactionSchema';
 
 import { selectIsModalOpen } from 'redux/modal/selectorsModal';
 
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
 import css from './AddTransactionModal.module.css';
 import { Notify } from 'notiflix';
+import { RiCalendar2Fill } from 'react-icons/ri';
 
 const AddTransactionModal = () => {
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
@@ -62,7 +64,8 @@ const AddTransactionModal = () => {
         })
         .catch(() => {
           Notify.failure('Oops! Smth went wrong, try again');
-        });
+        })
+        .finally(dispatch(getTransactionsThunk()));
     }
 
     if (!values.isExpenseChecked) {
@@ -84,7 +87,8 @@ const AddTransactionModal = () => {
         })
         .catch(() => {
           Notify.failure('Oops! Smth went wrong, try again');
-        });
+        })
+        .finally(dispatch(getTransactionsThunk()));
     }
   };
 
@@ -152,6 +156,7 @@ const AddTransactionModal = () => {
                     </div>
                     <div className={css.datepickerWrapper}>
                       <DatePickerField name="startDate" />
+                      <RiCalendar2Fill className={css.datepickerIcon} />
                     </div>
                   </div>
 

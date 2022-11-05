@@ -20,49 +20,59 @@
   animation-name: fade-in;
   animation-duration: 0.3s;
 }
+
 .selectWrapper {
   animation: ease-in-out both;
   animation-name: fade-in;
   animation-duration: 0.3s;
 }
+
 .selectWrapperOut {
   pointer-events: none;
   animation: ease-in-out both;
   animation-name: fade-out;
   animation-duration: 0.3s;
 }
+
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
     scale: 0.98;
   }
+
   100% {
     opacity: 1;
     scale: 1;
   }
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
     scale: 0.98;
   }
+
   100% {
     opacity: 1;
     scale: 1;
   }
 }
+
 @-webkit-keyframes fade-out {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
+
 @keyframes fade-out {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -170,6 +180,7 @@
 
   transition: 300ms;
 }
+
 .toggle input:checked ~ .incomeSpan {
   color: #e0e0e0;
 }
@@ -183,6 +194,7 @@
   color: #e0e0e0;
   transition: 300ms;
 }
+
 .toggle input:checked ~ .expenseSpan {
   color: #ff6596;
 }
@@ -206,14 +218,13 @@
 
 .input {
   width: 185px;
-  padding: 8px 20px;
+  padding: 8px;
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  /* text-align: center; */
-  cursor: pointer;
+  text-align: center;
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -248,24 +259,10 @@
 }
 
 .datepickerWrapper {
-  position: relative;
   max-width: 195px;
   color: rgb(15, 15, 15);
 }
 
-.datepickerIcon {
-  position: absolute;
-  right: 10px;
-  bottom: 12px;
-
-  width: 24px;
-  height: 24px;
-
-  fill: #4a56e2;
-
-  pointer-events: none;
-  cursor: pointer;
-}
 .comment {
   display: block;
   width: 394px;
@@ -291,7 +288,8 @@
   border-bottom: 1px solid #ff6596;
 }
 
-.submitBtn {
+.submitBtn,
+.deleteBtn {
   margin-top: 40px;
   margin-bottom: 20px;
 
@@ -311,10 +309,16 @@
   border: none;
   border-radius: 20px;
   transition: 250ms;
+  cursor: pointer;
 }
 
-.submitBtn:hover {
-  background: #20b797;
+.submitBtn:hover,
+.deleteBtn:hover {
+  background: #FF6596;;
+}
+
+.deleteBtn {
+  background: #fc0000;;
 }
 
 .cancelBtn {
@@ -342,6 +346,7 @@
   border: 1px solid #3b45ae;
 }
 
+
 /* ========= formik ========== */
 
 .errorMessage {
@@ -364,55 +369,5 @@
   /* left: 3px;
   bottom: -20px; */
 }
+
 /* ========= //formik ========== */
-
-@media screen and (max-width: 425px) {
-  .modal {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    transform: translate(0%, 0%);
-
-    width: auto;
-    height: auto;
-
-    padding: 20px;
-    border-radius: 0;
-
-    /* background-color: rgb(242, 202, 202); */
-  }
-
-  .title {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  .inputsWrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-
-  .input {
-    width: 280px;
-  }
-
-  .inputAmount {
-    width: 280px;
-  }
-
-  .datepickerWrapper {
-    max-width: none;
-  }
-
-  .comment {
-    width: 280px;
-
-    margin: 0 auto;
-  }
-
-  .errorMessage {
-    left: 10px;
-  }
-}

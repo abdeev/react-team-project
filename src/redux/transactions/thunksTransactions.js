@@ -26,21 +26,23 @@ export const addTransactionThunk = createAsyncThunk(
   }
 );
 
-export const editTransactionThunk = createAsyncThunk(
-  'contacts/update',
-  async (transaction, thunkAPI) => {
-    try {
-      const { data } = await request.patch(
-        `/api/transactions/${transaction.id}`,
-        { name: transaction.name, number: transaction.number }
-      );
-      console.log(data);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+export const editTransactionThunk = createAsyncThunk("contacts/update", async (transaction, thunkAPI) => {   
+
+  try {
+        const { data } = await request.patch(`/api/transactions/${transaction.id}`, {
+            amount: transaction.amount,
+            categoryId: transaction.categoryId,
+            transactionDate: transaction.transactionDate,
+            type: transaction.type,
+            comment: transaction.comment,
+        });
+        console.log(data);
+        return data;
     }
-  }
-);
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
 
 export const deleteTransactionsThunk = createAsyncThunk(
   'contacts/delete',

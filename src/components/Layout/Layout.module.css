@@ -1,10 +1,11 @@
 .container {
+  width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
 .layoutContainer {
-  width: 100vw;
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -60,14 +61,19 @@
   line-height: 27px;
 }
 
+.backdropFilter {
+  background-color: rgba(230, 230, 230, 0.4);
+  backdrop-filter: blur(25px);
+}
+
 .innerWrapper {
   padding-top: 80px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 
-  background-color: rgba(230, 230, 230, 0.4);
-  backdrop-filter: blur(25px);
+  /* background-color: rgba(230, 230, 230, 0.4);
+  backdrop-filter: blur(25px); */
 }
 
 .navMenuWrapper {
