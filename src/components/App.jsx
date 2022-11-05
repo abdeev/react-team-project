@@ -47,7 +47,7 @@ export const App = () => {
             <Route path="diagram" element={<Currency />} />
           </Route>
         </Route>
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );
