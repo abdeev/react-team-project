@@ -6,6 +6,7 @@ import { selectCategories } from 'redux/categories/selectCategories';
 import EditTransactionModal from 'components/EditTransactionModal/EditTransactionModal';
 
 import css from './TransactionTableItem.module.css';
+import { formatDate } from 'utils/Converters';
 
 export const TransactionTableItem = ({
   transaction: {
@@ -41,15 +42,25 @@ export const TransactionTableItem = ({
       setShowEditModal(false);
     }
   };
+  const rowBorderColor =
+    type === 'EXPENSE' ? ` ${css.redBorder}` : ` ${css.greenBorder}`;
+  const rowSumColor =
+    type === 'EXPENSE' ? ` ${css.redSum}` : ` ${css.greenSum}`;
 
   return (
     <>
       <tr
-        className={css.transactionsTableRow_data}
+        className={`${css.transactionsTableRow_data} ${rowBorderColor}`}
         onClick={handleOpenEditModal}
       >
         <td data-th="Date" className={css.tableData_alStart}>
+
           {formatDate}
+          /*  {
+            formatDate(transactionDate)
+            /* {transactionDate.split('-').reverse().join('-').replaceAll('-', '.')} */
+          } */
+          
         </td>
         <td data-th="Type" className={css.tableData_alCenter}>
           {type === 'EXPENSE' ? '-' : '+'}
@@ -60,7 +71,7 @@ export const TransactionTableItem = ({
         <td data-th="Comment" className={css.tableData_alStart}>
           {comment}
         </td>
-        <td data-th="Sum" className={css.tableData_alEnd}>
+        <td data-th="Sum" className={`${css.tableData_alEnd} ${rowSumColor}`}>
           {amount}
         </td>
         <td data-th="Balance" className={css.tableData_alEnd}>

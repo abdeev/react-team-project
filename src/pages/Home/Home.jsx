@@ -51,7 +51,7 @@ const Home = () => {
         <tbody className={css.tableBody}>
           <tr className={css.transactionsTableRow_header}>
             <th
-              className={css.table_head__alStart}
+              className={`${css.table_head__alStart} ${css.tableHeaderDate}`}
               onClick={() =>
                 setSortTransactions(
                   SortByDate(userTransactions, sortByDate, setSortByDate)
@@ -61,7 +61,7 @@ const Home = () => {
               Date
             </th>
             <th
-              className={css.table_head__alCenter}
+              className={`${css.table_head__alCenter} ${css.tableHeaderType}`}
               onClick={() =>
                 setSortTransactions(
                   SortByType(userTransactions, sortByType, setSortByType)
@@ -71,7 +71,7 @@ const Home = () => {
               Type
             </th>
             <th
-              className={css.table_head__alStart}
+              className={`${css.table_head__alStart} ${css.tableHeaderCategory}`}
               onClick={() =>
                 setSortTransactions(
                   SortByCategory(
@@ -86,7 +86,7 @@ const Home = () => {
               Category
             </th>
             <th
-              className={css.table_head__alStart}
+              className={`${css.table_head__alStart} ${css.tableHeaderComment}`}
               onClick={() =>
                 setSortTransactions(
                   SortByComment(
@@ -100,7 +100,7 @@ const Home = () => {
               Comment
             </th>
             <th
-              className={css.table_head__alEnd}
+              className={`${css.table_head__alEnd} ${css.tableHeaderSum}`}
               onClick={() =>
                 setSortTransactions(
                   SortBySum(userTransactions, sortBySum, setSortBySum)
@@ -110,7 +110,7 @@ const Home = () => {
               Sum
             </th>
             <th
-              className={css.table_head__alEnd}
+              className={`${css.table_head__alEnd} ${css.tableHeaderBalance}`}
               onClick={() =>
                 setSortTransactions(
                   SortByBalance(

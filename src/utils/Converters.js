@@ -31,10 +31,17 @@ export const convertDataForChart = rawData => {
           data: data,
           backgroundColor: backgroundColor,
           borderWidth: 0,
-          radius: 144,
         },
       ],
     },
     table,
   };
+};
+export const formatDate = inputedDate => {
+  const datePart = inputedDate.match(/\d+/g),
+    year = datePart[0].substring(2), // get only two digits
+    month = datePart[1],
+    day = datePart[2];
+
+  return day + '.' + month + '.' + year;
 };

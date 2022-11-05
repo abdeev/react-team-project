@@ -12,6 +12,7 @@ import PrivateRoute from 'routes/PrivateRoute';
 import Currency from './Currency/Currency';
 import Layout from './Layout/Layout';
 import Home from 'pages/Home/Home';
+import Loader from './Loader';
 
 // const Home = lazy(() => import('../pages/Home/Home'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -33,7 +34,7 @@ export const App = () => {
   }, [isLoggedIn, usertoken, dispatch]);
 
   return (
-    <Suspense fallback={<p>Loading data...</p>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="login" element={<LoginPage />} />
@@ -47,7 +48,7 @@ export const App = () => {
             <Route path="diagram" element={<Currency />} />
           </Route>
         </Route>
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>
   );

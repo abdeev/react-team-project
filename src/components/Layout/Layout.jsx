@@ -1,8 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  // Navigate,
+  Outlet,
+  redirect,
+  useNavigate,
+} from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
+  selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
@@ -14,12 +21,30 @@ import { showModal } from 'redux/modal/modalSlice';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 
 import Navigation from 'components/Navigation/Navigation';
+import { useEffect } from 'react';
 
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
+  const isToken = useSelector(selectUserToken);
+
+  console.log(isToken);
+
+  useEffect(() => {
+    if (!isToken) {
+      redirect('/login');
+    }
+
+    if (isToken) {
+      console.log('in home redirect');
+      location('/home');
+      // <Navigate to="/home" />;
+      console.log('in home redirect');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isToken]);
 
   const handleLogout = () => {
     dispatch(logOutThunk());
@@ -55,14 +80,6 @@ const Layout = () => {
             <div className={css.navMenuWrapper}>
               <div className={css.navMenuInnerWrapper}>
                 <Navigation />
-                {/* <ul>
-                  <li className={css.navItem}>
-                    <NavLink to="/home">Home</NavLink>
-                  </li>
-                  <li className={css.navItem}>
-                    <NavLink to="/statistics">Statistics</NavLink>
-                  </li>
-                </ul> */}
                 <div className={css.balance}>
                   Your balance{' '}
                   <span className={css.balanceAmount}>
