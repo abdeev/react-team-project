@@ -28,34 +28,48 @@
     text-align: start;
   }
 }
+@media screen and (min-width: 768px) {
+  .transactionsTable {
+    width: 100%;
+    padding-top: 46px;
+    border: none;
+    border-collapse: collapse;
+  }
+  .transactionsTableRow_header {
+    padding: 15px 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    border: hidden;
+    overflow: hidden;
+    font-family: 'Circe';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    cursor: pointer;
+  }
 
-.transactionsTable {
-  width: 100%;
-  padding-top: 46px;
-  border: none;
-  border-collapse: collapse;
-}
-.transactionsTableRow_header {
-  background-color: #fff;
-  border-radius: 30px;
-  border: hidden;
-  overflow: hidden;
-  font-family: 'Circe';
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-  cursor: pointer;
-}
-
-.table_head__alStart {
-  padding: 15px 20px;
-  text-align: start;
-}
-.table_head__alCenter {
-  padding: 15px 45px;
-  text-align: center;
-}
-.table_head__alEnd {
-  padding: 15px 20px;
-  text-align: end;
+  .table_head__alStart {
+    text-align: start;
+  }
+  .table_head__alCenter {
+    text-align: center;
+  }
+  .table_head__alEnd {
+    text-align: end;
+  }
+  .table_head__alStart,
+  .table_head__alCenter,
+  .table_head__alEnd {
+    padding: 15px 0;
+  }
+  .tableHeaderBalance {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-right: 20px;
+  }
+  .tableHeaderDate {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-left: 20px;
+  }
 }

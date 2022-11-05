@@ -1,3 +1,11 @@
+.greenSum {
+  font-weight: 700;
+  color: #24cca7;
+}
+.redSum {
+  font-weight: 700;
+  color: #ff6596;
+}
 /* ============MOBILE STYLES========= */
 @media screen and (max-width: 767px) {
   .transactionsTableRow_data {
@@ -54,7 +62,7 @@
 
 /* ============TABLET STYLES========= */
 
-@media screen and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .transactionsTableRow_data {
     font-family: 'Circe';
     font-weight: 400;
@@ -80,11 +88,5 @@
 /* ============TABLET STYLES========= */
 
 /* ============DESKTOP STYLES========= */
-.greenSum {
-  font-weight: 700;
-  color: #24cca7;
-}
-.redSum {
-  font-weight: 700;
-  color: #ff6596;
+@media screen and (min-width: 1280px) {
 }
