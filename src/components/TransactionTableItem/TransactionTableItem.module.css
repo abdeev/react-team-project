@@ -1,13 +1,24 @@
 @media screen and (max-width: 767px) {
+  .transactionsTableRow_data:last-child {
+    margin-bottom: 30px;
+  }
   .tableData_alStart,
   .tableData_alCenter,
   .tableData_alEnd {
     display: flex;
+    padding: 12px 20px 8px 0px;
+    border-bottom: 1px solid #dcdcdf;
+    overflow: hidden;
     font-family: 'Circe';
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    width: 300px;
+    width: 280px;
+  }
+  .tableData_alStart:not(:last-child),
+  .tableData_alCenter:not(:last-child),
+  .tableData_alEnd:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
   }
 
   .tableData_alStart[data-th]:before,
@@ -15,11 +26,14 @@
   .tableData_alEnd[data-th]:before {
     content: attr(data-th);
     margin-right: auto;
+
+    /* padding-top: 12px;
+    padding-left: 20px;
+    padding-bottom: 8px; */
     font-family: 'Circe';
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;
-    text-align: start;
   }
 }
 .transactionsTableRow_data {
