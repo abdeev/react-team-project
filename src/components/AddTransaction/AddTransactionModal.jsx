@@ -26,6 +26,7 @@ import { selectIsModalOpen } from 'redux/modal/selectorsModal';
 import css from './AddTransactionModal.module.css';
 import { Notify } from 'notiflix';
 import { RiCalendar2Fill } from 'react-icons/ri';
+import Loader from 'components/Loader';
 
 const AddTransactionModal = () => {
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
@@ -102,11 +103,9 @@ const AddTransactionModal = () => {
               className={css.closingCross}
               onClick={handleModalCloseClick}
             ></button>
-
             <div>
               <h1 className={css.title}>Add transaction</h1>
             </div>
-
             <Formik
               initialValues={{
                 comment: '',
@@ -185,6 +184,7 @@ const AddTransactionModal = () => {
               CANCEL
             </button>
           </div>
+          {isLoading && <Loader />}
         </ModalBackdrop>
       )}
     </div>
