@@ -1,3 +1,32 @@
-.text_notFound {
+.NotFound_container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  padding: 15px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  font-family: 'Circe';
+  line-height: 27px;
+  text-align: center;
+}
+.NotFound_text {
+  font-size: 20px;
   font-weight: 700;
+}
+.NotFound_button {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #152098;
+  border-radius: 15px;
+
+  color: #fff;
+  background-color: #4a56e2;
+  cursor: pointer;
+  font-family: 'Circe';
+  line-height: 27px;
+}
+.NotFound_button:hover,
+.NotFound_button:focus {
+  scale: 1.05;
 }

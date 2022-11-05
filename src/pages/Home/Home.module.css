@@ -59,6 +59,3 @@
   padding: 15px 20px;
   text-align: end;
 }
-
-.transactionsTableRow_header:not(:last-child):not(:first-child) {
-}
