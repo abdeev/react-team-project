@@ -53,7 +53,10 @@ export const TransactionTableItem = ({
         className={`${css.transactionsTableRow_data} ${rowBorderColor}`}
         onClick={handleOpenEditModal}
       >
-        <td data-th="Date" className={css.tableData_alStart}>
+        <td
+          data-th="Date"
+          className={`${css.tableData_alStart} ${css.tableDataDate}`}
+        >
           {formatDate(transactionDate)}
         </td>
         <td data-th="Type" className={css.tableData_alCenter}>
@@ -68,8 +71,11 @@ export const TransactionTableItem = ({
         <td data-th="Sum" className={`${css.tableData_alEnd} ${rowSumColor}`}>
           {amount}
         </td>
-        <td data-th="Balance" className={css.tableData_alEnd}>
-          {balanceAfter}
+        <td
+          data-th="Balance"
+          className={`${css.tableData_alEnd} ${css.tableDataBalance}`}
+        >
+          {balanceAfter.toFixed(2)}
         </td>
       </tr>
 

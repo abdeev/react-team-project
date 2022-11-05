@@ -47,7 +47,7 @@
     line-height: 27px;
     cursor: pointer;
   }
-  
+
   .table_head__alStart {
     text-align: start;
   }
@@ -67,10 +67,21 @@
     border-bottom-right-radius: 30px;
     padding-right: 20px;
   }
+  .tableHeaderType {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+
   .tableHeaderDate {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     padding-left: 20px;
   }
-
+}
+/* ============DESKTOP STYLES========= */
+@media screen and (min-width: 1280px) {
+  .transactionsTable {
+    table-layout: fixed;
+    margin-top: 46px;
+  }
 }

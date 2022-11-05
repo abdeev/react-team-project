@@ -73,6 +73,15 @@
     border-bottom: 1px solid #dcdcdf;
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
   }
+  .tableDataBalance {
+    padding-right: 20px;
+  }
+  .tableDataDate {
+    width: fit-content;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+  }
   .tableData_alStart {
     text-align: start;
   }
