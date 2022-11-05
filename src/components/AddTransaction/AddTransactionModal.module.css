@@ -76,6 +76,7 @@
   height: 17px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   background-image: url(../../../assets/modal-cross.svg);
   background-repeat: no-repeat;
@@ -95,6 +96,8 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
+
+  cursor: default;
 }
 
 /* ======== toggle styles ========== */
@@ -169,6 +172,8 @@
   line-height: 24px;
 
   transition: 300ms;
+
+  cursor: default;
 }
 .toggle input:checked ~ .incomeSpan {
   color: #e0e0e0;
@@ -182,6 +187,8 @@
 
   color: #e0e0e0;
   transition: 300ms;
+
+  cursor: default;
 }
 .toggle input:checked ~ .expenseSpan {
   color: #ff6596;
@@ -308,6 +315,7 @@
   line-height: 27px;
   text-align: center;
   letter-spacing: 0.1em;
+  cursor: pointer;
 
   color: #fff;
   background: #24cca7;
@@ -331,6 +339,7 @@
   line-height: 27px;
   text-align: center;
   letter-spacing: 0.1em;
+  cursor: pointer;
 
   color: #4a56e2;
   background: #ffffff;
