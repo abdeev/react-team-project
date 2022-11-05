@@ -13,6 +13,8 @@ import Currency from 'components/Currency/Currency';
 import { showModal } from 'redux/modal/modalSlice';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 
+import Navigation from 'components/Navigation/Navigation';
+
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useNavigate();
@@ -68,14 +70,11 @@ const Layout = () => {
                   </span>
                 </div>
               </div>
+          <Currency />
+        </div>
 
-              <Currency />
-            </div>
-
-            <div className={css.outlets}>
-              <Outlet />
-            </div>
-          </div>
+        <div className={css.outlets}>
+          <Outlet />
         </div>
       </div>
 

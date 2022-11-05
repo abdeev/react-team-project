@@ -9,13 +9,12 @@ import {
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 import PublicRoute from 'routes/PublicRoute';
 import PrivateRoute from 'routes/PrivateRoute';
-
+import Currency from './Currency/Currency';
 import Layout from './Layout/Layout';
 import Home from 'pages/Home/Home';
 
 // const Home = lazy(() => import('../pages/Home/Home'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-
 const StatisticsPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
@@ -45,6 +44,7 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
+            <Route path ="diagram" element={<Currency/>}/>
           </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />
