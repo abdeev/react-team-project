@@ -1,10 +1,7 @@
 @media screen and (max-width: 767px) {
-  tbody tr th {
-    display: none;
-  }
-
-  td,
-  th {
+  .tableData_alStart,
+  .tableData_alCenter,
+  .tableData_alEnd {
     display: flex;
     font-family: 'Circe';
     font-weight: 400;
@@ -13,7 +10,9 @@
     width: 300px;
   }
 
-  td[data-th]:before {
+  .tableData_alStart[data-th]:before,
+  .tableData_alCenter[data-th]:before,
+  .tableData_alEnd[data-th]:before {
     content: attr(data-th);
     margin-right: auto;
     font-family: 'Circe';
@@ -29,14 +28,18 @@
   font-size: 16px;
   line-height: 24px;
 }
-.tdl {
+.transactionsTableRow_data:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+.tableData_alStart {
   text-align: start;
 }
 
-.tdc {
+.tableData_alCenter {
   text-align: center;
 }
 
-.tdr {
+.tableData_alEnd {
   text-align: end;
 }

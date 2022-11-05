@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
@@ -54,15 +54,15 @@ const Layout = () => {
           <div className={css.innerWrapper}>
             <div className={css.navMenuWrapper}>
               <div className={css.navMenuInnerWrapper}>
-                <ul>
+                <Navigation />
+                {/* <ul>
                   <li className={css.navItem}>
                     <NavLink to="/home">Home</NavLink>
                   </li>
                   <li className={css.navItem}>
                     <NavLink to="/statistics">Statistics</NavLink>
                   </li>
-                </ul>
-
+                </ul> */}
                 <div className={css.balance}>
                   Your balance{' '}
                   <span className={css.balanceAmount}>
@@ -70,11 +70,12 @@ const Layout = () => {
                   </span>
                 </div>
               </div>
-          <Currency />
-        </div>
-
-        <div className={css.outlets}>
-          <Outlet />
+              <Currency />
+            </div>
+            <div className={css.outlets}>
+              <Outlet />
+            </div>
+          </div>
         </div>
       </div>
 

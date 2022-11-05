@@ -19,7 +19,7 @@ const StatisticsPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
 );
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const PageNotFound = lazy(() => import('../pages/PageNotFound'));
+const PageNotFound = lazy(() => import('../pages/PageNotFound/PageNotFound'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,10 +44,10 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
-            <Route path ="diagram" element={<Currency/>}/>
+            <Route path="diagram" element={<Currency />} />
           </Route>
         </Route>
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </Suspense>
   );
