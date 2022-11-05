@@ -51,18 +51,22 @@ const Layout = () => {
         <div className={css.container}>
           <div className={css.innerWrapper}>
             <div className={css.navMenuWrapper}>
-              <NavLink to="/home" className={css.navItem}>
-                Home
-              </NavLink>
-              <NavLink to="/statistics" className={css.navItem}>
-                Statistics
-              </NavLink>
+              <div className={css.navMenuInnerWrapper}>
+                <ul>
+                  <li className={css.navItem}>
+                    <NavLink to="/home">Home</NavLink>
+                  </li>
+                  <li className={css.navItem}>
+                    <NavLink to="/statistics">Statistics</NavLink>
+                  </li>
+                </ul>
 
-              <div className={css.balance}>
-                Your balance{' '}
-                <span className={css.balanceAmount}>
-                  ${userCurrentBalance?.toLocaleString()}
-                </span>
+                <div className={css.balance}>
+                  Your balance{' '}
+                  <span className={css.balanceAmount}>
+                    ${userCurrentBalance?.toLocaleString()}
+                  </span>
+                </div>
               </div>
 
               <Currency />
