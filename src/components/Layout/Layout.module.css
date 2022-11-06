@@ -207,6 +207,8 @@
     padding: 0 0 40px;
   }
 }
+
+
 /* ====== // TABLET STYLES ====== */
 
 /* ======= MOBILE STYLES ======= */
@@ -251,3 +253,10 @@
 }
 
 /* ====== // MOBILE STYLES ====== */
+
+
+/* @media screen and (max-width: 767px) {
+}
+.currencyHidden {
+  display: none;
+} */

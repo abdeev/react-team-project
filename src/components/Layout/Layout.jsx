@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   Link,
   // Navigate,
@@ -14,7 +15,7 @@ import {
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
-
+import styles from '../Currency/Currency.module.css';
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
 import { showModal } from 'redux/modal/modalSlice';
@@ -29,6 +30,8 @@ const Layout = () => {
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
   const isToken = useSelector(selectUserToken);
+  const locationcurrency = useLocation();
+  const isHome = locationcurrency.pathname === "/home";
 
   useEffect(() => {
     if (!isToken) {
@@ -75,7 +78,7 @@ const Layout = () => {
             <div className={css.navMenuWrapper}>
               <div className={css.navMenuInnerWrapper}>
                 <Navigation />
-                <div className={css.balance}>
+                <div className={` ${css.balance} ${isHome ? " ": styles.hidden}`}>
                   Your balance{' '}
                   <span className={css.balanceAmount}>
                     ${userCurrentBalance?.toLocaleString()}
