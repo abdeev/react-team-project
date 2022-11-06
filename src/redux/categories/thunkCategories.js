@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { request, setToken } from 'redux/services/axiosConfig';
 
 export const getCategoriesThunk = createAsyncThunk(
-  'transaction/categories',
+  'transactions/categories',
   async (_, thunkAPI) => {
     const userToken = thunkAPI.getState().authorization.userToken;
 

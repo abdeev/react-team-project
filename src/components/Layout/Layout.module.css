@@ -1,5 +1,5 @@
 .container {
-  width: 1280px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -158,6 +158,16 @@
 .outlets {
   padding: 0 16px 0 69px;
 }
+@media screen and (min-width: 768px) and(max-width:1280) {
+  .outlets {
+    padding: 0 32px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .outlets {
+    padding: 0 20px;
+  }
+}
 
 /* ==== open modal button styles ==== */
 
@@ -224,6 +234,8 @@
     padding: 0 0 40px;
   }
 }
+
+
 /* ====== // TABLET STYLES ====== */
 
 /* ======= MOBILE STYLES ======= */
@@ -268,3 +280,10 @@
 }
 
 /* ====== // MOBILE STYLES ====== */
+
+
+/* @media screen and (max-width: 767px) {
+}
+.currencyHidden {
+  display: none;
+} */

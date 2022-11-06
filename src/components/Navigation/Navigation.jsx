@@ -54,7 +54,7 @@ export default function Navigation() {
             <NavLink to="/diagram" className={style.curren}>
               <Dollarsvg
                 className={`${style.curren__svg} ${
-                  pathname === '/diagram' ? style.activ : ''
+                  pathname === "/diagram" ? style.activ : ''
                 }`}
               />
             </NavLink>

@@ -45,7 +45,11 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
-            <Route path="diagram" element={<Currency />} />
+            <Route path="diagram" element={
+                    <PrivateRoute redirectTo="/home">
+                     <Currency/>
+                    </PrivateRoute>
+                  } />
           </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />

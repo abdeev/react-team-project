@@ -10,8 +10,12 @@ const statisticsSlice = createSlice({
     periodTotal: 0,
     year: 0,
     month: 0,
+    isLoading: false,
   },
   extraReducers: {
+    [getStatisticsUserThunk.pending](state, action) {
+      state.isLoading = true;
+    },
     [getStatisticsUserThunk.fulfilled](state, action) {
       state.categoriesSummary = action.payload.categoriesSummary;
       state.incomeSummary = action.payload.incomeSummary;
@@ -19,6 +23,10 @@ const statisticsSlice = createSlice({
       state.periodTotal = action.payload.periodTotal;
       state.year = action.payload.year;
       state.month = action.payload.month;
+      state.isLoading = false;
+    },
+    [getStatisticsUserThunk.rejected](state, action) {
+      state.isLoading = false;
     },
   },
 });

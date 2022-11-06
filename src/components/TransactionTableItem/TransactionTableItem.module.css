@@ -1,13 +1,42 @@
+.greenSum {
+  font-weight: 700;
+  color: #24cca7;
+}
+.redSum {
+  font-weight: 700;
+  color: #ff6596;
+}
+/* ============MOBILE STYLES========= */
 @media screen and (max-width: 767px) {
+  .transactionsTableRow_data {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: context-menu;
+  }
+  .transactionsTableRow_data:hover,
+  .transactionsTableRow_data:focus {
+    background-color: rgba(240, 240, 240, 0.541);
+  }
   .tableData_alStart,
   .tableData_alCenter,
   .tableData_alEnd {
     display: flex;
+    padding: 12px 20px 8px 0px;
+    border-bottom: 1px solid #dcdcdf;
+    overflow: hidden;
     font-family: 'Circe';
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
-    width: 300px;
+    line-height: 27px;
+    width: 275px;
+  }
+  .tableData_alStart:not(:last-child),
+  .tableData_alCenter:not(:last-child),
+  .tableData_alEnd:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
   }
 
   .tableData_alStart[data-th]:before,
@@ -15,31 +44,58 @@
   .tableData_alEnd[data-th]:before {
     content: attr(data-th);
     margin-right: auto;
+    margin-left: 20px;
+    color: black;
     font-family: 'Circe';
     font-weight: 700;
     font-size: 18px;
     line-height: 27px;
-    text-align: start;
+  }
+  .redBorder {
+    border-left: 5px solid #ff6596;
+  }
+  .greenBorder {
+    border-left: 5px solid #24cca7;
   }
 }
-.transactionsTableRow_data {
-  font-family: 'Circe';
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-}
-.transactionsTableRow_data:not(:last-child) {
-  border-bottom: 1px solid #dcdcdf;
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-}
-.tableData_alStart {
-  text-align: start;
-}
+/* ============MOBILE STYLES========= */
 
-.tableData_alCenter {
-  text-align: center;
-}
+/* ============TABLET STYLES========= */
 
-.tableData_alEnd {
-  text-align: end;
+@media screen and (min-width: 768px) {
+  .transactionsTableRow_data {
+    font-family: 'Circe';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .transactionsTableRow_data:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  }
+  .tableDataBalance {
+    padding-right: 20px;
+  }
+  .tableDataDate {
+    width: fit-content;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+  }
+  .tableData_alStart {
+    text-align: start;
+  }
+
+  .tableData_alCenter {
+    text-align: center;
+  }
+
+  .tableData_alEnd {
+    text-align: end;
+  }
+}
+/* ============TABLET STYLES========= */
+
+/* ============DESKTOP STYLES========= */
+@media screen and (min-width: 1280px) {
 }

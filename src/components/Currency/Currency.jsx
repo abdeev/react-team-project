@@ -18,7 +18,7 @@ const Currency = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const location = useLocation();
-  const isDiagram = location.pathname === '/diagram';
+  const isDiagram = location.pathname === "/diagram";
 
   const prepareData = (data) => {
     const filteredData = data.filter(
@@ -56,7 +56,7 @@ const Currency = () => {
 
 
   return (
-    <div className={`${styles.currencyRatesPanel} ${isDiagram ? '' : styles.hidden}`}>  
+    <div className={`${styles.currencyRatesPanel} ${isDiagram ? " ": styles.hidden}`}>
     <ul className={styles.currencyRatesHead} >
             <li>Currency</li>
             <li>Purchase</li>
