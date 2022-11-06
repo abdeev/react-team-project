@@ -9,7 +9,7 @@ const categoriesSlice = createSlice({
     extraReducers: {
 
         [getCategoriesThunk.pending](state, action) {
-            // state.categories = [];
+            state.categories = [];
         },
         [getCategoriesThunk.fulfilled](state, action) {
             state.categories = action.payload;

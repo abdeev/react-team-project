@@ -42,7 +42,6 @@ export const logInThunk = createAsyncThunk(
   async (loginUserInfo, thunkAPI) => {
     try {
       const { data } = await request.post('/api/auth/sign-in', loginUserInfo);
-      console.log(data);
       setToken.add(data.token);
       return data;
     } catch (error) {

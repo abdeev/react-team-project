@@ -17,6 +17,9 @@ export const DatePickerField = ({ ...props }) => {
       onChange={val => {
         setFieldValue(field.name, val);
       }}
+      onKeyDown={e => {
+        e.preventDefault();
+      }}
       className={css.input}
     />
   );
