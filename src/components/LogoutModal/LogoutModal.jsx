@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
 import ModalBackdrop from 'components/AddTransaction/ModalBackdrop/ModalBackdrop';
@@ -10,6 +11,7 @@ export const LogoutModal = ({ onClose }) => {
 
   const handleLogOut = e => {
     onClose();
+    dispatch(logOutThunk());
     location('/');
   };
   const handleCancelLogOut = e => {
@@ -40,4 +42,7 @@ export const LogoutModal = ({ onClose }) => {
       </div>
     </>
   );
+};
+LogoutModal.propTypes = {
+  onClose: PropTypes.func,
 };
