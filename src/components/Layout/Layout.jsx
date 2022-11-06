@@ -1,19 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import {
-  Link,
-  // Navigate,
-  Outlet,
-  redirect,
-  useNavigate,
-} from 'react-router-dom';
+import { Link, Outlet, redirect, useNavigate } from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
-// import { logOutThunk } from 'redux/authorization/thunksAuth';
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
 import styles from '../Currency/Currency.module.css';
@@ -28,17 +21,17 @@ import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 
 import { useEffect } from 'react';
 
-
 const Layout = () => {
   const dispatch = useDispatch();
-  // const location = useNavigate();
+  const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
+  const userCurrentBalance = useSelector(selectUserBalance);
 
   const [isShowModal, setIsShowModal] = useState(false);
 
   const isToken = useSelector(selectUserToken);
   const locationcurrency = useLocation();
-  const isHome = locationcurrency.pathname === "/home";
+  const isHome = locationcurrency.pathname === '/home';
 
   useEffect(() => {
     if (!isToken) {
@@ -51,12 +44,6 @@ const Layout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
 
-
-  // const handleLogout = () => {
-  //   dispatch(logOutThunk());
-  //   location('/');
-  // };
-
   const handleOpenModal = () => {
     dispatch(showModal(true));
   };
@@ -67,6 +54,7 @@ const Layout = () => {
     }
   };
   const toggleModal = () => {
+    console.log('CLICK OUT');
     setIsShowModal(!isShowModal);
   };
 
@@ -91,10 +79,12 @@ const Layout = () => {
             <div className={css.navMenuWrapper}>
               <div className={css.navMenuInnerWrapper}>
                 <Navigation />
-                <div className={` ${css.balance} ${isHome ? " ": styles.hidden}`}>
+                <div
+                  className={` ${css.balance} ${isHome ? ' ' : styles.hidden}`}
+                >
                   Your balance{' '}
                   <span className={css.balanceAmount}>
-                    ${userCurrentBalance?.toLocaleString()}
+                    ₴{userCurrentBalance?.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -117,9 +107,9 @@ const Layout = () => {
             onKeyDown={handleEscapeKey}
             className={css.openModalBtn}
           ></button>
-          {isShowModal && <LogoutModal onClose={toggleModal} />}
         </>
       )}
+      {isShowModal && <LogoutModal onClose={toggleModal} />}
     </div>
   );
 };

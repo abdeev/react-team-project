@@ -14,7 +14,6 @@ import Layout from './Layout/Layout';
 import Home from 'pages/Home/Home';
 import Loader from './Loader';
 
-// const Home = lazy(() => import('../pages/Home/Home'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const StatisticsPage = lazy(() =>
   import('../pages/StatisticsPage/StatisticsPage')
@@ -45,11 +44,14 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
-            <Route path="diagram" element={
-                    <PrivateRoute redirectTo="/home">
-                     <Currency/>
-                    </PrivateRoute>
-                  } />
+            <Route
+              path="diagram"
+              element={
+                <PrivateRoute redirectTo="/home">
+                  <Currency />
+                </PrivateRoute>
+              }
+            />
           </Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />

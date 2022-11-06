@@ -73,6 +73,7 @@ const EditTransactionModal = ({
           amount: -values?.amount,
         })
       )
+        .unwrap()
         .then(() => {
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
@@ -95,6 +96,7 @@ const EditTransactionModal = ({
           amount: Math.abs(values?.amount),
         })
       )
+        .unwrap()
         .then(() => {
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
@@ -109,11 +111,15 @@ const EditTransactionModal = ({
 
   const handleDeleteTransaction = () => {
     dispatch(deleteTransactionsThunk(id))
+      .unwrap()
       .then(dispatch(getTransactionsThunk()))
       .catch(() => {
         alert('smth went wrong, try again');
       })
-      .finally(setShowEditModal(false));
+      .finally(() => {
+        dispatch(getCurrentUserInfoThunk());
+        setShowEditModal(false);
+      });
   };
 
   return ReactDOM.createPortal(
@@ -209,15 +215,7 @@ const EditTransactionModal = ({
               </Form>
             )}
           </Formik>
-
-          {/* <button
-            type="button"
-            className={css.cancelBtn}
-            onClick={handleModalCloseClick}
-          >
-            CANCEL
-          </button> */}
-          {isEditing && <Loader/>}
+          {isEditing && <Loader />}
         </div>
       </ModalBackdrop>
     </>,

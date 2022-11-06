@@ -2,7 +2,7 @@ import { StatisticsDiagram } from 'components/Statistics/StatisticsDiagram/Stati
 import { StatisticsForm } from 'components/Statistics/StatisticsForm/StatisticsForm';
 import { StatisticsTable } from 'components/Statistics/StatisticsTable/StatisticsTable';
 import { useEffect, useState } from 'react';
-import { convertDataForChart } from '../../utils/Converters';
+import { convertDataForChart } from '../../utils/convertDataForChart';
 import { useSelector } from 'react-redux';
 
 import {

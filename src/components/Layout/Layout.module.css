@@ -185,7 +185,7 @@
 
   z-index: 10;
 
-  background-image: url(../../../assets/+.svg);
+  background-image: url(../../static/images/+.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;

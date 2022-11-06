@@ -88,7 +88,7 @@
   background-color: transparent;
   cursor: pointer;
 
-  background-image: url(../../../assets/modal-cross.svg);
+  background-image: url(../../static/images/modal-cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;
@@ -151,7 +151,7 @@
   border-radius: 50%;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 
-  background-image: url(../../../assets/+.svg);
+  background-image: url(../../static/images/+.svg);
   background-repeat: no-repeat;
   background-position: center;
 
@@ -163,11 +163,11 @@
   display: none;
 }
 
-.toggle input:checked~label:after {
+.toggle input:checked ~ label:after {
   background-color: #ff6596;
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 
-  background-image: url(../../../assets/minus.svg);
+  background-image: url(../../static/images/minus.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
@@ -189,7 +189,7 @@
   cursor: default;
 }
 
-.toggle input:checked~.incomeSpan {
+.toggle input:checked ~ .incomeSpan {
   color: #e0e0e0;
 }
 
@@ -205,7 +205,7 @@
   cursor: default;
 }
 
-.toggle input:checked~.expenseSpan {
+.toggle input:checked ~ .expenseSpan {
   color: #ff6596;
 }
 
@@ -390,8 +390,7 @@
 
 .submitBtn:hover,
 .deleteBtn:hover {
-  background: #FF6596;
-  ;
+  background: #ff6596;
 }
 
 .deleteBtn {
@@ -422,8 +421,7 @@
 
 /* ========= //formik ========== */
 
-@media screen and (max-height: 660px),
-screen and (max-width: 767px) {
+@media screen and (max-height: 660px), screen and (max-width: 767px) {
   .modal {
     top: 0;
     bottom: 0;
