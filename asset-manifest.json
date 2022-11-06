@@ -1,13 +1,46 @@
 {
   "files": {
-    "main.css": "/react-team-project/static/css/main.7acaea2f.css",
-    "main.js": "/react-team-project/static/js/main.07d3183d.js",
+    "main.css": "/react-team-project/static/css/main.56e8a713.css",
+    "main.js": "/react-team-project/static/js/main.e695078d.js",
+    "static/css/539.21a0572d.chunk.css": "/react-team-project/static/css/539.21a0572d.chunk.css",
+    "static/js/539.ac8d5925.chunk.js": "/react-team-project/static/js/539.ac8d5925.chunk.js",
+    "static/css/353.32139194.chunk.css": "/react-team-project/static/css/353.32139194.chunk.css",
+    "static/js/353.24d6fda1.chunk.js": "/react-team-project/static/js/353.24d6fda1.chunk.js",
+    "static/css/518.69ab4482.chunk.css": "/react-team-project/static/css/518.69ab4482.chunk.css",
+    "static/js/518.ef8ab2ca.chunk.js": "/react-team-project/static/js/518.ef8ab2ca.chunk.js",
+    "static/css/437.443042f9.chunk.css": "/react-team-project/static/css/437.443042f9.chunk.css",
+    "static/js/437.11eeddaa.chunk.js": "/react-team-project/static/js/437.11eeddaa.chunk.js",
+    "static/js/856.8cc9c5c0.chunk.js": "/react-team-project/static/js/856.8cc9c5c0.chunk.js",
+    "static/js/813.c38a8af5.chunk.js": "/react-team-project/static/js/813.c38a8af5.chunk.js",
+    "static/media/frame-desktop.png": "/react-team-project/static/media/frame-desktop.5d52b14df26fa5db288e.png",
+    "static/media/frame-tablet.png": "/react-team-project/static/media/frame-tablet.ddae50acd944c8d2a830.png",
+    "static/media/logo.svg": "/react-team-project/static/media/logo.bf44f41ab56ff0b6c158b46d03ef2711.svg",
+    "static/media/statis.svg": "/react-team-project/static/media/statis.2f473963117d5911e84f8815539dba4c.svg",
     "index.html": "/react-team-project/index.html",
-    "main.7acaea2f.css.map": "/react-team-project/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-team-project/static/js/main.07d3183d.js.map"
+    "static/media/vector.svg": "/react-team-project/static/media/vector.e929ff15f461a4fc917c322d89e0d484.svg",
+    "static/media/iconExit.svg": "/react-team-project/static/media/iconExit.945c2fe43e7cb85ae1e3c31c5c049003.svg",
+    "static/media/dollar-icon.svg": "/react-team-project/static/media/dollar-icon.dcb67c79768c20d937b66f2f705051ed.svg",
+    "static/media/home.svg": "/react-team-project/static/media/home.3cf4d2493479f287aa4b6d61a8707c86.svg",
+    "static/media/Ellipse 1.svg": "/react-team-project/static/media/Ellipse 1.e7cbaa19930a91cc921b.svg",
+    "static/media/Ellipse 2.svg": "/react-team-project/static/media/Ellipse 2.07ef13244b203e866dcd.svg",
+    "static/media/+.svg": "/react-team-project/static/media/+.6194a661e88e1e5113d2.svg",
+    "static/media/modal-cross.svg": "/react-team-project/static/media/modal-cross.4ca60f1813426122dabf.svg",
+    "static/media/minus.svg": "/react-team-project/static/media/minus.208a727d4a99ee4fc4b6.svg",
+    "main.56e8a713.css.map": "/react-team-project/static/css/main.56e8a713.css.map",
+    "main.e695078d.js.map": "/react-team-project/static/js/main.e695078d.js.map",
+    "539.21a0572d.chunk.css.map": "/react-team-project/static/css/539.21a0572d.chunk.css.map",
+    "539.ac8d5925.chunk.js.map": "/react-team-project/static/js/539.ac8d5925.chunk.js.map",
+    "353.32139194.chunk.css.map": "/react-team-project/static/css/353.32139194.chunk.css.map",
+    "353.24d6fda1.chunk.js.map": "/react-team-project/static/js/353.24d6fda1.chunk.js.map",
+    "518.69ab4482.chunk.css.map": "/react-team-project/static/css/518.69ab4482.chunk.css.map",
+    "518.ef8ab2ca.chunk.js.map": "/react-team-project/static/js/518.ef8ab2ca.chunk.js.map",
+    "437.443042f9.chunk.css.map": "/react-team-project/static/css/437.443042f9.chunk.css.map",
+    "437.11eeddaa.chunk.js.map": "/react-team-project/static/js/437.11eeddaa.chunk.js.map",
+    "856.8cc9c5c0.chunk.js.map": "/react-team-project/static/js/856.8cc9c5c0.chunk.js.map",
+    "813.c38a8af5.chunk.js.map": "/react-team-project/static/js/813.c38a8af5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.56e8a713.css",
+    "static/js/main.e695078d.js"
   ]
 }
