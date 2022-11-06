@@ -1,0 +1,62 @@
+@media (min-width: 320px) and (max-width: 767px) {
+  .modal {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+@media (min-width: 768px) {
+  .modal {
+    width: 500px;
+    border-radius: 20px;
+  }
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+  background-color: #fff;
+  transition: all 500ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 10000;
+  font-family: 'circe';
+  text-align: center;
+}
+.text {
+  font-size: 34px;
+  margin-bottom: 40px;
+}
+.button {
+  display: block;
+  width: 200px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-family: 'circe';
+  border-radius: 20px;
+}
+
+.button:first-child {
+  margin-bottom: 20px;
+  background-color: rgb(255 101 150);
+  border: 1px solid rgb(255 101 150);
+  color: #fff;
+  transition: 250ms;
+}
+.button:first-child:hover {
+  background-color: rgb(253, 120, 162);
+}
+.button:last-child {
+  background-color: transparent;
+  color: #4a56e2;
+  border: 1px solid #4a56e2;
+}
+.button:last-child:hover {
+  background: #fbfbfb;
+  color: #3b45ae;
+  border: 1px solid #3b45ae;
+}

@@ -131,6 +131,7 @@
 }
 
 .errorMessage {
+  font-family: 'Poppins';
   color: red;
   font-size: 12px;
 }

@@ -23,12 +23,19 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #ffffff;
 }
 
 .logoWallet {
   display: inline-block;
   width: 181px;
+}
+.userWrapper {
+  display: flex;
+  padding-right: 46px;
+  padding-top: 18px;
+  position: relative;
 }
 
 .welcomeName {
@@ -48,16 +55,36 @@
   gap: 8px;
   color: #bdbdbd;
 }
+.exitBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: fit-content;
+}
+.exitBtn:hover > p {
+  color: rgb(255 101 150);
+}
+.exitBtn:hover > svg {
+  fill: rgb(255 101 150);
+}
 
 .iconExit {
-  width: 18px;
   height: 18px;
+  position: absolute;
+  right: 90px;
+  top: 22px;
+  width: 18px;
+  fill: #bdbdbd;
+  transition: 250ms;
 }
 .textExit {
   font-family: 'Circe';
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+  color: #bdbdbd;
+  padding-left: 30px;
+  transition: 250ms;
 }
 
 .backdropFilter {
