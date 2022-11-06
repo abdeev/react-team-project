@@ -13,13 +13,17 @@ import {
 import s from './StatisticsDiagramAndTable.module.css';
 // import Loader from 'components/Loader';
 import { Puff } from 'react-loader-spinner';
+import { selectTransactions } from 'redux/transactions/selectorsTransactions';
+import { getYearsFromTransaction } from 'utils/getYearsFromTransaction';
 
 export const StatisticsDiagramAndTable = () => {
   const [diagramData, setDiagramData] = useState(null);
   const [tableData, setTableData] = useState(null);
+  const [yearsArray, setYearsArray] = useState(null);
 
   const categoriesSummary = useSelector(selectCategoriesSummary);
   const isLoading = useSelector(selectIsLoading);
+  const transactions = useSelector(selectTransactions);
 
   useEffect(() => {
     if (!categoriesSummary.length) {
@@ -32,6 +36,13 @@ export const StatisticsDiagramAndTable = () => {
       setTableData(data.table);
     }
   }, [categoriesSummary]);
+
+  useEffect(() => {
+    if (transactions.length) {
+      const years = getYearsFromTransaction(transactions);
+      setYearsArray(years);
+    }
+  }, [transactions]);
 
   return (
     <div className={s.statistics__block}>
@@ -53,7 +64,8 @@ export const StatisticsDiagramAndTable = () => {
         )}
       </div>
       <div className={s.statistics__block__form}>
-        <StatisticsForm />
+        {yearsArray && <StatisticsForm years={yearsArray} />}
+
         {tableData && <StatisticsTable tableData={tableData} />}
       </div>
     </div>

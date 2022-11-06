@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 import s from '../StatisticsForm/StatisticsForm.module.css';
 import { monthArray } from 'constans/monthArray';
-import { yearsArray } from 'constans/yearsArray';
 import { getStatisticsUserThunk } from 'redux/statistics/thunkStatictics';
 import { useDispatch } from 'react-redux';
 
-export const StatisticsForm = () => {
+export const StatisticsForm = ({ years }) => {
   const [electMonth, setElectMonth] = useState('');
   const [electYear, setElectYear] = useState('');
 
@@ -35,7 +34,7 @@ export const StatisticsForm = () => {
           classNamePrefix="statistics-select"
           name="years"
           defaultInputValue={electYear}
-          options={yearsArray}
+          options={years}
           placeholder="Years"
           captureMenuScroll
           onChange={e => setElectYear(e.value)}
