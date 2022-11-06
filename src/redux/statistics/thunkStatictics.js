@@ -4,7 +4,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 export const getStatisticsUserThunk = createAsyncThunk(
   'statistics/api/transactions-summary',
   async (termin, thunkAPI) => {
-    console.log(termin);
     const userToken = thunkAPI.getState().authorization.userToken;
     if (!userToken) {
       return thunkAPI.rejectWithValue();
@@ -23,7 +22,6 @@ export const getStatisticsUserThunk = createAsyncThunk(
         }
         if (!termin.electYear && termin.electMonth) {
           params.month = termin.electMonth;
-          console.log();
           params.year = 2022;
         }
       }
@@ -37,26 +35,3 @@ export const getStatisticsUserThunk = createAsyncThunk(
     }
   }
 );
-
-// export const getStatisticsUserThunk = createAsyncThunk(
-//   'statistics/api/transactions-summary',
-//   async (date, thunkAPI) => {
-//     console.log(date);
-//     const userToken = thunkAPI.getState().authorization.userToken;
-//     if (!userToken) {
-//       return thunkAPI.rejectWithValue();
-//     }
-
-//     try {
-//       setToken.add(userToken);
-//       const { data } = await request.get('/api/transactions-summary', {
-//         year: date.electYear,
-//         month: date.electMonth,
-//       });
-//       // console.log(date.electMonth);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );

@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import s from '../StatisticsDiagram/StatisticsDiagram.module.css';
 import { useSelector } from 'react-redux';
 import { selectPeriodTotal } from 'redux/statistics/selectorsStatistics';
+
+import s from '../StatisticsDiagram/StatisticsDiagram.module.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -23,31 +25,22 @@ export const StatisticsDiagram = ({ diagram }) => {
     <div className={s.diagram_container}>
       <p className={s.diagram_text}> ₴ {periodTotal}</p>
       <div className={s.diagram_box}>
-        <Doughnut
-          options={donutOptions}
-          data={diagram}
-          // plugins={[
-          //   {
-          //     beforeDraw(chart) {
-          //       const { width } = chart;
-          //       const { height } = chart;
-          //       const { ctx } = chart;
-          //       ctx.restore();
-          //       const fontSize = (height / 200).toFixed(2);
-          //       ctx.font = ` ${fontSize}em circle`;
-          //       ctx.textBaseline = 'top';
-          //       const text = `₴ ${periodTotal}`;
-          //       const textX = Math.round(
-          //         (width - ctx.measureText(text).width) / 2
-          //       );
-          //       const textY = height / 2.1;
-          //       ctx.fillText(text, textX, textY);
-          //       ctx.save();
-          //     },
-          //   },
-          // ]}
-        />
+        <Doughnut options={donutOptions} data={diagram} />
       </div>
     </div>
   );
+};
+
+StatisticsDiagram.propTypes = {
+  diagram: PropTypes.shape({
+    labels: PropTypes.arrayOf(PropTypes.string),
+    datasets: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string,
+        data: PropTypes.arrayOf(PropTypes.number),
+        backgroundColor: PropTypes.arrayOf(PropTypes.string),
+        borderWidth: PropTypes.number,
+      })
+    ),
+  }),
 };

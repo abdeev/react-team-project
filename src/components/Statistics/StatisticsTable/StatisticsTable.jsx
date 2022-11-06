@@ -6,9 +6,10 @@ import {
   selectIsLoading,
 } from 'redux/statistics/selectorsStatistics';
 import { nanoid } from 'nanoid';
+import { Puff } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 
 import s from '../StatisticsTable/StatisticsTable.module.css';
-import { Puff } from 'react-loader-spinner';
 
 export const StatisticsTable = ({ tableData }) => {
   const expenseSummary = useSelector(selectExpenseSummary);
@@ -61,4 +62,23 @@ export const StatisticsTable = ({ tableData }) => {
       </tbody>
     </table>
   );
+};
+
+StatisticsTable.propTypes = {
+  tableData: PropTypes.arrayOf(
+    PropTypes.shape({
+      categoriesSummary: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+          type: PropTypes.string,
+          total: PropTypes.number,
+        })
+      ),
+      incomeSummary: PropTypes.number,
+      expenseSummary: PropTypes.number,
+      periodTotal: PropTypes.number,
+      year: PropTypes.number,
+      month: PropTypes.number,
+    })
+  ),
 };
