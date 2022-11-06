@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -224,3 +225,17 @@ const EditTransactionModal = ({
 };
 
 export default EditTransactionModal;
+ 
+EditTransactionModal.protoTypes = {
+  closeModalOnKey: PropTypes.func,
+  setShowEditModal: PropTypes.func,
+  transaction: PropTypes.objectOf({
+    id: PropTypes.string,
+    transactionDate: PropTypes.string,
+    type: PropTypes.string,
+    categoryId: PropTypes.string,
+    comment: PropTypes.string,
+    amount: PropTypes.number,
+  }),
+};
+
