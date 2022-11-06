@@ -27,6 +27,11 @@
     line-height: 27px;
     text-align: start;
   }
+  .noDataText {
+    font-family: 'Circe';
+    font-size: 29px;
+    font-weight: 700;
+  }
 }
 @media screen and (min-width: 768px) {
   .transactionsTable {
@@ -77,6 +82,11 @@
     border-bottom-left-radius: 30px;
     padding-left: 20px;
   }
+  .noDataText {
+    font-family: 'Circe';
+    font-size: 35px;
+    font-weight: 700;
+  }
 }
 /* ============DESKTOP STYLES========= */
 @media screen and (min-width: 1280px) {
@@ -84,4 +94,11 @@
     table-layout: fixed;
     margin-top: 46px;
   }
+  .noDataText {
+    margin-top: 150px;
+  }
+}
+.transactionsTableRow_header:hover,
+.transactionsTableRow_header:focus {
+  background-color: rgba(240, 240, 240, 0.541);
 }

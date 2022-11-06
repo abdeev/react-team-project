@@ -47,93 +47,97 @@ const Home = () => {
 
   return (
     <div className={css.tableWrapper}>
-      <table className={css.transactionsTable}>
-        <tbody className={css.tableBody}>
-          <tr className={css.transactionsTableRow_header}>
-            <th
-              className={`${css.table_head__alStart} ${css.tableHeaderDate}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortByDate(userTransactions, sortByDate, setSortByDate)
-                )
-              }
-            >
-              Date
-            </th>
-            <th
-              className={`${css.table_head__alCenter} ${css.tableHeaderType}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortByType(userTransactions, sortByType, setSortByType)
-                )
-              }
-            >
-              Type
-            </th>
-            <th
-              className={`${css.table_head__alStart} ${css.tableHeaderCategory}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortByCategory(
-                    userTransactions,
-                    transactionsCategories,
-                    sortByCategory,
-                    setSortByCategory
+      {userTransactions.length !== 0 ? (
+        <table className={css.transactionsTable}>
+          <tbody className={css.tableBody}>
+            <tr className={css.transactionsTableRow_header}>
+              <th
+                className={`${css.table_head__alStart} ${css.tableHeaderDate}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortByDate(userTransactions, sortByDate, setSortByDate)
                   )
-                )
-              }
-            >
-              Category
-            </th>
-            <th
-              className={`${css.table_head__alStart} ${css.tableHeaderComment}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortByComment(
-                    userTransactions,
-                    sortByComment,
-                    setSortByComment
+                }
+              >
+                Date
+              </th>
+              <th
+                className={`${css.table_head__alCenter} ${css.tableHeaderType}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortByType(userTransactions, sortByType, setSortByType)
                   )
-                )
-              }
-            >
-              Comment
-            </th>
-            <th
-              className={`${css.table_head__alEnd} ${css.tableHeaderSum}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortBySum(userTransactions, sortBySum, setSortBySum)
-                )
-              }
-            >
-              Sum
-            </th>
-            <th
-              className={`${css.table_head__alEnd} ${css.tableHeaderBalance}`}
-              onClick={() =>
-                setSortTransactions(
-                  SortByBalance(
-                    userTransactions,
-                    sortByBalance,
-                    setSortByBalance
+                }
+              >
+                Type
+              </th>
+              <th
+                className={`${css.table_head__alStart} ${css.tableHeaderCategory}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortByCategory(
+                      userTransactions,
+                      transactionsCategories,
+                      sortByCategory,
+                      setSortByCategory
+                    )
                   )
-                )
-              }
-            >
-              Balance
-            </th>
-          </tr>
-          {!!userTransactions.length &&
-            sortTransactions.map(transaction => (
-              <TransactionTableItem
-                className={css.transactionTableRow}
-                key={transaction.id}
-                transaction={transaction}
-              />
-            ))}
-        </tbody>
-      </table>
+                }
+              >
+                Category
+              </th>
+              <th
+                className={`${css.table_head__alStart} ${css.tableHeaderComment}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortByComment(
+                      userTransactions,
+                      sortByComment,
+                      setSortByComment
+                    )
+                  )
+                }
+              >
+                Comment
+              </th>
+              <th
+                className={`${css.table_head__alEnd} ${css.tableHeaderSum}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortBySum(userTransactions, sortBySum, setSortBySum)
+                  )
+                }
+              >
+                Sum
+              </th>
+              <th
+                className={`${css.table_head__alEnd} ${css.tableHeaderBalance}`}
+                onClick={() =>
+                  setSortTransactions(
+                    SortByBalance(
+                      userTransactions,
+                      sortByBalance,
+                      setSortByBalance
+                    )
+                  )
+                }
+              >
+                Balance
+              </th>
+            </tr>
+            {!!userTransactions.length &&
+              sortTransactions.map(transaction => (
+                <TransactionTableItem
+                  className={css.transactionTableRow}
+                  key={transaction.id}
+                  transaction={transaction}
+                />
+              ))}
+          </tbody>
+        </table>
+      ) : (
+        <h2 className={css.noDataText}> Try to add transaction! </h2>
+      )}
     </div>
   );
 };
