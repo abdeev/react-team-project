@@ -1,12 +1,8 @@
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { logOutThunk } from 'redux/authorization/thunksAuth';
 import ModalBackdrop from 'components/AddTransaction/ModalBackdrop/ModalBackdrop';
 import { useNavigate } from 'react-router-dom';
 import css from './LogoutModal.module.css';
 
 export const LogoutModal = ({ onClose }) => {
-  const dispatch = useDispatch();
   const location = useNavigate();
 
   const handleLogOut = e => {
