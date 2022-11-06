@@ -12,7 +12,6 @@ export const convertDataForChart = rawData => {
   const data = [];
   const backgroundColor = [];
   const table = [];
-  // const newRawData = rawData.filter(el => el.name !== 'Income');
 
   // eslint-disable-next-line
   rawData.map(el => {

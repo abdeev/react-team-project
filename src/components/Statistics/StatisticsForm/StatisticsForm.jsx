@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
-import s from '../StatisticsForm/StatisticsForm.module.css';
 import { monthArray } from 'constans/monthArray';
 import { getStatisticsUserThunk } from 'redux/statistics/thunkStatictics';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import s from '../StatisticsForm/StatisticsForm.module.css';
 
 export const StatisticsForm = ({ years }) => {
   const [electMonth, setElectMonth] = useState('');
@@ -42,4 +44,13 @@ export const StatisticsForm = ({ years }) => {
       </div>
     </form>
   );
+};
+
+StatisticsForm.propTypes = {
+  years: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };

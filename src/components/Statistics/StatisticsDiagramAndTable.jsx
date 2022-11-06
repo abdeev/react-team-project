@@ -11,7 +11,6 @@ import {
 } from 'redux/statistics/selectorsStatistics';
 
 import s from './StatisticsDiagramAndTable.module.css';
-// import Loader from 'components/Loader';
 import { Puff } from 'react-loader-spinner';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
 import { getYearsFromTransaction } from 'utils/getYearsFromTransaction';

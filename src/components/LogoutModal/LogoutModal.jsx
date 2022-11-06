@@ -7,6 +7,7 @@ export const LogoutModal = ({ onClose }) => {
 
   const handleLogOut = e => {
     onClose();
+    dispatch(logOutThunk());
     location('/');
   };
   const handleCancelLogOut = e => {
@@ -37,4 +38,7 @@ export const LogoutModal = ({ onClose }) => {
       </div>
     </>
   );
+};
+LogoutModal.propTypes = {
+  onClose: PropTypes.func,
 };
