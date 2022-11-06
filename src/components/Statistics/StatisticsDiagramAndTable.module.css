@@ -1,6 +1,5 @@
 .statistics__block__form {
   width: 395px;
-  height: 606px;
 }
 
 .statistics__block {
@@ -8,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   width: 715px;
-  height: 676px;
 }
 
 .statistics_warning_text {

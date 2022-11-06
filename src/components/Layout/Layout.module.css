@@ -208,7 +208,6 @@
   }
 }
 
-
 /* ====== // TABLET STYLES ====== */
 
 /* ======= MOBILE STYLES ======= */
@@ -248,12 +247,11 @@
 
   .outlets {
     width: 280px;
-    padding: 0;
+    padding: 0 0 48px;
   }
 }
 
 /* ====== // MOBILE STYLES ====== */
-
 
 /* @media screen and (max-width: 767px) {
 }
