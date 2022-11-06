@@ -127,7 +127,7 @@ const EditTransactionModal = ({
             onClick={handleModalCloseClick}
           ></button>
 
-          <h1 className={css.title}>Add transaction</h1>
+          <h1 className={css.title}>Edit transaction</h1>
 
           <Formik
             initialValues={{
