@@ -14,7 +14,7 @@
   height: 650px;
   padding: 40px 70px;
 
-  background-color: #fff;
+  background-color: var(--primary-white-color);
   border-radius: 20px;
   transition: 400ms;
   animation-name: fade-in;
@@ -78,7 +78,7 @@
   background-color: transparent;
   cursor: pointer;
 
-  background-image: url(../../../assets/modal-cross.svg);
+  background-image: url(../../static/images/modal-cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;
@@ -117,7 +117,7 @@
   height: 40px;
 
   border: 1px solid #e0e0e0;
-  background-color: #fff;
+  background-color: var(--primary-white-color);
 
   border-radius: 30px;
   cursor: pointer;
@@ -135,11 +135,11 @@
   width: 44px;
   height: 44px;
 
-  background-color: #24cca7;
+  background-color: var(--green-text-color);
   border-radius: 50%;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 
-  background-image: url(../../../assets/+.svg);
+  background-image: url(../../static/images/+.svg);
   background-repeat: no-repeat;
   background-position: center;
 
@@ -152,10 +152,10 @@
 }
 
 .toggle input:checked ~ label:after {
-  background-color: #ff6596;
+  background-color: var(--red-text-color);
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 
-  background-image: url(../../../assets/minus.svg);
+  background-image: url(../../static/images/minus.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
@@ -164,7 +164,7 @@
 
 .incomeSpan {
   order: -1;
-  color: #24cca7;
+  color: var(--green-text-color);
 
   font-family: 'Circe';
   font-weight: 700;
@@ -191,7 +191,7 @@
   cursor: default;
 }
 .toggle input:checked ~ .expenseSpan {
-  color: #ff6596;
+  color: var(--red-text-color);
 }
 /* ======== // ========== */
 
@@ -213,7 +213,7 @@
 
 .input {
   color: transparent;
-  text-shadow: 0 0 0 #000;
+  text-shadow: 0 0 0 var(--primary-text-color);
 
   width: 185px;
   padding: 8px 20px;
@@ -230,7 +230,7 @@
 }
 
 .react-select__menu {
-  background-color: #24cca7;
+  background-color: var(--green-text-color);
 }
 
 .inputAmount {
@@ -248,13 +248,13 @@
 }
 
 .inputAmount::placeholder {
-  color: #bdbdbd;
+  color: var(--grey-text-color);
 }
 
 .inputError {
   composes: inputAmount;
-  color: #ff6596;
-  border-bottom: 1px solid #ff6596;
+  color: var(--red-text-color);
+  border-bottom: 1px solid var(--red-text-color);
 }
 
 .datepickerWrapper {
@@ -271,7 +271,7 @@
   width: 24px;
   height: 24px;
 
-  fill: #4a56e2;
+  fill: var(--icon-active-color);
 
   pointer-events: none;
   cursor: pointer;
@@ -292,13 +292,13 @@
 }
 
 .comment::placeholder {
-  color: #bdbdbd;
+  color: var(--grey-text-color);
 }
 
 .commentError {
   composes: comment;
-  color: #ff6596;
-  border-bottom: 1px solid #ff6596;
+  color: var(--red-text-color);
+  border-bottom: 1px solid var(--red-text-color);
 }
 
 .submitBtn {
@@ -317,8 +317,8 @@
   letter-spacing: 0.1em;
   cursor: pointer;
 
-  color: #fff;
-  background: #24cca7;
+  color: var(--primary-white-color);
+  background: var(--green-text-color);
   border: none;
   border-radius: 20px;
   transition: 250ms;
@@ -342,9 +342,9 @@
   letter-spacing: 0.1em;
   cursor: pointer;
 
-  color: #4a56e2;
-  background: #ffffff;
-  border: 1px solid #4a56e2;
+  color: var(--icon-active-color);
+  background: var(--primary-white-color);
+  border: 1px solid var(--icon-active-color);
   border-radius: 20px;
   transition: 250ms;
 }
@@ -359,7 +359,7 @@
 
 .errorMessage {
   position: absolute;
-  color: #ff6596;
+  color: var(--red-text-color);
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;
@@ -368,7 +368,7 @@
 
 .amountErrorMesage {
   position: absolute;
-  color: #ff6596;
+  color: var(--red-text-color);
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;

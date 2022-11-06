@@ -23,12 +23,19 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
+  align-items: center;
+  background-color: var(--primary-white-color);
 }
 
 .logoWallet {
   display: inline-block;
   width: 181px;
+}
+.userWrapper {
+  display: flex;
+  padding-right: 46px;
+  padding-top: 18px;
+  position: relative;
 }
 
 .welcomeName {
@@ -37,8 +44,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  color: #bdbdbd;
-  border-right: 1px #bdbdbd solid;
+  color: var(--grey-text-color);
+  border-right: 1px var(--grey-text-color) solid;
 }
 
 .linkExit {
@@ -46,18 +53,38 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  color: #bdbdbd;
+  color: var(--grey-text-color);
+}
+.exitBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: fit-content;
+}
+.exitBtn:hover > p {
+  color: rgb(255 101 150);
+}
+.exitBtn:hover > svg {
+  fill: rgb(255 101 150);
 }
 
 .iconExit {
-  width: 18px;
   height: 18px;
+  position: absolute;
+  right: 90px;
+  top: 22px;
+  width: 18px;
+  fill: var(--grey-text-color);
+  transition: 250ms;
 }
 .textExit {
   font-family: 'Circe';
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+  color: var(--grey-text-color);
+  padding-left: 30px;
+  transition: 250ms;
 }
 
 .backdropFilter {
@@ -116,7 +143,7 @@
   width: 395px;
   height: 80px;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: var(--primary-white-color);
 }
 
 .balanceAmount {
@@ -150,7 +177,7 @@
   position: fixed;
   right: 40px;
   bottom: 40px;
-  background-color: #24cca7;
+  background-color: var(--green-text-color);
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   border: none;
   border-radius: 50%;
@@ -158,7 +185,7 @@
 
   z-index: 10;
 
-  background-image: url(../../../assets/+.svg);
+  background-image: url(../../static/images/+.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;
@@ -208,7 +235,6 @@
   }
 }
 
-
 /* ====== // TABLET STYLES ====== */
 
 /* ======= MOBILE STYLES ======= */
@@ -248,12 +274,11 @@
 
   .outlets {
     width: 280px;
-    padding: 0;
+    padding: 0 0 48px;
   }
 }
 
 /* ====== // MOBILE STYLES ====== */
-
 
 /* @media screen and (max-width: 767px) {
 }

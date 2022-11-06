@@ -9,7 +9,7 @@
   position: absolute;
   left: 38%;
   top: 47%;
-
+  transform: translate(-10%, 0);
   font-family: 'Circe';
   font-style: normal;
   font-weight: 700;

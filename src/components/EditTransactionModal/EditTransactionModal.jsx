@@ -17,6 +17,10 @@ import { DatePickerField } from './FormikCustoms/CustomDatePicker';
 import CustomSelect from './FormikCustoms/CustomSelect';
 import { addTransactionSchema } from 'validation/addTransactionSchema';
 
+import { RiCalendar2Fill } from 'react-icons/ri';
+import { Notify } from 'notiflix';
+import Loader from 'components/Loader';
+
 import {
   selectTransactionsIsEditing,
   selectTransactionsIsDeleting,
@@ -69,14 +73,14 @@ const EditTransactionModal = ({
           amount: -values?.amount,
         })
       )
+        .unwrap()
         .then(() => {
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
-
           setShowEditModal(false);
         })
         .catch(() => {
-          alert('smth went wrong, try again');
+          Notify.failure('Oops! Smth went wrong, try again');
         })
         .finally(dispatch(getTransactionsThunk()));
     }
@@ -92,14 +96,14 @@ const EditTransactionModal = ({
           amount: Math.abs(values?.amount),
         })
       )
+        .unwrap()
         .then(() => {
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
           setShowEditModal(false);
         })
         .catch(() => {
-          alert('smth went wrong, try again');
-          actions.resetForm();
+          Notify.failure('Oops! Smth went wrong, try again');
         })
         .finally(dispatch(getTransactionsThunk()));
     }
@@ -107,11 +111,15 @@ const EditTransactionModal = ({
 
   const handleDeleteTransaction = () => {
     dispatch(deleteTransactionsThunk(id))
+      .unwrap()
       .then(dispatch(getTransactionsThunk()))
       .catch(() => {
         alert('smth went wrong, try again');
       })
-      .finally(setShowEditModal(false));
+      .finally(() => {
+        dispatch(getCurrentUserInfoThunk());
+        setShowEditModal(false);
+      });
   };
 
   return ReactDOM.createPortal(
@@ -176,6 +184,7 @@ const EditTransactionModal = ({
                   </div>
                   <div className={css.datepickerWrapper}>
                     <DatePickerField name="startDate" />
+                    <RiCalendar2Fill className={css.datepickerIcon} />
                   </div>
                 </div>
                 <CustomCommentInput
@@ -195,17 +204,18 @@ const EditTransactionModal = ({
                 >
                   {isDeleting ? ' DELETING ...' : 'DELETE'}
                 </button>
+
+                <button
+                  type="button"
+                  className={css.cancelBtn}
+                  onClick={handleModalCloseClick}
+                >
+                  CANCEL
+                </button>
               </Form>
             )}
           </Formik>
-
-          <button
-            type="button"
-            className={css.cancelBtn}
-            onClick={handleModalCloseClick}
-          >
-            CANCEL
-          </button>
+          {isEditing && <Loader />}
         </div>
       </ModalBackdrop>
     </>,

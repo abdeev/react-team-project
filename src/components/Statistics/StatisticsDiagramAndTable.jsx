@@ -2,7 +2,7 @@ import { StatisticsDiagram } from 'components/Statistics/StatisticsDiagram/Stati
 import { StatisticsForm } from 'components/Statistics/StatisticsForm/StatisticsForm';
 import { StatisticsTable } from 'components/Statistics/StatisticsTable/StatisticsTable';
 import { useEffect, useState } from 'react';
-import { convertDataForChart } from '../../utils/Converters';
+import { convertDataForChart } from '../../utils/convertDataForChart';
 import { useSelector } from 'react-redux';
 
 import {
@@ -50,7 +50,7 @@ export const StatisticsDiagramAndTable = () => {
         {isLoading ? (
           <Puff
             type="Puff"
-            color="#4a56e2"
+            color="var(--icon-active-color)"
             height={300}
             width={300}
             timeout={3000}

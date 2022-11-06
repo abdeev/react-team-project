@@ -12,7 +12,6 @@ export const getCategoriesThunk = createAsyncThunk(
       }
       setToken.add(userToken);
       const { data } = await request('/api/transaction-categories');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

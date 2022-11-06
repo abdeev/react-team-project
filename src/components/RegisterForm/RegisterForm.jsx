@@ -9,6 +9,7 @@ import { MdEmail, MdLock, MdAccountBox } from 'react-icons/md';
 import { ReactComponent as Logo } from 'icons/logo.svg';
 
 import css from './RegisterForm.module.css';
+import { Notify } from 'notiflix';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,17 @@ export const RegisterForm = () => {
 
   const handleRegister = e => {
     const { name: username, email, password } = e;
-    dispatch(registerThunk({ username, email, password }));
-    navigate('/login');
+    dispatch(registerThunk({ username, email, password }))
+      .unwrap()
+      .then(
+        Notify.success("Congrats! Let's try your new Wallet!", {
+          timeout: 5000,
+          width: '320px',
+          fontFamily: 'Circe',
+          position: 'center-top',
+          closeButton: false,
+        }).then(navigate('/Home'))
+      );
   };
 
   const validationSchema = Yup.object({

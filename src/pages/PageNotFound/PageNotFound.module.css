@@ -20,8 +20,8 @@
   border: 1px solid #152098;
   border-radius: 15px;
 
-  color: #fff;
-  background-color: #4a56e2;
+  color: var(--primary-white-color);
+  background-color: var(--icon-active-color);
   cursor: pointer;
   font-family: 'Circe';
   line-height: 27px;

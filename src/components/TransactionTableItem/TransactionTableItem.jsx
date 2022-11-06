@@ -6,7 +6,7 @@ import { selectCategories } from 'redux/categories/selectCategories';
 import EditTransactionModal from 'components/EditTransactionModal/EditTransactionModal';
 
 import css from './TransactionTableItem.module.css';
-import { formatDate } from 'utils/Converters';
+import { formatDate } from 'utils/convertDataForChart';
 
 export const TransactionTableItem = ({
   transaction: {
@@ -21,12 +21,6 @@ export const TransactionTableItem = ({
 }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const categories = useSelector(selectCategories);
-
-  // const date = new Date(transactionDate);
-  // const day = String(date.getDate()).padStart(2, 0);
-  // const month = String(date.getMonth() + 1).padStart(2, 0);
-  // const year = date.getFullYear().;
-  // const formatDate = `${day}.${month}.${year}`;
 
   const getNameByCategoryId = id => {
     return categories.filter(category => category.id === id)[0]?.name;

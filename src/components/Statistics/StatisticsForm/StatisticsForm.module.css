@@ -5,7 +5,7 @@
 }
 .select-container {
   outline: none;
-  border: 1px solid #000000;
+  border: 1px solid var(--primary-text-color);
   border-radius: 30px;
 }
 

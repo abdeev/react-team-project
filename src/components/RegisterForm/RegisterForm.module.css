@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   padding: 40px 60px 66px 65px;
-  background-color: #fff;
+  background-color: var(--primary-white-color);
 }
 
 .form {
@@ -124,13 +124,14 @@
   margin-bottom: 40px;
 }
 .input::placeholder {
-  color: #bdbdbd;
+  color: var(--grey-text-color);
   font-size: 18px;
   font-family: 'circe';
   font-weight: 400;
 }
 
 .errorMessage {
+  font-family: 'Poppins';
   color: red;
   font-size: 12px;
 }
@@ -154,7 +155,7 @@
 .confirmProgress {
   width: 0;
   height: 4px;
-  background-color: #24cca7;
+  background-color: var(--green-text-color);
   border-radius: 2px;
   animation: load 2s normal forwards;
 }
@@ -172,10 +173,10 @@
   min-width: 280px;
   height: 50px;
   border-radius: 20px;
-  background-color: #24cca7;
-  border: 1px solid #24cca7;
+  background-color: var(--green-text-color);
+  border: 1px solid var(--green-text-color);
   margin-bottom: 20px;
-  color: #fff;
+  color: var(--primary-white-color);
   text-transform: uppercase;
   font-family: 'Circe';
   letter-spacing: 0.1em;
@@ -184,12 +185,12 @@
   transition: 250ms;
 }
 [disabled] {
-  background-color: #bdbdbd;
+  background-color: var(--grey-text-color);
   border: transparent;
   transition: 250ms;
 }
 .button[disabled]:hover {
-  background-color: #bdbdbd;
+  background-color: var(--grey-text-color);
 }
 .button:hover {
   background: #20b797;
@@ -200,8 +201,8 @@
   min-width: 280px;
   height: 50px;
   border-radius: 20px;
-  color: #4a56e2;
-  border: 1px solid #4a56e2;
+  color: var(--icon-active-color);
+  border: 1px solid var(--icon-active-color);
   text-align: center;
   text-transform: uppercase;
   font-family: 'Circe';
