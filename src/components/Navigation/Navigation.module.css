@@ -13,13 +13,13 @@
 .home__svg,
 .statis__svg,
 .curren__svg {
-  fill: #6e78e8;
+  fill: var(--icon-primary-color);
   height: 38px;
   width: 38px;
 }
 
 .activ {
-  fill: #4a56e2;
+  fill: var(--icon-active-color);
   color: black;
   font-weight: bold;
 }
@@ -32,10 +32,8 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 27px;
-  color: #000000;
+  color: var(--primary-text-color);
 }
-
-
 
 @media screen and (min-width: 768px) {
   .container {

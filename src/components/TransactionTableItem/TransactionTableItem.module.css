@@ -1,10 +1,10 @@
 .greenSum {
   font-weight: 700;
-  color: #24cca7;
+  color: var(--green-text-color);
 }
 .redSum {
   font-weight: 700;
-  color: #ff6596;
+  color: var(--red-text-color);
 }
 /* ============MOBILE STYLES========= */
 @media screen and (max-width: 767px) {
@@ -13,7 +13,7 @@
     flex-direction: column;
     margin-bottom: 8px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--primary-white-color);
     cursor: context-menu;
   }
   .transactionsTableRow_data:hover,
@@ -52,10 +52,10 @@
     line-height: 27px;
   }
   .redBorder {
-    border-left: 5px solid #ff6596;
+    border-left: 5px solid var(--red-text-color);
   }
   .greenBorder {
-    border-left: 5px solid #24cca7;
+    border-left: 5px solid var(--green-text-color);
   }
 }
 /* ============MOBILE STYLES========= */

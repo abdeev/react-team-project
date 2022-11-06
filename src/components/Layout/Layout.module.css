@@ -24,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: var(--primary-white-color);
 }
 
 .logoWallet {
@@ -44,8 +44,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  color: #bdbdbd;
-  border-right: 1px #bdbdbd solid;
+  color: var(--grey-text-color);
+  border-right: 1px var(--grey-text-color) solid;
 }
 
 .linkExit {
@@ -53,7 +53,7 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  color: #bdbdbd;
+  color: var(--grey-text-color);
 }
 .exitBtn {
   background-color: transparent;
@@ -74,7 +74,7 @@
   right: 90px;
   top: 22px;
   width: 18px;
-  fill: #bdbdbd;
+  fill: var(--grey-text-color);
   transition: 250ms;
 }
 .textExit {
@@ -82,7 +82,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  color: #bdbdbd;
+  color: var(--grey-text-color);
   padding-left: 30px;
   transition: 250ms;
 }
@@ -143,7 +143,7 @@
   width: 395px;
   height: 80px;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: var(--primary-white-color);
 }
 
 .balanceAmount {
@@ -177,7 +177,7 @@
   position: fixed;
   right: 40px;
   bottom: 40px;
-  background-color: #24cca7;
+  background-color: var(--green-text-color);
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   border: none;
   border-radius: 50%;

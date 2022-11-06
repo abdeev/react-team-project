@@ -3,8 +3,8 @@
   margin-right: auto;
   font-family: 'Circe', sans-serif;
   border-radius: 30px;
-  background: #4a56e2;
-  color: #ffffff;
+  background: var(--icon-active-color);
+  color: var(--primary-white-color);
   width: 280px;
 }
 
@@ -105,6 +105,6 @@
 
 @media screen and (max-width: 767px) {
   .hidden {
-      display: none;
+    display: none;
   }
 }

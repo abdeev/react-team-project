@@ -3,7 +3,7 @@
   outline: none !important;
   width: 182px !important;
   height: 50px !important;
-  border: 1px solid #000000 !important;
+  border: 1px solid var(--primary-text-color) !important;
   border-radius: 30px !important;
   cursor: pointer !important;
 }
@@ -33,7 +33,7 @@
   font-size: 16px !important;
   line-height: 24px !important;
 
-  color: #000000 !important;
+  color: var(--primary-text-color) !important;
 }
 .statistics-select__input-container {
   padding: 0 !important;
@@ -48,7 +48,7 @@
 }
 
 .css-tj5bde-Svg {
-  color: #000000 !important;
+  color: var(--primary-text-color) !important;
 }
 
 .statistics-select__menu {
@@ -72,7 +72,7 @@
   font-size: 18px !important;
   line-height: 24px !important;
 
-  color: #000 !important;
+  color: var(--primary-text-color) !important;
   text-align: left !important;
 }
 
@@ -80,5 +80,5 @@
   cursor: pointer !important;
   font-weight: 600 !important;
   background-color: lightblue !important;
-  color: #ff6596 !important;
+  color: var(--red-text-color) !important;
 }

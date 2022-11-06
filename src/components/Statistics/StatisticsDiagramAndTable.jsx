@@ -50,7 +50,7 @@ export const StatisticsDiagramAndTable = () => {
         {isLoading ? (
           <Puff
             type="Puff"
-            color="#4a56e2"
+            color="var(--icon-active-color)"
             height={300}
             width={300}
             timeout={3000}

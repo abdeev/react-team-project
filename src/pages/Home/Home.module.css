@@ -37,7 +37,7 @@
   }
   .transactionsTableRow_header {
     padding: 15px 20px;
-    background-color: #fff;
+    background-color: var(--primary-white-color);
     border-radius: 30px;
     border: hidden;
     overflow: hidden;

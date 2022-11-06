@@ -1,4 +1,5 @@
 @import-normalize; /*bring in normalize.css styles */
+@import url(./stylesheet/vars.css);
 
 * {
   box-sizing: border-box;
@@ -66,7 +67,7 @@ code {
   font-size: 18px !important;
   line-height: 27px !important;
 
-  color: #bdbdbd !important;
+  color: var(--grey-text-color) !important;
 
   border: none !important;
   border-bottom: 1px solid #e0e0e0 !important;
@@ -79,7 +80,7 @@ code {
 .custom-select__control--error {
   composes: custom-select__control;
   margin-bottom: -1px;
-  border-bottom: 1px solid #ff6596 !important;
+  border-bottom: 1px solid var(--red-text-color) !important;
 }
 
 .custom-select__placeholder {
@@ -88,7 +89,7 @@ code {
   font-size: 18px !important;
   line-height: 27px !important;
 
-  color: #bdbdbd !important;
+  color: var(--grey-text-color) !important;
   text-align: left !important;
 }
 
@@ -127,7 +128,7 @@ code {
   font-size: 18px !important;
   line-height: 27px !important;
 
-  color: #000 !important;
+  color: var(--primary-text-color) !important;
   text-align: left !important;
 }
 
@@ -147,7 +148,7 @@ code {
 .custom-select__option--is-selected {
   cursor: pointer !important;
   background-color: rgba(255, 255, 255, 0.906) !important;
-  color: #ff6596 !important;
+  color: var(--red-text-color) !important;
 }
 
 @keyframes scaleIn {
