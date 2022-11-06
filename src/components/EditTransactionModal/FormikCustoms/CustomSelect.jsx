@@ -20,6 +20,8 @@ const CustomSelect = ({ ...props }) => {
         {...props}
         {...field}
         options={options}
+        menuPortalTarget={document.body}
+        styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}
         value={field.value}
         onChange={val => {
           setFieldValue(field.name, val);

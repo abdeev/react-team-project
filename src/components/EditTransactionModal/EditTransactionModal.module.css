@@ -86,6 +86,7 @@
   height: 17px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   background-image: url(../../../assets/modal-cross.svg);
   background-repeat: no-repeat;
@@ -94,7 +95,8 @@
 }
 
 .closingCross:hover {
-  scale: 1.1; /*??????????*/
+  scale: 1.1;
+  /*??????????*/
 }
 
 .title {
@@ -105,6 +107,8 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
+
+  cursor: default;
 }
 
 /* ======== toggle styles ========== */
@@ -135,7 +139,8 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -5px; /*??????*/
+  left: -5px;
+  /*??????*/
 
   margin: auto;
 
@@ -158,7 +163,7 @@
   display: none;
 }
 
-.toggle input:checked ~ label:after {
+.toggle input:checked~label:after {
   background-color: #ff6596;
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 
@@ -166,7 +171,8 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
-  transform: translate3d(50px, 0, 0); /*??????*/
+  transform: translate3d(50px, 0, 0);
+  /*??????*/
 }
 
 .incomeSpan {
@@ -179,9 +185,11 @@
   line-height: 24px;
 
   transition: 300ms;
+
+  cursor: default;
 }
 
-.toggle input:checked ~ .incomeSpan {
+.toggle input:checked~.incomeSpan {
   color: #e0e0e0;
 }
 
@@ -193,15 +201,22 @@
 
   color: #e0e0e0;
   transition: 300ms;
+
+  cursor: default;
 }
 
-.toggle input:checked ~ .expenseSpan {
+.toggle input:checked~.expenseSpan {
   color: #ff6596;
 }
+
 /* ======== // ========== */
 
 .form {
   text-align: center;
+}
+
+.form::-webkit-scrollbar {
+  display: none;
 }
 
 .inputsWrapper {
@@ -217,21 +232,22 @@
 }
 
 .input {
+  /* z-index: -100; */
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+
   width: 185px;
-  padding: 8px;
+  padding: 8px 20px;
 
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  text-align: center;
+  /* text-align: center; */
+  cursor: pointer;
 
   border: none;
   border-bottom: 1px solid #e0e0e0;
-}
-
-.input::placeholder {
-  color: #bdbdbd;
 }
 
 .react-select__menu {
@@ -252,6 +268,10 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
+.inputAmount::placeholder {
+  color: #bdbdbd;
+}
+
 .inputError {
   composes: inputAmount;
   color: #ff6596;
@@ -259,8 +279,23 @@
 }
 
 .datepickerWrapper {
+  position: relative;
   max-width: 195px;
   color: rgb(15, 15, 15);
+}
+
+.datepickerIcon {
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+
+  width: 24px;
+  height: 24px;
+
+  fill: #4a56e2;
+
+  pointer-events: none;
+  cursor: pointer;
 }
 
 .comment {
@@ -288,8 +323,9 @@
   border-bottom: 1px solid #ff6596;
 }
 
-.submitBtn,
-.deleteBtn {
+.submitBtn {
+  display: block;
+  margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 20px;
 
@@ -303,26 +339,25 @@
   line-height: 27px;
   text-align: center;
   letter-spacing: 0.1em;
+  cursor: pointer;
 
   color: #fff;
   background: #24cca7;
   border: none;
   border-radius: 20px;
   transition: 250ms;
-  cursor: pointer;
 }
 
-.submitBtn:hover,
-.deleteBtn:hover {
-  background: #FF6596;;
+.submitBtn:hover {
+  background: #20b797;
 }
 
+.cancelBtn,
 .deleteBtn {
-  background: #fc0000;;
-}
-
-.cancelBtn {
+  display: block;
+  margin: 0 auto;
   width: 300px;
+  padding: 13px;
   height: 50px;
 
   font-family: 'Circe';
@@ -332,6 +367,7 @@
   line-height: 27px;
   text-align: center;
   letter-spacing: 0.1em;
+  cursor: pointer;
 
   color: #4a56e2;
   background: #ffffff;
@@ -340,12 +376,27 @@
   transition: 250ms;
 }
 
+.deleteBtn {
+  color: #ffffff;
+  border: 0;
+  margin-bottom: 20px;
+}
+
 .cancelBtn:hover {
   background: #fbfbfb;
   color: #3b45ae;
   border: 1px solid #3b45ae;
 }
 
+.submitBtn:hover,
+.deleteBtn:hover {
+  background: #FF6596;
+  ;
+}
+
+.deleteBtn {
+  background: #fc0000;
+}
 
 /* ========= formik ========== */
 
@@ -360,7 +411,6 @@
 
 .amountErrorMesage {
   position: absolute;
-  z-index: -1;
   color: #ff6596;
 
   font-family: 'Circe', sans-serif;
@@ -371,3 +421,88 @@
 }
 
 /* ========= //formik ========== */
+
+@media screen and (max-height: 660px),
+screen and (max-width: 767px) {
+  .modal {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+
+    width: auto;
+    height: auto;
+
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .form {
+    overflow-y: scroll;
+    /* background-color: #20b797; */
+  }
+
+  .toggle {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+
+    width: auto;
+    height: auto;
+
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .closingCross {
+    display: none;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  .inputsWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .input {
+    width: 280px;
+  }
+
+  .inputAmount {
+    width: 280px;
+  }
+
+  .datepickerWrapper {
+    max-width: none;
+  }
+
+  .comment {
+    width: 280px;
+
+    margin: 0 auto;
+  }
+
+  .errorMessage {
+    left: 10px;
+  }
+}
