@@ -54,7 +54,6 @@ const Layout = () => {
     }
   };
   const toggleModal = () => {
-    console.log('CLICK OUT');
     setIsShowModal(!isShowModal);
   };
 

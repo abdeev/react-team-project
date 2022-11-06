@@ -9,20 +9,13 @@ export const LogoutModal = ({ onClose }) => {
   const location = useNavigate();
 
   const handleLogOut = e => {
-    console.log(e);
-    console.log(dispatch(logOutThunk()));
     onClose();
     location('/');
   };
   const handleCancelLogOut = e => {
     onClose();
-    console.log(e);
-    // if (e.target === 'button') {
-    //   onClose();
-    // }
   };
   const handleBackdropClick = e => {
-    console.log(e);
     if (e.target === e.currentTarget) {
       onClose();
     }
