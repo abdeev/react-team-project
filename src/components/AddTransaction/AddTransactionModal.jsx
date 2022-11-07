@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { showModal } from 'redux/modal/modalSlice';
+
 import {
   getTransactionsThunk,
   addTransactionThunk,
 } from 'redux/transactions/thunksTransactions';
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
-import { selectIsModalOpen } from 'redux/modal/selectorsModal';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
@@ -26,22 +25,23 @@ import { RiCalendar2Fill } from 'react-icons/ri';
 
 import Loader from 'components/Loader';
 
+import PropTypes from 'prop-types';
+
 import css from './AddTransactionModal.module.css';
 
-const AddTransactionModal = () => {
+const AddTransactionModal = ({ isAddModalOpen, setIsAddModalOpen }) => {
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
   const dispatch = useDispatch();
-  const isModalOpen = useSelector(selectIsModalOpen);
   const isLoading = useSelector(selectTransactionsIsLoading);
 
   const handleModalCloseClick = () => {
-    dispatch(showModal(false));
+    setIsAddModalOpen(false);
     setIsExpenseChecked(true);
   };
 
   const handleBackdropClick = e => {
     if (e.target !== e.currentTarget) return;
-    dispatch(showModal(false));
+    setIsAddModalOpen(false);
     setIsExpenseChecked(true);
   };
 
@@ -58,7 +58,7 @@ const AddTransactionModal = () => {
       )
         .unwrap()
         .then(() => {
-          dispatch(showModal(false));
+          setIsAddModalOpen(false);
           setIsExpenseChecked(true);
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
@@ -81,7 +81,7 @@ const AddTransactionModal = () => {
       )
         .unwrap()
         .then(() => {
-          dispatch(showModal(false));
+          setIsAddModalOpen(false);
 
           setIsExpenseChecked(true);
           actions.resetForm();
@@ -96,7 +96,7 @@ const AddTransactionModal = () => {
 
   return (
     <div>
-      {isModalOpen && (
+      {isAddModalOpen && (
         <ModalBackdrop onBackClick={handleBackdropClick}>
           <div className={css.modal}>
             <button
@@ -120,61 +120,63 @@ const AddTransactionModal = () => {
               onSubmit={handleModalSubmit}
             >
               {props => (
-                <Form className={css.form}>
-                  <div className={css.toggle}>
-                    <input
-                      type="checkbox"
-                      id="toggle"
-                      defaultChecked
-                      onChange={() => {
-                        props.values.isExpenseChecked =
-                          !props.values.isExpenseChecked;
-                        setIsExpenseChecked(props.values.isExpenseChecked);
-                      }}
-                    />
-                    <label htmlFor="toggle"></label>
-                    <span className={css.incomeSpan}>Income</span>
-                    <span className={css.expenseSpan}>Expense</span>
-                  </div>
-
-                  <div
-                    className={
-                      isExpenseChecked
-                        ? css.selectWrapper
-                        : css.selectWrapperOut
-                    }
-                  >
-                    <CustomSelect name="selectData" />
-                  </div>
-
-                  <div className={css.inputsWrapper}>
-                    <div className={css.amountWrapper}>
-                      <CustomAmountInput
-                        name="amount"
-                        type="text"
-                        placeholder="0.00"
+                <>
+                  <Form className={css.form}>
+                    <div className={css.toggle}>
+                      <input
+                        type="checkbox"
+                        id="toggle"
+                        defaultChecked
+                        onChange={() => {
+                          props.values.isExpenseChecked =
+                            !props.values.isExpenseChecked;
+                          setIsExpenseChecked(props.values.isExpenseChecked);
+                        }}
                       />
+                      <label htmlFor="toggle"></label>
+                      <span className={css.incomeSpan}>Income</span>
+                      <span className={css.expenseSpan}>Expense</span>
                     </div>
-                    <div className={css.datepickerWrapper}>
-                      <DatePickerField name="startDate" />
-                      <RiCalendar2Fill className={css.datepickerIcon} />
+
+                    <div
+                      className={
+                        isExpenseChecked
+                          ? css.selectWrapper
+                          : css.selectWrapperOut
+                      }
+                    >
+                      <CustomSelect name="selectData" />
                     </div>
-                  </div>
 
-                  <CustomCommentInput
-                    name="comment"
-                    type="text"
-                    placeholder="Comment"
-                  />
+                    <div className={css.inputsWrapper}>
+                      <div className={css.amountWrapper}>
+                        <CustomAmountInput
+                          name="amount"
+                          type="text"
+                          placeholder="0.00"
+                        />
+                      </div>
+                      <div className={css.datepickerWrapper}>
+                        <DatePickerField name="startDate" />
+                        <RiCalendar2Fill className={css.datepickerIcon} />
+                      </div>
+                    </div>
 
-                  <button
-                    type="submit"
-                    className={css.submitBtn}
-                    disabled={isLoading}
-                  >
-                    {isLoading ? ' ADDING ...' : 'ADD'}
-                  </button>
-                </Form>
+                    <CustomCommentInput
+                      name="comment"
+                      type="text"
+                      placeholder="Comment"
+                    />
+
+                    <button
+                      type="submit"
+                      className={css.submitBtn}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? ' ADDING ...' : 'ADD'}
+                    </button>
+                  </Form>
+                </>
               )}
             </Formik>
 
@@ -191,6 +193,11 @@ const AddTransactionModal = () => {
       )}
     </div>
   );
+};
+
+AddTransactionModal.propTypes = {
+  isAddModalOpen: PropTypes.bool.isRequired,
+  setIsAddModalOpen: PropTypes.func.isRequired,
 };
 
 export default AddTransactionModal;
