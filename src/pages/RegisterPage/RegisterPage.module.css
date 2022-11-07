@@ -10,6 +10,13 @@
     right: 160px;
   }
 }
+@media (min-height: 768px) and (max-height: 1023px) {
+  .pageText {
+    top: 75%;
+    left: 200px;
+    transform: translateY(-50%);
+  }
+}
 
 @media (min-width: 1280px) {
   .pageWrapper {

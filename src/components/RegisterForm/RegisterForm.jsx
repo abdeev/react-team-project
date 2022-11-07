@@ -20,6 +20,7 @@ export const RegisterForm = () => {
     const { name: username, email, password } = e;
     dispatch(registerThunk({ username, email, password }))
       .unwrap()
+      .then(() => navigate('/home'))
       .then(
         Notify.success("Congrats! Let's try your new Wallet!", {
           timeout: 5000,
@@ -27,7 +28,7 @@ export const RegisterForm = () => {
           fontFamily: 'Circe',
           position: 'center-top',
           closeButton: false,
-        }).then(navigate('/Home'))
+        })
       );
   };
 
