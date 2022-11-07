@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { Link, Outlet, redirect, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { redirect, useLocation } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
@@ -12,7 +12,6 @@ import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
 import styles from '../Currency/Currency.module.css';
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
-import { showModal } from 'redux/modal/modalSlice';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
 
 import Navigation from 'components/Navigation/Navigation';
@@ -22,10 +21,11 @@ import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 import { useEffect } from 'react';
 
 const Layout = () => {
-  const dispatch = useDispatch();
   const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const [isShowModal, setIsShowModal] = useState(false);
 
@@ -41,20 +41,21 @@ const Layout = () => {
     if (isToken) {
       location();
     }
-    
+
     if (window.location.pathname === '/react-team-project/') {
       location('/home');
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
 
   const handleOpenModal = () => {
-    dispatch(showModal(true));
+    setIsAddModalOpen(true);
   };
 
   const handleEscapeKey = e => {
     if (e.key === 'Escape') {
-      dispatch(showModal(false));
+      setIsAddModalOpen(false);
     }
   };
   const toggleModal = () => {
@@ -102,7 +103,10 @@ const Layout = () => {
 
       {window.location.pathname === '/react-team-project/home' && (
         <>
-          <AddTransactionModal />
+          <AddTransactionModal
+            isAddModalOpen={isAddModalOpen}
+            setIsAddModalOpen={setIsAddModalOpen}
+          />
 
           <button
             type="button"
