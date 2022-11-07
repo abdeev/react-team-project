@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { Link, Outlet, redirect, useNavigate } from 'react-router-dom';
+import { redirect, useLocation } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
@@ -39,7 +39,10 @@ const Layout = () => {
     }
 
     if (isToken) {
-      location('/home');
+      location();
+    }
+    if (window.location.pathname === '/react-team-project/') {
+      location('/home')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
