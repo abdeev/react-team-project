@@ -24,7 +24,7 @@ export default function Navigation() {
               <Homesvg
                 fill=" current"
                 className={`${style.home__svg} ${
-                  pathname === '/home' ? style.activ : ''
+                  pathname === '/home' ? style.activ__svg : ''
                 } `}
               />
               <span
@@ -39,7 +39,7 @@ export default function Navigation() {
             <NavLink to="/statistics" className={style.statis}>
               <Statissvg
                 className={`${style.statis__svg} ${
-                  pathname === '/statistics' ? style.activ : ''
+                  pathname === '/statistics' ? style.activ__svg  : ''
                 }`}
               />
               <span
@@ -51,10 +51,10 @@ export default function Navigation() {
               </span>
             </NavLink>
 
-            <NavLink to="/diagram" className={style.curren}>
+            <NavLink to="/diagram" className={style.curren }>
               <Dollarsvg
                 className={`${style.curren__svg} ${
-                  pathname === "/diagram" ? style.activ : ''
+                  pathname === "/diagram" ? style.activ__svg  : ''
                 }`}
               />
             </NavLink>

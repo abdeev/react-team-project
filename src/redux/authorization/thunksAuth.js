@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { request, setToken } from 'redux/services/axiosConfig';
+import { request, setToken } from '../../services/axiosConfig';
 
 export const getCurrentUserInfoThunk = createAsyncThunk(
   'authentication/currentUser',
