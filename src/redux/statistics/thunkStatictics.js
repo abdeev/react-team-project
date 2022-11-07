@@ -1,17 +1,15 @@
-import { request, setToken } from 'redux/services/axiosConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { request } from 'services/axiosConfig';
 
 export const getStatisticsUserThunk = createAsyncThunk(
   'statistics/api/transactions-summary',
-  async (termin, thunkAPI) => {
-    const userToken = thunkAPI.getState().authorization.userToken;
+  async (termin, { getState, rejectWithValue }) => {
+    const userToken = getState().authorization.userToken;
     if (!userToken) {
-      return thunkAPI.rejectWithValue();
+      return rejectWithValue();
     }
 
     try {
-      setToken.add(userToken);
-
       let params = {};
       if (termin) {
         if (termin.electYear) {
@@ -22,16 +20,16 @@ export const getStatisticsUserThunk = createAsyncThunk(
         }
         if (!termin.electYear && termin.electMonth) {
           params.month = termin.electMonth;
-          params.year = 2022;
+          params.year = new Date().getFullYear();
         }
       }
 
       const { data } = await request.get('/api/transactions-summary', {
-        params: { ...params },
+        params,
       });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

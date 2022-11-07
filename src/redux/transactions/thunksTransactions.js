@@ -1,55 +1,56 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { request } from 'redux/services/axiosConfig';
+import { request } from '../../services/axiosConfig';
 
 export const getTransactionsThunk = createAsyncThunk(
   'transactions/get',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data } = await request('/api/transactions');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const addTransactionThunk = createAsyncThunk(
   'transaction/add',
-  async (transaction, thunkAPI) => {
+  async (transaction, { rejectWithValue } ) => {
     try {
       const { data } = await request.post('/api/transactions', transaction);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const editTransactionThunk = createAsyncThunk("transaction/update", async (transaction, thunkAPI) => {   
-
+export const editTransactionThunk = createAsyncThunk(
+  'transaction/update',
+  async (transaction, { rejectWithValue }) => {
   try {
-        const { data } = await request.patch(`/api/transactions/${transaction.id}`, {
-            amount: transaction.amount,
-            categoryId: transaction.categoryId,
-            transactionDate: transaction.transactionDate,
-            type: transaction.type,
-            comment: transaction.comment,
-        });
-        return data;
-    }
-    catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-    }
+    const { data } = await request.patch(`/api/transactions/${transaction.id}`, {
+      amount: transaction.amount,
+      categoryId: transaction.categoryId,
+      transactionDate: transaction.transactionDate,
+      type: transaction.type,
+      comment: transaction.comment,
+    });
+    return data;
+  }
+  catch (error) {
+    return rejectWithValue(error.message);
+  }
 });
 
 export const deleteTransactionsThunk = createAsyncThunk(
   'transaction/delete',
-  async (id, thunkAPI) => {
+  async (id, { rejectWithValue }) => {
     try {
       const { data } = await request.delete(`/api/transactions/${id}`);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

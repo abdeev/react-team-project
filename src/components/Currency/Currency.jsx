@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useLocation } from 'react-router-dom';
 
-import useLocalStorage from "../../utils/useLocalStorage";
-import fetchExchangeRate from  '../../utils/CurrencyApi';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import fetchExchangeRate from  '../../services/CurrencyApi';
 
 import Loader from "../Loader/Loader";
 
@@ -18,7 +18,7 @@ const Currency = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const location = useLocation();
-  const isDiagram = location.pathname === "/diagram";
+  const isDiagram = location.pathname === "/currencies";
 
   const prepareData = (data) => {
     const filteredData = data.filter(

@@ -1,28 +1,28 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { request, setToken } from 'redux/services/axiosConfig';
+import { request, setToken } from '../../services/axiosConfig';
 
 export const getCurrentUserInfoThunk = createAsyncThunk(
   'authentication/currentUser',
-  async (_, thunkAPI) => {
-    const userToken = thunkAPI.getState().authorization.userToken;
+  async(_, { getState, rejectWithValue } ) => {
+    const userToken = getState().authorization.userToken;
 
     try {
       if (!userToken) {
-        return thunkAPI.rejectWithValue();
+        return rejectWithValue();
       }
       setToken.add(userToken);
       const { data } = await request('/api/users/current');
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const registerThunk = createAsyncThunk(
   'authentication/register',
-  async (registerUserInfo, thunkAPI) => {
+  async (registerUserInfo, { rejectWithValue }) => {
     try {
       const { data } = await request.post(
         '/api/auth/sign-up',
@@ -32,34 +32,34 @@ export const registerThunk = createAsyncThunk(
       return data;
     } catch (error) {
       Notify.failure(`User with this email is already registered`);
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const logInThunk = createAsyncThunk(
   'authentication/login',
-  async (loginUserInfo, thunkAPI) => {
+  async (loginUserInfo, { rejectWithValue }) => {
     try {
       const { data } = await request.post('/api/auth/sign-in', loginUserInfo);
       setToken.add(data.token);
       return data;
     } catch (error) {
       Notify.failure('Incorrect email or password');
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
 
 export const logOutThunk = createAsyncThunk(
   'authentication/logout',
-  async (_, thunkAPI) => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data } = await request.delete('/api/auth/sign-out');
       setToken.remove();
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
