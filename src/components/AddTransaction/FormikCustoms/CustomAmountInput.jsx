@@ -23,9 +23,9 @@ const CustomAmountInput = ({ ...props }) => {
 
 CustomAmountInput.propTypes = {
   props: PropTypes.exact({
-    name: PropTypes.string,
-    type: PropTypes.string,
-    placeholder: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
   }),
 };
 
