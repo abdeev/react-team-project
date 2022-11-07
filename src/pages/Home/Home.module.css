@@ -1,10 +1,12 @@
 @media screen and (max-width: 767px) {
+
   .tableBody .transactionsTableRow_header,
   .table_head__alStart,
   .table_head__alCenter,
   .table_head__alEnd {
     display: none;
   }
+
   .table_head_alStart,
   .table_head_alCenter,
   .table_head_alEnd {
@@ -27,12 +29,14 @@
     line-height: 27px;
     text-align: start;
   }
+
   .noDataText {
     font-family: 'Circe';
     font-size: 29px;
     font-weight: 700;
   }
 }
+
 @media screen and (min-width: 768px) {
   .transactionsTable {
     width: 100%;
@@ -40,6 +44,7 @@
     border: none;
     border-collapse: collapse;
   }
+
   .transactionsTableRow_header {
     padding: 15px 20px;
     background-color: var(--primary-white-color);
@@ -56,22 +61,27 @@
   .table_head__alStart {
     text-align: start;
   }
+
   .table_head__alCenter {
     text-align: center;
   }
+
   .table_head__alEnd {
     text-align: end;
   }
+
   .table_head__alStart,
   .table_head__alCenter,
   .table_head__alEnd {
     padding: 15px 0;
   }
+
   .tableHeaderBalance {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     padding-right: 20px;
   }
+
   .tableHeaderType {
     padding-left: 23px;
     padding-right: 23px;
@@ -82,23 +92,37 @@
     border-bottom-left-radius: 30px;
     padding-left: 20px;
   }
+
   .noDataText {
     font-family: 'Circe';
     font-size: 35px;
     font-weight: 700;
   }
 }
+
 /* ============DESKTOP STYLES========= */
 @media screen and (min-width: 1280px) {
   .transactionsTable {
     table-layout: fixed;
     margin-top: 46px;
   }
+
   .noDataText {
     margin-top: 150px;
   }
 }
+
 .transactionsTableRow_header:hover,
 .transactionsTableRow_header:focus {
   background-color: rgba(240, 240, 240, 0.541);
+}
+
+.tableWrapper {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.tableHeader {
+  position: sticky;
+  top: 0;
 }

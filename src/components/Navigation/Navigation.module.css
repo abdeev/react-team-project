@@ -27,8 +27,8 @@
 
 .activ__svg {
   border-radius: 6px;
-  background-color: white;
-  filter:drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  background-color: var(--primary-white-color);
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
 }
 
 .home__word,
@@ -47,19 +47,22 @@
     padding: 0;
     margin-bottom: 16px;
   }
+
   .nav__link {
     width: auto;
     padding: 0;
     flex-direction: column;
     gap: 12px;
- 
+
   }
+
   .home,
   .statis {
     align-items: center;
     text-decoration: none;
     display: flex;
   }
+
   .activ {
     color: black;
     font-weight: bold;
@@ -72,6 +75,7 @@
     margin-right: 23px;
 
   }
+
   .activ__svg {
     border-radius: 2px;
   }
@@ -86,8 +90,9 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 27px;
-    
+
   }
+
   .curren__svg {
     display: none;
   }

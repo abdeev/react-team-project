@@ -51,7 +51,7 @@ const Home = () => {
     <div className={css.tableWrapper}>
       {userTransactions.length !== 0 ? (
         <table className={css.transactionsTable}>
-          <tbody className={css.tableBody}>
+          <thead className={css.tableHeader}>
             <tr className={css.transactionsTableRow_header}>
               <th
                 className={`${css.table_head__alStart} ${css.tableHeaderDate}`}
@@ -127,6 +127,8 @@ const Home = () => {
                 Balance
               </th>
             </tr>
+          </thead>
+          <tbody className={css.tableBody}>
             {!!userTransactions.length &&
               sortTransactions.map(transaction => (
                 <TransactionTableItem
