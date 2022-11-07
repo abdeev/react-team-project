@@ -1,3 +1,4 @@
+import { request, setToken } from '../../services/axiosConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { request } from 'services/axiosConfig';
 
