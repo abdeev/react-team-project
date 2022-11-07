@@ -5,8 +5,6 @@ import css from '../AddTransactionModal.module.css';
 const CustomAmountInput = ({ ...props }) => {
   const [field, meta] = useField(props);
 
-  console.log(props);
-
   return (
     <>
       <input

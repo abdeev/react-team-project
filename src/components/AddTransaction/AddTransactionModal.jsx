@@ -82,6 +82,7 @@ const AddTransactionModal = () => {
         .unwrap()
         .then(() => {
           dispatch(showModal(false));
+
           setIsExpenseChecked(true);
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
@@ -169,7 +170,7 @@ const AddTransactionModal = () => {
                   <button
                     type="submit"
                     className={css.submitBtn}
-                    // disabled={props.isSubmitting}
+                    disabled={isLoading}
                   >
                     {isLoading ? ' ADDING ...' : 'ADD'}
                   </button>
