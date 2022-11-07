@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectUserToken } from 'redux/authorization/selectorsAuth';
+import { selectUserName } from 'redux/authorization/selectorsAuth';
 import { getCategoriesThunk } from 'redux/categories/thunkCategories';
 import { selectCategories } from 'redux/categories/selectCategories';
 import { selectTransactions } from 'redux/transactions/selectorsTransactions';
@@ -23,7 +23,7 @@ import css from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const usertoken = useSelector(selectUserToken);
+  const userName = useSelector(selectUserName);
   const userTransactions = useSelector(selectTransactions);
   const transactionsCategories = useSelector(selectCategories);
 
@@ -41,9 +41,11 @@ const Home = () => {
   }, [userTransactions]);
 
   useEffect(() => {
-    dispatch(getCategoriesThunk());
-    dispatch(getTransactionsThunk());
-  }, [usertoken, dispatch]);
+    if (userName) {
+      dispatch(getCategoriesThunk());
+      dispatch(getTransactionsThunk());
+    }
+  }, [userName, dispatch]);
 
   return (
     <div className={css.tableWrapper}>

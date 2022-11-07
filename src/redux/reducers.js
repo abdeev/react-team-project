@@ -10,7 +10,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { reducerStatistics } from './statistics/sliceStatistics';
 
 const authorizationPersistConfig = {
-  key: 'wallet',
+  key: 'userToken',
   storage,
   whitelist: ['userToken'],
 };
