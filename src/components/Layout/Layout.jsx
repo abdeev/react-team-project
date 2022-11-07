@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { Link, Outlet, redirect, useNavigate } from 'react-router-dom';
+import { redirect, useLocation } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   selectUserBalance,
   selectUserName,
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
-import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
-import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
+import { ReactComponent as LogoWallet } from '../../assets/images/logo.svg';
+import { ReactComponent as IconExit } from '../../assets/images/iconExit.svg';
 import styles from '../Currency/Currency.module.css';
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
@@ -39,7 +39,12 @@ const Layout = () => {
     }
 
     if (isToken) {
+      location();
+    }
+
+    if (window.location.pathname === '/react-team-project/') {
       location('/home');
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
@@ -60,7 +65,7 @@ const Layout = () => {
   return (
     <div className={css.layoutContainer}>
       <div className={css.layoutHeader}>
-        <Link to="/home" end="true" className={css.wallet}>
+        <Link to="/home"  className={css.wallet}>
           <LogoWallet className={css.logoWallet} />
         </Link>
 
