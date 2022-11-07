@@ -1,5 +1,5 @@
-import { request } from 'redux/services/axiosConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { request } from 'services/axiosConfig';
 
 export const getStatisticsUserThunk = createAsyncThunk(
   'statistics/api/transactions-summary',
