@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import css from 'components/AddTransaction/ModalBackdrop/ModalBackdrop.module.css';
+import css from 'components/Modal/ModalBackdrop/ModalBackdrop.module.css';
 
 const ModalBackdrop = ({ children, onBackClick }) => {
   return (
@@ -10,8 +10,6 @@ const ModalBackdrop = ({ children, onBackClick }) => {
     </div>
   );
 };
-
-// import PropTypes from 'prop-types';
 
 ModalBackdrop.propTypes = {
   children: PropTypes.node,

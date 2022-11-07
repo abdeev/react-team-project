@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-import { selectIsLoggedIn } from '../../redux/authorization/selectorsAuth';
+import { selectUserToken } from '../../redux/authorization/selectorsAuth';
 
 import { ReactComponent as Homesvg } from '../../icons/home.svg';
 import { ReactComponent as Statissvg } from '../../icons/statis.svg';
@@ -12,13 +12,13 @@ import { ReactComponent as Dollarsvg } from '../../icons/dollar-icon.svg';
 import style from '../Navigation/Navigation.module.css';
 
 export default function Navigation() {
-  const isLogin = useSelector(selectIsLoggedIn);
   const { pathname } = useLocation();
+  const userToken = useSelector(selectUserToken);
 
   return (
     <nav className={style.container}>
       <div className={style.nav__link}>
-        {isLogin && (
+        {userToken && (
           <>
             <NavLink to="/home" className={style.home}>
               <Homesvg
@@ -39,7 +39,7 @@ export default function Navigation() {
             <NavLink to="/statistics" className={style.statis}>
               <Statissvg
                 className={`${style.statis__svg} ${
-                  pathname === '/statistics' ? style.activ__svg  : ''
+                  pathname === '/statistics' ? style.activ__svg : ''
                 }`}
               />
               <span
@@ -52,10 +52,9 @@ export default function Navigation() {
             </NavLink>
 
             <NavLink to="/currencies" className={style.curren}>
-
               <Dollarsvg
                 className={`${style.curren__svg} ${
-                  pathname === "/currencies" ? style.activ__svg  : ''
+                  pathname === '/currencies' ? style.activ__svg : ''
                 }`}
               />
             </NavLink>

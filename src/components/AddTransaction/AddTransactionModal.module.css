@@ -1,25 +1,3 @@
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  width: 540px;
-  height: 650px;
-  padding: 40px 70px;
-
-  background-color: var(--primary-white-color);
-  border-radius: 20px;
-  transition: 400ms;
-  animation-name: fade-in;
-  animation-duration: 0.3s;
-}
 .selectWrapper {
   animation: ease-in-out both;
   animation-name: fade-in;
@@ -222,7 +200,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
-  /* text-align: center; */
+
   cursor: pointer;
 
   border: none;
@@ -373,34 +351,16 @@
   font-family: 'Circe', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  /* left: 3px;
-  bottom: -20px; */
 }
 /* ========= //formik ========== */
 
 @media screen and (max-height: 660px), screen and (max-width: 767px) {
-  .modal {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    transform: translate(0%, 0%);
-
-    width: auto;
-    height: auto;
-
-    overflow: auto;
-    padding: 20px;
-    border-radius: 0;
-  }
-
   .title {
     margin-bottom: 10px;
   }
 
   .form {
     overflow-y: scroll;
-    /* background-color: #20b797; */
   }
 
   .toggle {
@@ -409,25 +369,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .modal {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    transform: translate(0%, 0%);
-
-    width: auto;
-    height: auto;
-
-    overflow: auto;
-    padding: 20px;
-    border-radius: 0;
-  }
-
-  .closingCross {
-    display: none;
-  }
-
   .title {
     font-size: 24px;
     line-height: 36px;

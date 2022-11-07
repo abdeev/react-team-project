@@ -1,0 +1,82 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 540px;
+  height: 650px;
+  padding: 40px 70px;
+
+  background-color: var(--primary-white-color);
+  border-radius: 20px;
+  transition: 400ms;
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+}
+
+.closingCross {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 17px;
+  height: 17px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  background-image: url(../../assets/images/modal-cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 250ms;
+}
+
+.closingCross:hover {
+  scale: 1.1;
+  /*??????????*/
+}
+
+@media screen and (max-height: 660px),
+screen and (max-width: 767px) {
+  .modal {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+
+    width: auto;
+    height: auto;
+
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+
+    width: auto;
+    height: auto;
+
+    overflow: auto;
+    padding: 20px;
+    border-radius: 0;
+  }
+
+  .closingCross {
+    display: none;
+  }
+}
