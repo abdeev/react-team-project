@@ -18,7 +18,7 @@ const Currency = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const location = useLocation();
-  const isDiagram = location.pathname === "/diagram";
+  const isDiagram = location.pathname === "/currencies";
 
   const prepareData = (data) => {
     const filteredData = data.filter(
