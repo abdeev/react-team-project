@@ -26,8 +26,7 @@ const Layout = () => {
   const location = useNavigate();
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
-
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [showExitModal, setShowExitModal] = useState(false);
 
   const isToken = useSelector(selectUserToken);
   const locationcurrency = useLocation();
@@ -54,7 +53,7 @@ const Layout = () => {
     }
   };
   const toggleModal = () => {
-    setIsShowModal(!isShowModal);
+    setShowExitModal(!showExitModal);
   };
 
   return (
@@ -108,7 +107,7 @@ const Layout = () => {
           ></button>
         </>
       )}
-      {isShowModal && <LogoutModal onClose={toggleModal} />}
+      {showExitModal && <LogoutModal onClose={toggleModal} />}
     </div>
   );
 };
