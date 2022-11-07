@@ -1,5 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
+import ReactDOM from 'react-dom';
+
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 import PropTypes from 'prop-types';
 
@@ -39,7 +41,7 @@ const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
     console.log(isModalOpen);
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
       {isModalOpen && (
         <div onKeyUp={handleKeyUpEsc}>
@@ -55,7 +57,8 @@ const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
           </ModalBackdrop>
         </div>
       )}
-    </>
+    </>,
+    document.body
   );
 };
 
