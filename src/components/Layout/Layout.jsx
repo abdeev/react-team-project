@@ -41,8 +41,10 @@ const Layout = () => {
     if (isToken) {
       location();
     }
+
     if (window.location.pathname === '/react-team-project/') {
-      location('/home')
+      location('/home');
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
@@ -63,7 +65,7 @@ const Layout = () => {
   return (
     <div className={css.layoutContainer}>
       <div className={css.layoutHeader}>
-        <Link to="/home" end="true" className={css.wallet}>
+        <Link to="/home"  className={css.wallet}>
           <LogoWallet className={css.logoWallet} />
         </Link>
 
