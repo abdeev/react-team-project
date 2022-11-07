@@ -10,8 +10,8 @@ import {
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
 
-import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
-import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
+import { ReactComponent as LogoWallet } from '../../assets/images/logo.svg';
+import { ReactComponent as IconExit } from '../../assets/images/iconExit.svg';
 
 import Currency from 'components/Currency/Currency';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';

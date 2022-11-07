@@ -31,17 +31,19 @@
   background-color: transparent;
   cursor: pointer;
 
-  background-image: url(../../static/images/modal-cross.svg);
+  background-image: url(../../assets/images/modal-cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;
 }
 
 .closingCross:hover {
-  scale: 1.1; /*??????????*/
+  scale: 1.1;
+  /*??????????*/
 }
 
-@media screen and (max-height: 660px), screen and (max-width: 767px) {
+@media screen and (max-height: 660px),
+screen and (max-width: 767px) {
   .modal {
     top: 0;
     bottom: 0;
