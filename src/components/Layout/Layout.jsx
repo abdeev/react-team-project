@@ -1,24 +1,27 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+
 import { redirect, useLocation } from 'react-router-dom';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
 import {
   selectUserBalance,
   selectUserName,
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
+
 import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
 import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
-import styles from '../Currency/Currency.module.css';
-import css from './Layout.module.css';
+
 import Currency from 'components/Currency/Currency';
 import AddTransactionModal from 'components/AddTransaction/AddTransactionModal';
-
 import Navigation from 'components/Navigation/Navigation';
-
 import { LogoutModal } from 'components/LogoutModal/LogoutModal';
 
-import { useEffect } from 'react';
+import Modal from 'components/Modal/Modal';
+
+import styles from '../Currency/Currency.module.css';
+import css from './Layout.module.css';
 
 const Layout = () => {
   const location = useNavigate();
@@ -42,7 +45,7 @@ const Layout = () => {
       location();
     }
     if (window.location.pathname === '/react-team-project/') {
-      location('/home')
+      location('/home');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isToken]);
@@ -51,11 +54,6 @@ const Layout = () => {
     setIsAddModalOpen(true);
   };
 
-  const handleEscapeKey = e => {
-    if (e.key === 'Escape') {
-      setIsAddModalOpen(false);
-    }
-  };
   const toggleModal = () => {
     setIsShowModal(!isShowModal);
   };
@@ -101,15 +99,15 @@ const Layout = () => {
 
       {window.location.pathname === '/react-team-project/home' && (
         <>
-          <AddTransactionModal
-            isAddModalOpen={isAddModalOpen}
-            setIsAddModalOpen={setIsAddModalOpen}
-          />
-
+          <Modal
+            isModalOpen={isAddModalOpen}
+            setIsModalOpen={setIsAddModalOpen}
+          >
+            <AddTransactionModal setIsAddModalOpen={setIsAddModalOpen} />
+          </Modal>
           <button
             type="button"
             onClick={handleOpenModal}
-            onKeyDown={handleEscapeKey}
             className={css.openModalBtn}
           ></button>
         </>
