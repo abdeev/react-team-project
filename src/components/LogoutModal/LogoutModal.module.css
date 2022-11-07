@@ -26,6 +26,7 @@
   font-family: 'circe';
   text-align: center;
 }
+
 .text {
   font-size: 34px;
   margin-bottom: 40px;
@@ -38,6 +39,7 @@
   font-size: 25px;
   font-family: 'circe';
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .button:first-child {

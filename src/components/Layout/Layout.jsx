@@ -28,9 +28,8 @@ const Layout = () => {
   const currentUserName = useSelector(selectUserName);
   const userCurrentBalance = useSelector(selectUserBalance);
 
+  const [showExitModal, setShowExitModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const [isShowModal, setIsShowModal] = useState(false);
 
   const isToken = useSelector(selectUserToken);
   const locationcurrency = useLocation();
@@ -44,6 +43,7 @@ const Layout = () => {
     if (isToken) {
       location();
     }
+
     if (window.location.pathname === '/react-team-project/') {
       location('/home');
     }
@@ -55,13 +55,13 @@ const Layout = () => {
   };
 
   const toggleModal = () => {
-    setIsShowModal(!isShowModal);
+    setShowExitModal(!showExitModal);
   };
 
   return (
     <div className={css.layoutContainer}>
       <div className={css.layoutHeader}>
-        <Link to="/home" end="true" className={css.wallet}>
+        <Link to="/home"  className={css.wallet}>
           <LogoWallet className={css.logoWallet} />
         </Link>
 
@@ -112,7 +112,7 @@ const Layout = () => {
           ></button>
         </>
       )}
-      {isShowModal && <LogoutModal onClose={toggleModal} />}
+      {showExitModal && <LogoutModal onClose={toggleModal} />}
     </div>
   );
 };
