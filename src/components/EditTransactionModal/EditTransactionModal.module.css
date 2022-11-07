@@ -88,7 +88,7 @@
   background-color: transparent;
   cursor: pointer;
 
-  background-image: url(../../static/images/modal-cross.svg);
+  background-image: url(../../assets/images/modal-cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   transition: 250ms;
@@ -151,7 +151,7 @@
   border-radius: 50%;
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 
-  background-image: url(../../static/images/+.svg);
+  background-image: url(../../assets/images/+.svg);
   background-repeat: no-repeat;
   background-position: center;
 
@@ -167,7 +167,7 @@
   background-color: var(--red-text-color);
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
 
-  background-image: url(../../static/images/minus.svg);
+  background-image: url(../../assets/images/minus.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
 

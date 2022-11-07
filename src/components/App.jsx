@@ -45,7 +45,7 @@ export const App = () => {
             <Route path="home" element={<Home />} />
             <Route path="statistics" element={<StatisticsPage />} />
             <Route
-              path="diagram"
+              path="currencies"
               element={
                 <PrivateRoute redirectTo="/home">
                   <Currency />
