@@ -120,6 +120,7 @@
 .tableWrapper {
   height: 60vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .tableHeader {

@@ -17,7 +17,7 @@ import {
   SortByComment,
   SortBySum,
   SortByBalance,
-} from './sortTransactions';
+} from '../../utils/sortTransactions';
 
 import css from './Home.module.css';
 
