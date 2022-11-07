@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +7,6 @@ import {
   editTransactionThunk,
   deleteTransactionsThunk,
 } from 'redux/transactions/thunksTransactions';
-
-import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
 import { Form, Formik } from 'formik';
 import CustomCommentInput from './FormikCustoms/CustomCommentInput';
@@ -32,7 +29,6 @@ import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
 import css from './EditTransactionModal.module.css';
 
 const EditTransactionModal = ({
-  closeModalOnKey,
   setShowEditModal,
   transaction: { id, transactionDate, type, categoryId, comment, amount },
 }) => {
@@ -44,21 +40,9 @@ const EditTransactionModal = ({
 
   useEffect(() => {
     setIsExpenseChecked(type === 'INCOME' ? false : true);
-    window.addEventListener('keydown', closeModalOnKey);
-
-    return () => {
-      window.removeEventListener('keydown', closeModalOnKey);
-    };
-  }, [closeModalOnKey, type]);
+  }, [type]);
 
   const handleModalCloseClick = () => {
-    setShowEditModal(false);
-  };
-
-  const handleBackdropClick = e => {
-    if (e.target !== e.currentTarget) {
-      return;
-    }
     setShowEditModal(false);
   };
 
@@ -76,6 +60,7 @@ const EditTransactionModal = ({
       )
         .unwrap()
         .then(() => {
+          Notify.success('Transaction editing !');
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
           setShowEditModal(false);
@@ -99,6 +84,7 @@ const EditTransactionModal = ({
       )
         .unwrap()
         .then(() => {
+          Notify.success('Transaction editing !');
           actions.resetForm();
           dispatch(getCurrentUserInfoThunk());
           setShowEditModal(false);
@@ -113,7 +99,11 @@ const EditTransactionModal = ({
   const handleDeleteTransaction = () => {
     dispatch(deleteTransactionsThunk(id))
       .unwrap()
-      .then(dispatch(getTransactionsThunk()))
+      .then(() => {
+        Notify.success('Transaction deleting !');
+        dispatch(getTransactionsThunk());
+        setShowEditModal(false);
+      })
       .catch(() => {
         alert('smth went wrong, try again');
       })
@@ -123,111 +113,97 @@ const EditTransactionModal = ({
       });
   };
 
-  return ReactDOM.createPortal(
+  return (
     <>
-      <ModalBackdrop
-        onBackClick={handleBackdropClick}
-        closeModalOnKey={closeModalOnKey}
+      <h1 className={css.title}>Edit transaction</h1>
+
+      <Formik
+        initialValues={{
+          comment: comment,
+          amount: Math.abs(amount),
+          startDate: new Date(transactionDate),
+          selectData: null,
+          isExpenseChecked: type === 'INCOME' ? false : true,
+        }}
+        validationSchema={addTransactionSchema}
+        onSubmit={handleModalSubmit}
       >
-        <div className={css.modal}>
-          <button
-            type="button"
-            className={css.closingCross}
-            onClick={handleModalCloseClick}
-          ></button>
+        {props => (
+          <Form className={css.form}>
+            <div className={css.toggle}>
+              <input
+                type="checkbox"
+                id="toggle"
+                defaultChecked={type === 'INCOME' ? false : true}
+                onChange={() => {
+                  props.values.isExpenseChecked =
+                    !props.values.isExpenseChecked;
+                  setIsExpenseChecked(props.values.isExpenseChecked);
+                }}
+              />
+              <label htmlFor="toggle"></label>
+              <span className={css.incomeSpan}>Income</span>
+              <span className={css.expenseSpan}>Expense</span>
+            </div>
 
-          <h1 className={css.title}>Edit transaction</h1>
+            <div
+              className={
+                isExpenseChecked ? css.selectWrapper : css.selectWrapperOut
+              }
+            >
+              <CustomSelect name="selectData" />
+            </div>
 
-          <Formik
-            initialValues={{
-              comment: comment,
-              amount: Math.abs(amount),
-              startDate: new Date(transactionDate),
-              selectData: null,
-              isExpenseChecked: type === 'INCOME' ? false : true,
-            }}
-            validationSchema={addTransactionSchema}
-            onSubmit={handleModalSubmit}
-          >
-            {props => (
-              <Form className={css.form}>
-                <div className={css.toggle}>
-                  <input
-                    type="checkbox"
-                    id="toggle"
-                    defaultChecked={type === 'INCOME' ? false : true}
-                    onChange={() => {
-                      props.values.isExpenseChecked =
-                        !props.values.isExpenseChecked;
-                      setIsExpenseChecked(props.values.isExpenseChecked);
-                    }}
-                  />
-                  <label htmlFor="toggle"></label>
-                  <span className={css.incomeSpan}>Income</span>
-                  <span className={css.expenseSpan}>Expense</span>
-                </div>
-
-                <div
-                  className={
-                    isExpenseChecked ? css.selectWrapper : css.selectWrapperOut
-                  }
-                >
-                  <CustomSelect name="selectData" />
-                </div>
-
-                <div className={css.inputsWrapper}>
-                  <div className={css.amountWrapper}>
-                    <CustomAmountInput
-                      name="amount"
-                      type="text"
-                      placeholder="0.00"
-                    />
-                  </div>
-                  <div className={css.datepickerWrapper}>
-                    <DatePickerField name="startDate" />
-                    <RiCalendar2Fill className={css.datepickerIcon} />
-                  </div>
-                </div>
-                <CustomCommentInput
-                  name="comment"
+            <div className={css.inputsWrapper}>
+              <div className={css.amountWrapper}>
+                <CustomAmountInput
+                  name="amount"
                   type="text"
-                  placeholder="Comment"
+                  placeholder="0.00"
                 />
+              </div>
+              <div className={css.datepickerWrapper}>
+                <DatePickerField name="startDate" />
+                <RiCalendar2Fill className={css.datepickerIcon} />
+              </div>
+            </div>
+            <CustomCommentInput
+              name="comment"
+              type="text"
+              placeholder="Comment"
+            />
 
-                <button type="submit" className={css.submitBtn}>
-                  {isEditing ? ' EDITING ...' : 'EDIT'}
-                </button>
+            <button type="submit" className={css.submitBtn}>
+              {isEditing ? ' EDITING ...' : 'EDIT'}
+            </button>
 
-                <button
-                  type="button"
-                  className={css.deleteBtn}
-                  onClick={handleDeleteTransaction}
-                >
-                  {isDeleting ? ' DELETING ...' : 'DELETE'}
-                </button>
+            <button
+              type="button"
+              className={css.deleteBtn}
+              onClick={handleDeleteTransaction}
+            >
+              {isDeleting ? ' DELETING ...' : 'DELETE'}
+            </button>
 
-                <button
-                  type="button"
-                  className={css.cancelBtn}
-                  onClick={handleModalCloseClick}
-                >
-                  CANCEL
-                </button>
-              </Form>
-            )}
-          </Formik>
-          {isEditing && <Loader />}
-        </div>
-      </ModalBackdrop>
-    </>,
-    document.body
+            <button
+              type="button"
+              className={css.cancelBtn}
+              onClick={handleModalCloseClick}
+            >
+              CANCEL
+            </button>
+          </Form>
+        )}
+      </Formik>
+  
+      {isEditing && <Loader />}
+    </>
   );
 };
 
 export default EditTransactionModal;
  
 EditTransactionModal.protoTypes = {
-  closeModalOnKey: PropTypes.func,
   setShowEditModal: PropTypes.func,
   transaction: PropTypes.objectOf({
     id: PropTypes.string,

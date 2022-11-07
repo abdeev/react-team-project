@@ -1,6 +1,7 @@
 import React from 'react';
 import { useField, useFormikContext } from 'formik';
 import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import css from '../EditTransactionModal.module.css';
@@ -23,4 +24,10 @@ export const DatePickerField = ({ ...props }) => {
       className={css.input}
     />
   );
+};
+
+DatePickerField.propTypes = {
+  props: PropTypes.exact({
+    name: PropTypes.string,
+  }),
 };

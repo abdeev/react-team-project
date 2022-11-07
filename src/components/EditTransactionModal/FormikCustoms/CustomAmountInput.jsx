@@ -1,4 +1,5 @@
 import { useField } from 'formik';
+import PropTypes from 'prop-types';
 import css from '../EditTransactionModal.module.css';
 
 const CustomAmountInput = ({ ...props }) => {
@@ -18,6 +19,14 @@ const CustomAmountInput = ({ ...props }) => {
       )}
     </>
   );
+};
+
+CustomAmountInput.propTypes = {
+  props: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
+  }),
 };
 
 export default CustomAmountInput;

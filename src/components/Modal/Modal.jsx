@@ -1,5 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
+import ReactDOM from 'react-dom';
+
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 import PropTypes from 'prop-types';
 
@@ -8,7 +10,6 @@ import css from 'components/Modal/Modal.module.css';
 const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
   const handleKeyUpEsc = useCallback(
     event => {
-      console.log(event);
       if (event.key === 'Escape') {
         setIsModalOpen(false);
       }
@@ -30,16 +31,14 @@ const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
 
   const handleModalCloseClick = () => {
     setIsModalOpen(false);
-    console.log(isModalOpen);
   };
 
   const handleBackdropClick = e => {
     if (e.target !== e.currentTarget) return;
     setIsModalOpen(false);
-    console.log(isModalOpen);
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
       {isModalOpen && (
         <div onKeyUp={handleKeyUpEsc}>
@@ -55,7 +54,8 @@ const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
           </ModalBackdrop>
         </div>
       )}
-    </>
+    </>,
+    document.body
   );
 };
 
