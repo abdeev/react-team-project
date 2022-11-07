@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOutThunk } from 'redux/authorization/thunksAuth';
-import ModalBackdrop from 'components/AddTransaction/ModalBackdrop/ModalBackdrop';
+import ModalBackdrop from 'components/Modal/ModalBackdrop/ModalBackdrop';
 import PropTypes from 'prop-types';
 import css from './LogoutModal.module.css';
 

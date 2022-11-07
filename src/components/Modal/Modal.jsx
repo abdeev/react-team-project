@@ -1,0 +1,67 @@
+import { useCallback, useEffect } from 'react';
+
+import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
+import PropTypes from 'prop-types';
+
+import css from 'components/Modal/Modal.module.css';
+
+const Modal = ({ children, isModalOpen, setIsModalOpen }) => {
+  const handleKeyUpEsc = useCallback(
+    event => {
+      console.log(event);
+      if (event.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    },
+    [setIsModalOpen]
+  );
+
+  useEffect(() => {
+    if (isModalOpen) {
+      window.addEventListener('keyup', handleKeyUpEsc);
+    }
+
+    if (!isModalOpen) {
+      window.removeEventListener('keyup', handleKeyUpEsc);
+    }
+
+    return () => window.removeEventListener('keyup', handleKeyUpEsc);
+  }, [handleKeyUpEsc, isModalOpen]);
+
+  const handleModalCloseClick = () => {
+    setIsModalOpen(false);
+    console.log(isModalOpen);
+  };
+
+  const handleBackdropClick = e => {
+    if (e.target !== e.currentTarget) return;
+    setIsModalOpen(false);
+    console.log(isModalOpen);
+  };
+
+  return (
+    <>
+      {isModalOpen && (
+        <div onKeyUp={handleKeyUpEsc}>
+          <ModalBackdrop onBackClick={handleBackdropClick}>
+            <div className={css.modal}>
+              <button
+                type="button"
+                className={css.closingCross}
+                onClick={handleModalCloseClick}
+              ></button>
+              {children}
+            </div>
+          </ModalBackdrop>
+        </div>
+      )}
+    </>
+  );
+};
+
+Modal.propTypes = {
+  isAddModalOpen: PropTypes.bool,
+  setIsAddModalOpen: PropTypes.func,
+};
+
+export default Modal;
