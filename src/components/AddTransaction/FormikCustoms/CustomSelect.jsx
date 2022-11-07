@@ -1,6 +1,7 @@
 import { useField, useFormikContext } from 'formik';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 
 import css from '../AddTransactionModal.module.css';
 
@@ -37,6 +38,12 @@ const CustomSelect = ({ ...props }) => {
       )}
     </>
   );
+};
+
+CustomSelect.propTypes = {
+  props: PropTypes.exact({
+    name: PropTypes.string,
+  }),
 };
 
 export default CustomSelect;

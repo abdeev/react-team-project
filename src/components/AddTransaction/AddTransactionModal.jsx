@@ -7,13 +7,12 @@ import {
   addTransactionThunk,
 } from 'redux/transactions/thunksTransactions';
 import { getCurrentUserInfoThunk } from 'redux/authorization/thunksAuth';
+import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
+import { selectIsModalOpen } from 'redux/modal/selectorsModal';
 
 import ModalBackdrop from './ModalBackdrop/ModalBackdrop';
 
-import { selectTransactionsIsLoading } from 'redux/transactions/selectorsTransactions';
-
 import { Form, Formik } from 'formik';
-
 import CustomCommentInput from './FormikCustoms/CustomCommentInput';
 import CustomAmountInput from './FormikCustoms/CustomAmountInput';
 import { DatePickerField } from './FormikCustoms/CustomDatePicker';
@@ -21,12 +20,13 @@ import CustomSelect from './FormikCustoms/CustomSelect';
 
 import { addTransactionSchema } from 'validation/addTransactionSchema';
 
-import { selectIsModalOpen } from 'redux/modal/selectorsModal';
+import { Notify } from 'notiflix';
+
+import { RiCalendar2Fill } from 'react-icons/ri';
+
+import Loader from 'components/Loader';
 
 import css from './AddTransactionModal.module.css';
-import { Notify } from 'notiflix';
-import { RiCalendar2Fill } from 'react-icons/ri';
-import Loader from 'components/Loader';
 
 const AddTransactionModal = () => {
   const [isExpenseChecked, setIsExpenseChecked] = useState(true);
@@ -106,6 +106,7 @@ const AddTransactionModal = () => {
             <div>
               <h1 className={css.title}>Add transaction</h1>
             </div>
+
             <Formik
               initialValues={{
                 comment: '',
