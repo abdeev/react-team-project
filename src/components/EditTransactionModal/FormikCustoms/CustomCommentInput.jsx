@@ -1,4 +1,5 @@
 import { useField } from 'formik';
+import PropTypes from 'prop-types';
 import css from '../EditTransactionModal.module.css';
 
 const CustomCommentInput = ({ ...props }) => {
@@ -16,6 +17,14 @@ const CustomCommentInput = ({ ...props }) => {
       )}
     </>
   );
+};
+
+CustomCommentInput.propTypes = {
+  props: PropTypes.exact({
+    name: PropTypes.string,
+    type: PropTypes.string,
+    placeholder: PropTypes.string,
+  }),
 };
 
 export default CustomCommentInput;

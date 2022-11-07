@@ -5,8 +5,10 @@ import { useSelector } from 'react-redux';
 import { selectCategories } from 'redux/categories/selectCategories';
 import EditTransactionModal from 'components/EditTransactionModal/EditTransactionModal';
 
-import css from './TransactionTableItem.module.css';
 import { formatDate } from 'utils/convertDataForChart';
+import Modal from 'components/Modal/Modal';
+
+import css from './TransactionTableItem.module.css';
 
 export const TransactionTableItem = ({
   transaction: {
@@ -31,11 +33,6 @@ export const TransactionTableItem = ({
     setShowEditModal(true);
   };
 
-  const handleEscapeKey = event => {
-    if (event.key === 'Escape') {
-      setShowEditModal(false);
-    }
-  };
   const rowBorderColor =
     type === 'EXPENSE' ? ` ${css.redBorder}` : ` ${css.greenBorder}`;
   const rowSumColor =
@@ -74,18 +71,20 @@ export const TransactionTableItem = ({
       </tr>
 
       {showEditModal && (
-        <EditTransactionModal
-          closeModalOnKey={handleEscapeKey}
-          setShowEditModal={setShowEditModal}
-          transaction={{
-            id,
-            transactionDate,
-            type,
-            categoryId,
-            comment,
-            amount,
-          }}
-        />
+        <Modal
+          isModalOpen={showEditModal}
+          setIsModalOpen={setShowEditModal}
+        >
+          <EditTransactionModal setShowEditModal={setShowEditModal}
+            transaction={{
+              id,
+              transactionDate,
+              type,
+              categoryId,
+              comment,
+              amount,
+            }}/>
+        </Modal>
       )}
     </>
   );
