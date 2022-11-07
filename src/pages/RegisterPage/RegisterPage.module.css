@@ -1,3 +1,8 @@
+@media (min-width: 320px) and (max-width: 767px) {
+  .pageText {
+    display: none;
+  }
+}
 @media (min-width: 768px) {
   .pageWrapper {
     background-image: url('./img/ellipse-bottom-desktop.png'),
@@ -10,7 +15,7 @@
     right: 160px;
   }
 }
-@media (min-height: 768px) and (max-height: 1023px) {
+@media (min-height: 631px) and (max-height: 1023px) {
   .pageText {
     top: 75%;
     left: 200px;

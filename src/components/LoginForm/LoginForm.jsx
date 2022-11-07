@@ -54,7 +54,15 @@ export const LoginForm = () => {
         onSubmit={handleLogin}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleBlur, values, isValid, dirty, errors }) => {
+        {({
+          handleChange,
+          handleBlur,
+          values,
+          isValid,
+          dirty,
+          errors,
+          touched,
+        }) => {
           return (
             <Form className={css.form}>
               <div className={css.logoWrapper}>
@@ -62,7 +70,7 @@ export const LoginForm = () => {
                 <h1 className={css.title}>Wallet</h1>
               </div>
               <div className={css.inputWrapper}>
-                {errors.email && (
+                {touched.email && errors.email && (
                   <div className={css.errorMessage}>*{errors.email}</div>
                 )}
                 <MdEmail className={css.icon} />
@@ -78,7 +86,7 @@ export const LoginForm = () => {
               </div>
 
               <div className={css.inputWrapper}>
-                {errors.password && (
+                {touched.password && errors.password && (
                   <div className={css.errorMessage}>*{errors.password}</div>
                 )}
                 <MdLock className={css.icon} />
