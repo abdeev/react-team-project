@@ -25,7 +25,7 @@ export const getStatisticsUserThunk = createAsyncThunk(
       }
 
       const { data } = await request.get('/api/transactions-summary', {
-        params: { ...params },
+        params,
       });
       return data;
     } catch (error) {

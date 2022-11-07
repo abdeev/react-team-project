@@ -7,8 +7,8 @@ import {
   selectUserName,
   selectUserToken,
 } from 'redux/authorization/selectorsAuth';
-import { ReactComponent as LogoWallet } from '../../static/images/logo.svg';
-import { ReactComponent as IconExit } from '../../static/images/iconExit.svg';
+import { ReactComponent as LogoWallet } from '../../assets/images/logo.svg';
+import { ReactComponent as IconExit } from '../../assets/images/iconExit.svg';
 import styles from '../Currency/Currency.module.css';
 import css from './Layout.module.css';
 import Currency from 'components/Currency/Currency';
