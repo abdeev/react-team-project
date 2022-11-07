@@ -1,6 +1,6 @@
 @import-normalize; /*bring in normalize.css styles */
 @import url(./stylesheet/vars.css);
-
+@import url(./stylesheet/fonts.css);
 * {
   box-sizing: border-box;
 }
