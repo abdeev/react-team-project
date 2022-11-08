@@ -38,7 +38,7 @@
     text-align: center;
     font-family: 'Circe';
     font-size: 24px;
-    font-weight: 700;
+    font-weight: lighter;
   }
 
   .tableWrapper {
@@ -114,8 +114,8 @@
     color: var(--primary-white-color);
     text-align: center;
     font-family: 'Circe';
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: lighter;
   }
 }
 
@@ -127,6 +127,7 @@
 
   .noDataText {
     margin-top: 150px;
+    padding: 10px 20px;
   }
 
   .tableWrapper {
