@@ -31,9 +31,18 @@
   }
 
   .noDataText {
+    border-radius: 20px;
+    padding: 8px;
+    background-color: var(--red-text-color);
+    color: var(--primary-white-color);
+    text-align: center;
     font-family: 'Circe';
-    font-size: 29px;
+    font-size: 24px;
     font-weight: 700;
+  }
+
+  .tableWrapper {
+    height: 57vh;
   }
 }
 
@@ -43,6 +52,10 @@
     padding-top: 46px;
     border: none;
     border-collapse: collapse;
+  }
+
+  .tableWrapper {
+    height: 50vh;
   }
 
   .transactionsTableRow_header {
@@ -56,6 +69,7 @@
     font-size: 18px;
     line-height: 27px;
     cursor: pointer;
+    transition: all ease-in-out 250ms;
   }
 
   .table_head__alStart {
@@ -94,6 +108,11 @@
   }
 
   .noDataText {
+    border-radius: 20px;
+    padding: 8px;
+    background-color: var(--red-text-color);
+    color: var(--primary-white-color);
+    text-align: center;
     font-family: 'Circe';
     font-size: 35px;
     font-weight: 700;
@@ -104,21 +123,25 @@
 @media screen and (min-width: 1280px) {
   .transactionsTable {
     table-layout: fixed;
-    margin-top: 46px;
   }
 
   .noDataText {
     margin-top: 150px;
   }
+
+  .tableWrapper {
+    height: 80vh;
+    padding-right: 100px;
+    margin-top: 46px;
+  }
 }
 
 .transactionsTableRow_header:hover,
 .transactionsTableRow_header:focus {
-  background-color: rgba(240, 240, 240, 0.541);
+  background-color: rgba(240, 240, 240);
 }
 
 .tableWrapper {
-  height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
