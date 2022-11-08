@@ -31,6 +31,7 @@
   display: inline-block;
   width: 181px;
 }
+
 .userWrapper {
   display: flex;
   padding-right: 46px;
@@ -55,16 +56,19 @@
   gap: 8px;
   color: var(--grey-text-color);
 }
+
 .exitBtn {
   background-color: transparent;
   border: none;
   cursor: pointer;
   height: fit-content;
 }
-.exitBtn:hover > p {
+
+.exitBtn:hover>p {
   color: rgb(255 101 150);
 }
-.exitBtn:hover > svg {
+
+.exitBtn:hover>svg {
   fill: rgb(255 101 150);
 }
 
@@ -77,6 +81,7 @@
   fill: var(--grey-text-color);
   transition: 250ms;
 }
+
 .textExit {
   font-family: 'Circe';
   font-weight: 400;
@@ -142,7 +147,7 @@
 
   width: 395px;
   height: 80px;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: var(--primary-white-color);
 }
 
@@ -158,11 +163,13 @@
 .outlets {
   padding: 0 16px 0 69px;
 }
+
 @media screen and (min-width: 768px) and(max-width:1280) {
   .outlets {
     padding: 0 32px;
   }
 }
+
 @media screen and (max-width: 767px) {
   .outlets {
     padding: 0 20px;
@@ -194,6 +201,7 @@
 .openModalBtn:hover {
   background-color: #20ba98;
 }
+
 /*  ====== // open modal button styles ===== */
 
 /* ======= TABLET STYLES ======= */

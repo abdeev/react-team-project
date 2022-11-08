@@ -140,7 +140,7 @@ const Home = () => {
           </tbody>
         </table>
       ) : (
-        <h2 className={css.noDataText}> Try to add transaction! </h2>
+        <h2 className={css.noDataText}> You don't have any transactions </h2>
       )}
     </div>
   );
